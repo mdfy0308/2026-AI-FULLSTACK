@@ -11,14 +11,9 @@
 <br/>
 <br/>
 
-<<<<<<< HEAD
-
-### 📌 Contact & Links
-<img src="./track001_git/me.png" alt="프로필 이미지" style="width: 100px;"/>
-=======
 ## 📌 Contact & Links
-<img src="/track001_git/me.png" alt="프로필 이미지" style="width: 100px;"/>
->>>>>>> 52159c1e033aae450a067b1f0b47874112e322fe
+<img src="./track001_git/me.png" alt="프로필 이미지" style="width: 100px;"/>
+
 
 |||
 |-|-|
