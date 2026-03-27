@@ -66,8 +66,10 @@
 ※ VS CODE 설치
  
 
+---
 - TODO2 :  마크다운 문법
 
+<!-- 주석 : 제목 h1~h6 -->
 # 제목 ( 제일 큰 제목 )
 ## 중간 제목
 ### 작은 제목
@@ -75,21 +77,63 @@
 ##### step5
 ###### step6
 
+<!-- 구분선 -->
+--- 
 
-## Part002 
--TODO2 : JAVA SETTING
+<!-- `` -->
+🥇이모지 `윈도우 + .`
 
-### 1. JAVA
-1. java.sun.com
-2. 다운로드 (11, 17, 21)
-3. 설치
-4. path 등록 C:\Program Files\Java
-JAVA_HOME : C:\Program Files\Java\jdk-11.0.30
-            C:\Program Files\Java\jdk-17.0.18
-            C:\Program Files\Java\jdk-21.0.10
-path      : %JAVA_HOME%\bin
+---
 
-5. java 확인
-CMD(명령 프롬프트) 
-java -version
-원하는 버전이 아닌 경우 다시 환경 변수에서 변수(Path) 위치 이동
+<!-- - 리스트 항목 -->
+- 🍔🍟🥤 햄버거 세트
+- 🍕 피자
+- 🌭 핫도그
+
+1. 주문한다.
+2. 만든다.
+3. 먹는다.
+
+---
+*별 하나 - 기울이기*
+**별 두개 - 볼드/굵게**
+***별 세개 - 기울이기+굵게***
+
+~~취소선~~
+
+>말풍선
+
+```
+문장을 사용할 때
+긴 코드 블록
+```
+
+<!-- 원하는 언어의 코드를 작성할 때 -->
+
+```java
+public class Test{}
+```
+
+---
+<!-- url 삽입 -->
+
+[네이버](http://www.naver.com)
+
+<!-- 이미지 삽입 -->
+![프로필](me.png)
+
+<img src="me.png" alt="학생의 프로필 사진"
+     style="width: 80px; border: 2px solid blue;"/>
+
+---
+<!-- 테이블 -->
+
+|no|name|
+|----|----|
+|01|김우빈|
+|02|마동석|
+|03|원빈|
+
+|1|2|
+|-|-|
+|3|4|
