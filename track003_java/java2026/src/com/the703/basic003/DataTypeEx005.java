@@ -18,23 +18,16 @@ public class DataTypeEx005 {
 		Scanner sc = new Scanner(System.in);
 		
 		// 입력
-		System.out.println("국어점수를 입력하시오.");
-		kor = sc.nextInt();
-		
-		System.out.println("영어점수를 입력하시오.");
-		eng = sc.nextInt();
-		
-		System.out.println("수학점수를 입력하시오.");
-		math = sc.nextInt();
+		System.out.print("국어점수를 입력하시오."); kor = sc.nextInt();
+		System.out.print("영어점수를 입력하시오."); eng = sc.nextInt();
+		System.out.print("수학점수를 입력하시오."); math = sc.nextInt();
 		
 		// 처리
 		total = kor + eng + math;
 		avg = total / 3f; // 정수/실수
 		
 		// 출력
-		System.out.printf("총점 : %d\n", total);
-		System.out.printf("평균 : %.2f\n", avg);
+		System.out.printf("총점 : %d\n평균 : %.2f\n", total, avg);
 
 	}
-
 }
