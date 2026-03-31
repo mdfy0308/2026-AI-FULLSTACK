@@ -1,5 +1,5 @@
 Todo1: css 기본
-Todo2: java
+Todo2: java 자료형+연산자
 
 
 ### ■1. 복습문제
@@ -20,4 +20,4 @@ Todo2: java
 12. 둥근모서리 : border-radius
 13. 그림자효과 : box-shadow
 
-### ■3. Todo1: css 기본
+### ■3. Todo2: java 자료형2/연산자/제어문?

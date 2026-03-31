@@ -27,7 +27,7 @@ public class DataTypeEx005 {
 		avg = total / 3f; // 정수/실수
 		
 		// 출력
-		System.out.printf("총점 : %d\n평균 : %.2f\n", total, avg);
+		System.out.printf("총점 : %d\n평균 : %.2f", total, avg);
 
 	}
 }
