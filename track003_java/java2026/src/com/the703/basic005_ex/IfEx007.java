@@ -15,6 +15,7 @@ public class IfEx007 {
 		// 변수
 		int in1 = 0, in2 = 0;
 		char op  = '\u0000';
+		String result = "a";
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -30,8 +31,16 @@ public class IfEx007 {
 	
 		// 처리 / 출력문을 1개로 줄이고 나누기의 경우는 실수로 표현?
 		// if(연산자를 입력하면) {정수 연산자 정수 = 결과값이 나와야함};
+		// 만약 + 라면 10 + 3 = 13
+		// 만약 - 라면 10 - 3 = 7
+		// 만약 * 라면 10 * 3 = 30
+		// 만약 / 라면 10 / 3 = 3.33
 		
 		// if(op == '+') {System.out.println(in1+"+"+in2+"="+(in1+in2));}
+		
+		// 
+		System.out.println();
+		
 		
 		
 
