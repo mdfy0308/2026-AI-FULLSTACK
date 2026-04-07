@@ -2,40 +2,33 @@ package com.the703.basic006_ex;
 
 import java.util.Scanner;
 
-public class ForIn001 {
+public class ForIn001_3 {
 
 	public static void main(String[] args) {
 		
 		//변수
+		//자료형 : 기본형/참조형(String)
+		//기본형 : 정수 byte-short-int-long / 실수 float-double
 		Scanner sc = new Scanner(System.in);
-		int kor = -1, eng = -1, math = -1, total= -1;
+		int kor = -1, eng = -1, math = -1, total= 0; // 초기값은 범위 밖의 숫자로
 		double avg= 0.0;
 		String stdid="", pass="불합격", sch="X", level="가";		
 		
 	
-		//입력 0~100만 입력받고 그 외의 경우 다시 입력하게
+		//입력
 		System.out.print("학번 입력 > "); 
 		stdid = sc.next();
 		
 		for(;;) {
-			System.out.print("국어점수 입력(0~100) > "); 
-			kor = sc.nextInt();
-			if(kor>=0 && kor <=100){ break; }
+			if(kor<0||kor>100) {
+				System.out.print("국어점수 입력(0~100) > "); kor = sc.nextInt();
+			} else if(eng<0||eng>100) {
+				System.out.print("영어점수 입력(0~100) > "); eng = sc.nextInt();
+			} else if(math<0||math>100) {
+				System.out.print("수학점수 입력(0~100) > "); math = sc.nextInt();
+			} else { break; } // kor, eng, math의 입력을 잘 한 경우
 		}
 		
-		for(;;) {
-			System.out.print("영어점수 입력(0~100) > "); 
-			eng = sc.nextInt();
-			if(eng>=0 && eng<=100){ break; }
-		}
-		
-		for(;;) {
-			System.out.print("수학점수 입력(0~100) > "); 
-			math = sc.nextInt();
-			if(math>=0 && math <=100){ break; }
-		}
-		
-
 		//처리
 		total = kor + eng + math;
 		avg = total / 3.00;
