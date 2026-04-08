@@ -21,7 +21,7 @@
             min-width: 350px;
             margin: 50px auto;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
             font-size: 14px;
@@ -44,21 +44,15 @@
             padding: 10px;
         }
 
-        .f1 {
-            float: left;
-            background-color: rgb(207, 255, 32);
-            color: gray;
-        }
+        .f1 { float: left; background-color: rgb(207, 255, 32); color: gray; }
+        .f2 { float: right; background-color: rgb(155, 33, 255); }
+        .f3 { clear: both; }
 
-        .f2 {
-            float: right;
-            background-color: rgb(155, 33, 255);
-        }
 
-        .f3 {
-            clear: both;
-        }
-        
+        .p { position: relative; }
+        .me { position: absolute; }
+
+
 
     </style>
 </head>
@@ -75,7 +69,7 @@
 
     </div>
 
-    <div class="container f">
+    <div class="container">
         <h3>2. 배치</h3>
         <ul>
             <li>float : 왼쪽 혹은 오른쪽, 옆에 붙이기(끊기, clear:both;) </li>
@@ -84,13 +78,21 @@
         </ul>
     </div>
 
-    <div class="container">
+    <div class="container f">
         <h3>3. 배치(1) - float</h3>
         <p class="item f1">LEFT<span>(왼쪽)</span></p>
         <p class="item f2">RIGHT<span>(오른쪽)</span></p>
         <p class="item f3">float 속성 끊기 - clear:both; / overflow: hidden; </p>
     </div>
 
+    <div class="container p">
+        <h3>3. 배치(2) - position - relative + absolute</h3>
+        <p class="item me">WHERE I AM</p>
+        <p> 종류 : static(기본값), relative(박스 위치O), absolute(박스 위치X), 
+            fixed(브라우저 고정), sticky(스크롤할때 특정지점에 붙이기)</p>
+        <p>부모 : relative(공간확보) / 자식: absolute(원하는 위치 배치) - 좌표</p>
+        <p></p>
+    </div>
     
 </body>
 </html>
