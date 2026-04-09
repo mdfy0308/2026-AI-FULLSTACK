@@ -21,7 +21,7 @@ public class For2Ex009 {
 //		for(int i='A';i<='Z';i++) { System.out.print((char)i); }
 //		System.out.println();
 		
-		// 총정리 )
+		// for )
 		System.out.println("ver 1) for");
 		for(int j='A';j<='Z';j++) {
 			for(int i='A';i<=j;i++) {System.out.print((char)i); }
@@ -34,12 +34,22 @@ public class For2Ex009 {
 		int j='A', i='A';
 		
 		while(j<='Z'){
-			while(i<=j) {System.out.print((char)i); i++; }
-			j++; 
+			i='A';
+			while(i<=j) { System.out.print((char)i); i++; }
+			j++;
 			System.out.println();
 		}
 		
+
 		// do while
+		
+		System.out.println("ver 3) do while");
+		j='A'; i='A';
+		
+		do{ i='A';
+			do { System.out.print((char)i); i++; } while(i<=j);
+			j++; System.out.println();
+		} while(j<='Z');
 	
 		
 		
