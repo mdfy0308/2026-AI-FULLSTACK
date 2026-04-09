@@ -3,6 +3,7 @@ package com.the703.basic006_ex;
 public class RepeatEx004 {
 
 	public static void main(String[] args) {
+		
 		//A~Z까지 출력하고 5번째마다 줄바꿈하시오
 		// System.out.println('A'); // 1
 		char a = 'A';
