@@ -12,6 +12,7 @@ public class For2Ex010 {
 //				System.out.print("A"); System.out.println();
 //				System.out.println();
 //				
+		
 //				// 1차 정리)
 				// A~Z순으로 나열/문자열이 하나씩 감소
 //				for(int i='A'; i <='Z';i++) { System.out.print((char)i); } System.out.println(); // A부터 Z까지 출력
