@@ -119,3 +119,34 @@ int day = scanner.nextInt();
 ---
 
 ### ■4.  복습문제
+
+■1. 부트스트랩에 해당하는 class와 문제를 풀으시오.
+1. div.container
+   - 전체 레이아웃을 감싸는 박스  
+   - 웹 페이지의 최대 너비를 관리  
+   - `container`(고정 폭) / `container-fluid`(가변 폭)
+
+2. div.row
+   - `container` 안에서 줄(행)을 만드는 역할
+   `row`
+
+3. div.col-sm-12
+   - `row` 안에서 칸(열)을 만드는 역할  
+   - 기본 단위는 **12칸**   
+   `col-sm(디바이스)-2(칸 수)`
+
+4. 4칸으로 균등하게 레이아웃을 지정하려고 한다. 줘야하는것은?
+```
+<div class="container">
+   <div class="row">
+      <div class="col-sm-3">칸1</div>
+      <div class="col-sm-3">칸2</div>
+      <div class="col-sm-3">칸3</div>
+      <div class="col-sm-3">칸4</div>
+   </div>
+</div>
+```
+
+5. 전체 레이아웃을 감싸는 박스(여백있음) ,  선주기, 두께는 3으로, 둥근모서리 , 좋아하는 색상 , 배경초록색, 글자 하얀색
+<div class="container border border-3 rounded border-dark bg-success text-white"> content </div>
+

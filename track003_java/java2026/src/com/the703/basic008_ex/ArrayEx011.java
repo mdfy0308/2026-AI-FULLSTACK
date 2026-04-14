@@ -12,7 +12,7 @@ public class ArrayEx011 {
 		for(int i=0;i<su.length;i++) {
 			for(int j=0;j<su.length;j++) {
 				if(su[i]<su[j]) { max = su[j]; }
-				if(su[i]>su[j]) { min = su[j]; } // 최대값과 최소값은 각각 계산되게 if/if
+				if(su[i]>su[j]) { min = su[j]; }
 			}
 		}
 		System.out.println("최대값 : " + max);
