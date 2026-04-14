@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="./css/style.css" rel="stylesheet">
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-sm navbar-dark bg-success">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="javascript:void(0)">Logo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">Link</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="text" placeholder="Search">
+                    <button class="btn btn-dark" type="button">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- div 중앙 배치, y축 여백, 내부 여백, 선 -->
+    <div class="container my-3 p-4 border-light border border-3 rounded">
+        <h3 class="mb-4"> 1. CSS - <span class="mark">색상</span></h3>
+
+        <p class="alert alert-secondary">사용방법 : btn(컴포넌트) btn-primary(색상)</p>
+        <p class="text-center text-bg-dark p-2 rounded"> bg-배경색, text-글자색 </p>
+
+        <button class="btn btn-primary border-warning border-2">primary</button>
+        <button class="btn btn-outline-success">success</button>
+        <button class="btn btn-outline-info">info</button>
+        <button class="btn btn-outline-warning">warning</button>
+        <button class="btn btn-danger border-dark border-2">danger</button>
+        <button class="btn btn-secondary">secondary</button>
+        <button class="btn btn-dark border-success border-2">dark</button>
+        <button class="btn btn-light border-secondary border-2">light</button>
+                
+    </div>
+</body>
+</html>

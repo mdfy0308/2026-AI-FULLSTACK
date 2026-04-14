@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+body { font-family: Arial, Helvetica, sans-serif; }
+
+/* Q1: 제목(h3)에 왼쪽 테두리(10px solid #ff6600), 배경색(#ffcc99), 패딩(1em)을 주려면?
+    h3 { padding: 0.5em 1em; width: fit-content; font-size: 1.2em;
+         background-color: #dbff99; border-left: 10px solid #61da1b; }
+
+    Q2:  둥근 모서리(10px) , 그림자효과를 주려면?
+        .box { padding: 1em; border-radius: 10px; box-shadow: 0 0 5px rgba(80,40,0,0.3); } */
