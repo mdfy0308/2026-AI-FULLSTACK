@@ -36,13 +36,13 @@ public class Array3Total {
 //		   4. 등수 구하기  
 		   // 만점자 3명을 모두 1등으로 표기 > [동일한 점수를 가진 인원수]를 카운트에서 제외하려면..
 		   // 동일한 점수가 무엇인지 확인하고 제외하고싶음(숫자를 바꾸어도 적용되게)
-		   
+		   		   
 		 		   
 //		   for(int i=0; i<name.length;i++) {
 //	            for(int j=0;j<name.length;j++) {
-//	                if(aver[j] > aver[i]) {
-//	                    chk = false;
-//	                    for(int k = 0; k < j; k++) {
+//	                if(aver[j] > aver[i]) { 
+//	                    chk = false; 
+//	                    for(int k = 0; k < j; k++) { 
 //	                        if(aver[k] == aver[j]) { chk = true; break; }
 //	                    }
 //	                    if(!chk) rank[i]++;
