@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #1a1a1a;
+}
+
+/* 각 디바이스에 맞게 원하는 사이즈를 지정해서 CSS 적용할 수 있음*/
+@media (max-width: 575px) {
+    .myvisual { display:none; }
+}
+
+h3 { color: #fafafa; }
+
+header nav { background-color: #ade446; }
+
+table { text-align: center; }
+
+caption { font-size: 10px; color: #ccc; } 
+
+th, td, p { font-size: 12px; }

@@ -7,17 +7,17 @@
     <link href="./css/reset.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="./css/bs004_self.css" rel="stylesheet">
+    <link href="./css/portfolio.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- HEADER -->
-    <header>
+    <header class="container">
         <h1 class="blind">정수정 포트폴리오</h1>
-        <nav class="navbar navbar-expand-sm navbar-dark ">
+        <nav class="navbar navbar-expand-sm">
             <h2 class="blind">주 메뉴</h2>
             <div class="container-fluid">
-                <a class="navbar-brand" href="javascript:void(0)">JS</a>
+                <a class="navbar-brand" href="javascript:void(0)">Logo</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -41,9 +41,8 @@
         </nav>
     </header>
 
-    <!-- section은 h(제목)을 넣어줘야함. 책(section)의 제목(h) -->
     <!-- VISUAL -->
-    <section>
+    <section class="visual">
         <h3 class="blind">VISUAL</h3>
         <!-- Carousel -->
         <div id="demo" class="carousel slide" data-bs-ride="carousel">
@@ -78,64 +77,43 @@
     </section>
 
     <!-- INFO -->
-    <section class="p-5 bg-light">
+    <section class="info p-5 bg-light">
         <div class="container p-2 bg-white rounded">
-            <h3 class="m-5 text-center">About Me</h3>
+            <h3 class="m-3 text-center">About Me</h3>
             <div class="row">
-                <div class="col-sm-4 text-center">
+                <div class="col-sm-6 text-center">
                     <p><img src="./img/five.png" alt="프로필 이미지" class="w-50"/></p>
                     <h4>정수정</h4>
-                    <ul class="mb-2">
+                    <ul>
                         <li>mdfy0308@gmail.com</li>
                         <li><a href="https://github.com/mdfy0308/2026-AI-FULLSTACK.git" 
                             title="깃허브 포트폴리오 바로가기" target="blank">깃허브 포트폴리오</a></li>
                     </ul>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6 p-2">
                     <h4>Education</h4>
-                    <ul>
+                    <ul class="mb-5">
                         <li>AI활용 풀스택(프론트엔드,백엔드)부트캠프(자바,파이썬,플러터)(26.03.26~26.10.08)</li>
                     </ul>
                     <h4>KeyWord</h4>
                     <ul class="d-flex justify-content-center text-center">
-                        <li class="btn btn-outline-danger me-2">열정</li>
-                        <li class="btn btn-outline-success me-2">성실</li>
-                        <li class="btn btn-outline-primary me-2">끈기</li>
+                        <li class="me-2">키워드 1</li>
+                        <li class="me-2">키워드 2</li>
+                        <li class="me-2">키워드 3</li>
                     </ul>
-                </div>
-                <div class="col-sm-4 p-3">
-                    <h4>SKILLS</h4>
-                    <div class="progress text-center mb-3">
-                        <div class="progress-bar-striped bg-info" style="width: 80%;">JAVA 80%</div>
-                    </div>
-                    <div class="progress text-center mb-3">
-                        <div class="progress-bar-striped bg-warning" style="width: 90%;">SPRING 90%</div>
-                    </div>
-                    <div class="progress text-center mb-3">
-                        <div class="progress-bar-striped bg-danger" style="width: 90%;">ORACLE 90%</div>
-                    </div>
-                    <div class="progress text-center mb-3">
-                        <div class="progress-bar-striped bg-primary" style="width: 90%;">REACT 90%</div>
-                    </div>
-                    <div class="progress text-center mb-3">
-                        <div class="progress-bar-striped bg-success" style="width: 85%;">AWS 85%</div>
-                    </div>
-                </div>                
+                </div>        
             </div>
         </div>
     </section>
 
     <!-- PORTFOLIO -->
-    <section class="bg-success p-5">
+    <section class="portfolio p-5">
         <h3 class="text-center">Portfolio</h3>
-        <div class="container bg-white rounded p-3">
+        <div class="container rounded p-3">
             <div class="row p-3">
                 <div class="col-sm-6 text-center">
                     <h4 class="blind">포트폴리오 동영상</h4>
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/Er97GArr37k?si=c8siQ44nND_EJ70Q" 
-                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
-                    encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    
                     <button class="btn btn-success mt-3">포트폴리오 더보기</button>
                 </div>
                 <div class="col-sm-3 p-2">
@@ -167,7 +145,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section class="p-5 mybg">
+    <section class="contact p-5 mybg">
         <h3 class="text-center">Contact Me</h3>
         <p></p>
         <div class="container rounded">
@@ -187,7 +165,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="p-3 text-bg-dark text-center">
+    <footer class="p-3 text-center">
         <p>© copyrights 정수정 2026 all. rights reserved</p>
     </footer>
 </body>
