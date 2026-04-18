@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
     <!-- HEADER -->
     <header>
         <h1 class="blind">정수정 포트폴리오</h1>
@@ -43,28 +44,59 @@
     </header>
 
     <!-- VISUAL -->
-    <section class="visual">
-        <h3 class="blind">VISUAL</h3>
-        <div class="box-bg">
-            <p><img src="./img/ocean1.jpg" alt="포트폴리오 이미지" /></p>
-            <p><img src="./img/ocean2.jpg" alt="포트폴리오 이미지" /></p>
-            <p><img src="./img/ocean3.jpg" alt="포트폴리오 이미지" /></p>
-            
-            <div class="card-stat">
-                <p></p>
-                <p></p>
-                <p></p>
+    <section id="demo" class="visual carousel slide" data-bs-ride="carousel">
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+        </div>
+        
+        <!-- The slideshow/carousel -->
+        <div class="slide-box carousel-inner">
+            <div class="visual-text">
+                <h3>Portfolio Title</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
+            <div class="slide carousel-item active"><img src="./img/ocean1.jpg" alt="포트폴리오 이미지" /></div>
+            <div class="slide carousel-item"><img src="./img/ocean2.jpg" alt="포트폴리오 이미지" /></div>
+            <div class="slide carousel-item"><img src="./img/ocean3.jpg" alt="포트폴리오 이미지" /></div>
+            
+            <div class="card-box">
+                <div>
+                    <h4>Sub Title</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div>
+                    <h4>Sub Title</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div>
+                    <h4>Sub Title</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
         </div>
     </section>
 
     <!-- INFO -->
-    <section class="info container">
+    <section class="info">
         <div class="container">
             <h3>ABOUT ME</h3>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <p><img src="./img/five.png" alt="프로필 이미지" class="w-50"/></p>
+                </div>
+                <div class="col-sm-4">
                     <h4>정수정</h4>
                     <ul>
                         <li>mdfy0308@gmail.com</li>
@@ -72,16 +104,16 @@
                             title="깃허브 포트폴리오 바로가기" target="blank">깃허브</a></li>
                     </ul>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <h4>Education</h4>
                     <ul>
                         <li>AI활용 풀스택(프론트엔드,백엔드)부트캠프(자바,파이썬,플러터)(26.03.26~26.10.08)</li>
                     </ul>
                     <h4>KeyWord</h4>
                     <ul>
-                        <li class="me-2">키워드 1</li>
-                        <li class="me-2">키워드 2</li>
-                        <li class="me-2">키워드 3</li>
+                        <li>키워드 1</li>
+                        <li>키워드 2</li>
+                        <li>키워드 3</li>
                     </ul>
                 </div>        
             </div>
@@ -138,7 +170,7 @@
                     <label for="comment">Comments:</label>
                     <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
         
@@ -146,26 +178,26 @@
 
 
     <div class="background">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
+        <span>10</span>
+        <span>11</span>
+        <span>12</span>
+        <span>13</span>
+        <span>14</span>
+        <span>15</span>
+        <span>16</span>
+        <span>17</span>
+        <span>18</span>
+        <span>19</span>
+        <span>20</span>
     </div>
 
     <!-- FOOTER -->
