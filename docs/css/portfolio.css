@@ -1,18 +1,25 @@
-@charset "UTF-8";
 
+        /* ####################################################################
+        ####################################################################
+        #############################   공통   ##############################
+        ####################################################################
+        #################################################################### */
+
+
+@charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR:wght@200..900&display=swap');
 
 .noto-serif-kr {
   font-family: "Noto Serif KR", serif;
   font-optical-sizing: auto;
-  font-weight: <weight>;
+  font-weight: normal;
   font-style: normal;
 }
 
 .noto-sans-kr {
   font-family: "Noto Sans KR", sans-serif;
   font-optical-sizing: auto;
-  font-weight: <weight>;
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -24,14 +31,14 @@
 
 :root {
     /* color */
-    --color-bg: #EEE;
-    --color-text: #393E46;
-    --color-success: #76EAD7;
-    --color-point: #C4FB6D;
+    --color-light: #EEE;
+    --color-dark: #1a1a1a;
+    --color-main: #064061;
+    --color-point: #b0d6db;
 
     /* font-family */
-    --font-display: 'Gowun Batang', 'Noto Serif KR', serif;
-    --font-body: 'Noto Sans KR', Arial, Helvetica, sans-serif;
+    --font-display: 'Gowun Batang', 'Noto Serif KR', serif; /* 타이틀 */
+    --font-body: 'Noto Sans KR', Arial, Helvetica, sans-serif; /* 본문 */
 
     /* border-radius */
     --radius-sm: 8px;   /* 작은 버튼 */
@@ -41,27 +48,149 @@
 
     /* font-size */
     --section-header: 1.2em;
+    --section-sub : 1em;
     --section-text: 0.8em;
 }
 
 a { color: inherit; text-decoration: none; }
 
 body { 
+    padding: 20px;
     font-family: var(--font-body); 
-    background-color: var(--color-bg); 
-    color: var(--color-text);
+    background-color: var(--color-light); 
+    color: var(--color-dark);
 }
 
-header, h3, h4 { 
+section { 
+    position: relative;
+    margin: 120px 0;
+    width: 100vw; 
+    overflow:hidden; 
+    text-align: center;
+}
+
+a { color: inherit; text-decoration: none; }
+
+h3 { margin: 30px 0;
     font-family: var(--font-display);
-    font-size: var(--section-header);
-    font-weight: bold;
+    font-size: var(--section-sub);
+    font-weight: 600;
 }
 
-p, pre, li:not(.nav-item) {
+h4 { 
+    margin: 20px 0;
+    font-family: var(--font-body);
+    font-size: var(--section-sub);
+    font-weight: 600;
+}
+
+p, pre, button, li:not(.nav-item) {
     font-size: var(--section-text);
 }
 
-nav {
+button { 
+    padding: 8px 12px; 
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    border-radius : 10px;
+}
+
+
+        /* ###########################  HEADER ###########################  */
+
+header { 
+    position: relative;
+    
+    padding: 0 10vw;
+    font-family: var(--font-body);
+    font-size: var(--section-header);
+}
+
+header nav {
+    position: fixed;
+    top: 0;
     background-color: transparent; 
+}
+
+nav > div {
+    position: relative;
+}
+
+
+li.nav-item a { 
+    font-size: var(--section-sub); 
+}
+
+li.nav-item:hover a { 
+    color: var(--color-point);
+}
+
+
+        /* ########################### VISUAL ###########################  */
+
+.visual {
+    margin: 30px auto;
+    width: 80%;
+    height: 90%;
+    border-radius: var(--radius-xl);
+    
+}
+
+.box-bg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.box-bg > p {
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+
+.visual p img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+        /* ########################### INFO ###########################  */
+
+
+
+        /* ########################### PORTFOLIO ###########################  */
+
+
+
+        /* ########################### CONTACT ###########################  */
+
+
+.contact form {
+    text-align : left;
+}
+
+.contact form div {
+    margin: 0 0 20px;
+}
+
+.contact button { 
+    text-align: right;
+}
+
+
+    /* ########################### FOOTER ###########################  */
+
+
+footer { 
+    padding: 30px;
+    color: var(--color-dark);
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
 }
