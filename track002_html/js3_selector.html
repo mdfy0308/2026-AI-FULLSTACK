@@ -14,14 +14,14 @@
   <script>
     // 스크립트가 document 어느 위치에서든지 동작가능하게
     // 윈도우   이벤트 연결     해당 이벤트  이벤트 핸들러
-    window.addEventListener(    "load",  funtion(){
+    // window.addEventListener( "load",  funtion(){
       
-      document.getElementById("byidex").onclick = function() { 
-      let color = prompt("당신이 좋아하는 색상은?"); 
-      alert("당신이 좋아하는 색상은 " + color + "입니다."); 
-      };
+    //   document.getElementById("byidex").onclick = function(){ 
+    //   let color = prompt("당신이 좋아하는 색상은?"); 
+    //   alert("당신이 좋아하는 색상은 " + color + "입니다."); 
+    //   };
 
-    });
+    // });
 
   </script>
 </head>
@@ -142,22 +142,49 @@
       <li id="pig">PIG</li>
     </ul>
     <script>
-        //////////////////////////////
-      //1. step1 #animal 선택하기 
-      // document.getElementById("animal")
 
-      //2. 그 안에 동물들(li) 찾기
+      window.addEventListener("load", function(){
  
-      //3. 꾸미기 
+        //1. step1 #animal 선택하기 
+        let animal = document.getElementById("animal");
+        console.log(animal);
+
+        //2. 그 안에 동물들(li) 찾기
+        //document.getElementsByTagName("li")
+        let anis = animal.getElementsByTagName("li");
+        console.log(anis, typeof(anis)); // object
+
+        //3. 꾸미기 
+        anis[0].style.color = "teal";
+        anis[1].style.color = "blue";
+        anis[2].style.color = "purple";
+        
+      });
       
 
     </script>
-    <script>
-        //////////////////////////////
-     //4. 만능 querySelector 
 
-      //5. 만능 모든요소가져오기 querySelectorAll
- 
+
+    <script>
+
+    window.addEventListener("load", function(){
+
+    //4. 만능 querySelector(css의 표현방법이 들어감 id="animal" > #animal)
+    let animal = document.querySelector("#animal");
+    console.log(animal);
+    animal.style.border="4px dotted yellowgreen";
+    animal.style.padding="1rem 2rem";
+    animal.style.borderRadius="20px";
+
+    //5. 만능 모든요소가져오기 querySelectorAll
+    let alis = document.querySelectorAll("#animal li");
+    console.log(alis);
+    for(let i=0; i<alis.length; i++){
+      alis[i].style.backgroundColor="teal";
+      alis[i].style.color="white";
+    }
+    });
+
     </script>
 
 
@@ -167,8 +194,8 @@
       <li id="gold">GOLD</li>
     </ul>
     <script>
-        //////////////////////////////
-      // 6. querySelector
+      //////////////////////////////
+      //6. querySelector
  
       //7. parentElement
  
@@ -189,14 +216,35 @@
       <li id="coconut">coconut</li>
     </ul>
     <script>
+      window.addEventListener("load", function(){
+
         //////////////////////////////
       //Q1) document.getElementsById 이용해서  #fruits 선택  
-      //Q2) document.getElementsByTagName 이용해서  
+      let fruits = document.getElementById("fruits");
+      console.log(fruits);
+
+      //Q2) document.getElementsByTagName 이용해서 
       //   #fruits 안의 모든 li에 배경색 black, 글자색 white , 여백 10px주기
+      let frli = fruits.getElementsByTagName("li");
+      console.log(frli);
+       
+        for(let i=0; i<frli.length; i++) {
+          frli[i].style.backgroundColor = "black";
+          frli[i].style.color = "#fff";
+          frli[i].style.padding = "10px";
+        }
+      
       //Q2) document.getElementsById 이용해서 banana 선택 배경색 gold
+      document.getElementById("banana").style.backgroundColor = "gold";
+
+
       //Q3) document.querySelector 이용해서 coconut 선택 
       //  coconut를 클릭하면 width:200px; 로 수정
-      
+      document.querySelector("#coconut").onclick = function(){
+        this.style.width = "200px";
+      }
+
+      });
     </script>
   </div>
 </div>

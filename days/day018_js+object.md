@@ -53,9 +53,10 @@
     2. 클릭시 prompt이용해서 당신이 좋아하는 1~5사이의 숫자 물어보고
     3. alert이용해서 알림창띄우기  
    <input type="button"  value="addEventListener"  title="버튼4"  id="test"    class="btn btn-outline-primary"  />  
+   
    <script>
     window.addEventListener("load", function(){
-        document.getElementById("addEvent").onclick = function(){
+        document.getElementById("test").onclick = function(){
             let num = prompt("당신이 좋아하는 1~5사이의 숫자는?");
             alert("당신이 좋아하는 숫자는 " + num);
         };

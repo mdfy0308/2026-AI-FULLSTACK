@@ -8,6 +8,7 @@
 
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&display=swap');
 
 .noto-serif-kr {
   font-family: "Noto Serif KR", serif;
@@ -23,8 +24,8 @@
   font-style: normal;
 }
 
-.gowun-batang {
-  font-family: "Gowun Batang", serif;
+.boldonse-regular {
+  font-family: "Boldonse", system-ui;
   font-weight: 400;
   font-style: normal;
 }
@@ -37,7 +38,7 @@
     --color-point: #b0d6db;
 
     /* font-family */
-    --font-display: 'Gowun Batang', 'Noto Serif KR', serif; /* 타이틀 */
+    --font-display: 'Boldonse', 'Noto Serif KR', serif; /* 타이틀 */
     --font-body: 'Noto Sans KR', Arial, Helvetica, sans-serif; /* 본문 */
 
     /* border-radius */
@@ -217,10 +218,15 @@ li.nav-item:hover a {
 
 .card-box > div {
     display: flex; 
-    flex-direction: column; 
-    justify-content: center;
+    flex-direction: column;
     padding: 10px; height: 100%; 
-    text-wrap: wrap;
+    text-wrap: wrap; 
+    overflow-y: scroll;
+}
+
+.card-box > div::-webkit-scrollbar {
+    width: 10px;
+    background-color: transparent;
 }
 
 .card-box h4 {
@@ -230,7 +236,7 @@ li.nav-item:hover a {
 
 .card-box p {
     text-align: left;
-    flex-grow: 2; max-height: 100%;
+    flex-grow: 3; max-height: 100%;
     
 }
 
@@ -268,14 +274,31 @@ li.nav-item:hover a {
     text-align : left;
 }
 
+.contact form label {
+    margin: 0 0 10px;
+}
+
 .contact form div {
     margin: 0 0 20px;
 }
 
-.contact button { 
-    text-align: right;
+.contact .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.contact h3 {
+    font-size: 2rem;
+}
+
+.contact button { 
+    margin-left: auto;
+}
+
+.contact .button-box {
+    text-align: right;
+}
 
     /* ########################### FOOTER ###########################  */
 
