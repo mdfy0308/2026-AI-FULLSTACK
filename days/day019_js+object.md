@@ -68,7 +68,8 @@ window.addEventListener("load", function(){
 
 ■ OOP ㅣ 객체 지향 프로그래밍, 부품 객체(클래스)를 조립하여 완성된 프로그램을 만드는 기법
 1. 생성자 - new 연산자에 의해 호출 [초기화] 담당
-2. 기본생성자
+
+2. 기본생성자(디폴트생성자)
 - 모든 클래스에 생성자가 반드시 존재
 - 생성자 선언을 생략시 : 컴파일러가 자동으로 기본생성자를 추가
 - 개발자가 선언시 : 컴파일러가 자동생성을 취소함
@@ -77,8 +78,9 @@ window.addEventListener("load", function(){
 3. 형식
 class A{
 	String name;
-	A(){}				// 기본생성자(디폴트 생성자)
-	A(String name){}	// 파라미터, 알규먼트가 있는 생성자
+	public A(){}				// 기본생성자(디폴트 생성자)
+	ublic A(String name){}	// 파라미터, 알규먼트가 있는 생성자
+    toString{}
 }
 	리턴값 메서드명(파라미터)
 	 X	  클래스명과 동일
