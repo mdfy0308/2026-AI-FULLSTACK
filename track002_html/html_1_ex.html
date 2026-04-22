@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>NodeList vs HTMLCollection</title>
+  <style>
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+      width: fit-content;
+    }
+    .added {
+      color: red;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <h2>과일 목록</h2>
+  <ul id="fruits">
+    <li class="fruit">Apple</li>
+    <li class="fruit">Banana</li>
+    <li class="fruit">Cherry</li>
+  </ul>
+
+  <button id="addFruit">과일 추가하기</button>
+  <button id="highlight">첫 번째 과일 강조하기</button>
+
+  <script>
+    
+
+    
+
+    // 버튼 이벤트
+
+    window.addEventListener("load", function(){
+      
+      const fruits = document.getElementById("fruits");
+
+      // HTMLCollection (실시간) 
+      // >> 유사 배열 객체 / 일반 배열과의 차이? 노드 객체의 상태 변화를 감지하고 반영하는 객체
+      const fhtml = document.getElementsByClassName("fruit");
+
+      // NodeList (정적)
+      // querySelector 메서드가 반환하는 객체 > 노드의 변경을 실시간으로 감지하지 않음
+      const fnode = document.querySelectorAll(".fruit");
+
+      // .addFruit을 누르면 ul안에 li를 추가
+      let addFruit = document.querySelector("#addFruit");
+
+      addFruit.addEventListener("click", function(){
+        
+        const newli = document.createElement("li"); // createElement 태그 만들기
+       
+        // let add = prompt("추가할 과일");
+        newli.textContent = "Lemon"; // 태그 안에 text(콘텐츠) 추가
+        newli.classList.add("fruit", "added"); // 클래스 추가(css)
+        document.getElementById("fruits").appendChild(newli); 
+        
+        console.log(fhtml, fhtml.length); // 실시간 반영
+        console.log(fnode, fnode.length); // 반영 X
+
+        // fruits.innerHTML += ` <li class="fruit"> ${add} </li> `;
+      });
+
+
+      // .highlight를 누르면 첫번째 과일을 강조
+      let highlight = document.querySelector("#highlight");
+
+      highlight.addEventListener("click", function(){
+        fnode[0].classList.toggle("highlight");
+      });
+
+
+    }); // window
+ 
+ 
+  </script>
+</body>
+</html> 

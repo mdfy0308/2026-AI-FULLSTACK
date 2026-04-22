@@ -187,22 +187,49 @@
 
     </script>
 
-
     <ul id="color">
       <li>RED</li>
       <li id="orange">ORANGE</li>
       <li id="gold">GOLD</li>
     </ul>
     <script>
+    window.addEventListener("load", function(){
+      
+      //ver-1
+      //Q1. #color 선택하기  color라는 변수에 담기
+      // let color = document.getElementById("color");
+      //Q2. 안에 있는 li태그들 선택
+      // let lis = color.getElementsByTagName("li");
+      //Q3. 첫번째 RED의 굵게   font-weight="bold"
+      // lis[0].style.fontWeight = "bold";
+      // lis[0].style.color = "red";
+
+      //ver-2
+      // let color = document.querySelector("#color");
+      // let lis = color.querySelectorAll("#color li");
+      // lis[0].style.fontWeight = "bold";
+      // lis[0].style.color = "red";
+
       //////////////////////////////
       //6. querySelector
- 
-      //7. parentElement
- 
-      //8. 제일가까운 상위부모 
-
-      //9. 형제요소 
+      let color = document.querySelector("#color");
+      color.style.backgroundColor = "skyblue";
       
+      //7. parentElement
+      let orange = document.querySelector("#orange");
+      orange.parentElement.style.border = "4px solid #00aaff";
+      orange.parentElement.style.padding = "20px";
+      orange.parentElement.style.borderRadius = "10px";
+ 
+      //8. 제일가까운 상위부모
+      orange.closest("div").style.backgroundColor = "black";
+      orange.closest("div").style.color = "#fff";
+
+      //9. 형제요소
+      orange.previousElementSibling.style.textAlign = "center";
+      orange.nextElementSibling.style.textAlign = "right";
+    });
+
     </script>
   </div>
   <!--     -->
@@ -257,8 +284,7 @@
   <div class="card-body">
     <h4>STEP4. value, innerHTML </h4>
     <div class="row">
-      <div class="col"><input type="text"    id="value_target"  class="form-control"
-                         placeholder="input에서는 value"  readonly/></div>
+      <div class="col"><input type="text"    id="value_target"  class="form-control" placeholder="input에서는 value" /></div>
       <div class="col"><input type="button"  value="value"  title="value_target"  id="value"  class="btn btn-outline-primary" /></div>
     </div>
     <hr/>
@@ -281,7 +307,7 @@
     <input type="button"  value="value"         id="test2"    class="btn btn-success"   />
     <input type="button"  value="innerHtml"     id="test3"    class="btn btn-success"   />
     <input type="button"  value="MOUSEOVER-OUT" id="test4"    class="btn btn-success"   />
-    <div class="result_target  my-5">JAVASCRIPT</div>
+    <div class="result_target my-5">JAVASCRIPT</div>
 
     <pre>
     브라우저가 로딩이 되면
@@ -297,6 +323,69 @@
     </pre>
     <script>
     
+    window.addEventListener("load", function(){
+      //#1. value -  input(사용자에게 입력받는 값)
+      let value = document.querySelector("#value");
+      value.addEventListener("click", function(){
+        let value_target = document.querySelector("#value_target"); // 대상(input)
+        alert(value_target.value); // input 태그에서 대상 찾을때 value : 찾기
+        value_target.value = "새로 입력하기"; // value : 세팅
+      });
+
+      //#2. innerHTML - 대상
+      // inner 버튼 클릭시 div(입력받는 용도가 아닌 태그).inner_target 태그 안에 값
+      let inner = document.querySelector("#inner");
+      inner.addEventListener("click", function(){
+        let inner_target = document.querySelector(".inner_target");
+        inner_target.innerHTML = "HELLO"; // 해당태그에 동적으로 값 넣기 a=b;
+        alert(inner_target.innerHTML); // alert로 해당값 출력
+      });
+
+
+    //   브라우저가 로딩이 되면
+    // Q1) #test1를 클릭하면 본인이름 입력받고 입력받은 값 알림창 띄우기
+      document.querySelector("#test1").onclick = function(){
+        let name = prompt("당신의 이름은?");
+        alert(name + "입니다.");
+      };
+    // Q2) #test2를 클릭하면 #test2의 value값을 INPUT으로 수정
+    let  test2 = document.querySelector("#test2");
+    test2.addEventListener("click", function(){
+      test2.value = "input";
+    });
+
+    // Q3) #test3를 클릭하면
+    // 1.  .result_target영역안의 문자열을 알림창으로 띄우고
+    // 2.  .result_target영역안을 본인이름으로 수정
+
+    let test3 = document.querySelector("#test3");
+
+    test3.addEventListener("click", function(){
+      let result_target = document.querySelector(".result_target");
+      alert(result_target);
+      result_target.innerHTML = "정수정";
+    });
+
+    // Q4) #test4를 마우스를 올리면(mouseover) .result_target의 배경색을 crimson으로
+    //                마우스를 떼면(mouseout) .result_target의 배경색을 black으로
+
+    let test4 = document.querySelector("#test4");
+    
+    test4.addEventListener("mouseover", function(){
+      let result_target = document.querySelector(".result_target");
+      result_target.style.backgroundColor = "crimson";
+      result_target.style.color = "#fff";
+    });
+
+    test4.addEventListener("mouseout", function(){
+      let result_target = document.querySelector(".result_target");
+      result_target.style.backgroundColor = "black";
+      result_target.style.color = "#fff";
+    });
+
+    
+
+    });
         //////////////////////////////
     </script>
   </div>

@@ -72,7 +72,7 @@ window.addEventListener("load", function(){
 - 모든 클래스에 생성자가 반드시 존재
 - 생성자 선언을 생략시 : 컴파일러가 자동으로 기본생성자를 추가
 - 개발자가 선언시 : 컴파일러가 자동생성을 취소함
-- alt + shift + s / superclass, using Fields, toString
+- alt + shift + s / superclass, usingFields, toString
 
 3. 형식
 class A{
