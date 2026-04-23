@@ -1,0 +1,17 @@
+package com.the703.basic010_ex;
+
+import com.the703.basic010.UserInfo2;
+
+public class UserInfoSon2 extends UserInfo2 {
+
+	public void show() {
+		System.out.println(":: 홍길동 아버지 이름 > " + name); // 아무데서나 접근 가능
+		System.out.println(":: 홍길동 아버지 비밀번호 > " + safeCode); // extends시 자식에서 사용 가능
+		// System.out.println(":: 홍길동 아버지 집      > " + house); // 같은 패키지(폴더)가 아니다
+		// System.out.println(":: 홍길동 아버지 아이큐 > " + iQ);
+		System.out.println(":: 홍길동 아버지 아이큐 > " + getiQ()); // private : getters + setters
+
+	}
+}
+
+// public > protected > default(package) 아무것도 안붙은 지정접근자 > private
