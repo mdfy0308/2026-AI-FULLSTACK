@@ -193,8 +193,7 @@
           case 3: alert("영화보기"); break;
           }
         }
-      
-      
+      });
     </script>
 </div>
 
@@ -494,15 +493,39 @@
     />
     <script>
       window.addEventListener("load", function(){
+        
+        /* ver 1) */
+        
         document.querySelector("#age").addEventListener("click", function(){
           for(;;){
             let age = prompt("어린이의 나이를 0~5세 사이만 입력하세요.");
             if(age<0 || age>5){ 
               alert("다시 입력하세요."); continue;
-            } else { break; }
+            } else { alert(`어린이의 나이는 ${age}살`); break; }
+
           }
-          
         });
+
+
+        /* ver 2) 
+        let age = document.getElementById("age");
+        age.addEventListener("click" , function(){
+            ageFn();
+        }); 
+        
+        function ageFn (){
+            let answer = -1;
+            let result = "0~5세 사이가 아닙니다.";
+            while( !(answer >=0 && answer<= 5)  ){  // 0~5세사이가 아니라면
+              answer = prompt("어린이의 나이는 0~5 사이만 입력가능");
+              if( answer >= 0 && answer<=5 ){ result = "어린이의 나이는 " + answer ; }
+              alert(result);
+            }
+        } */
+
+        /* ver 3) */
+
+
       });
  
     </script>
@@ -550,16 +573,46 @@
     <script>
       window.addEventListener("load", function(){
         
-        let calcBtn= document.getElementById("calc");
-        let calc_form = document.getElementById("calc_form");
-        let num1 = document.getElementById("num1");
-        let abc = document.getElementById("abc");
-        let num2 = document.getElementById("num2");
-        let result1 = document.getElementById("result1");
-        let formChk = false;
-
+         window.addEventListener("load" , function(){
         
-        calcBtn.addEventListener("click", function(){
+          // 풀이
+          //1. 대상
+          let btn     = document.getElementById("calc"); //버튼
+          let targets = document.querySelectorAll("#calc_form  input"); 
+          console.log(targets); //#0  button //1: num1 , 2:abc, 3:num2, 4: result
+          let num1 = -1, num2=-1, op=' ', result=0;
+
+          btn.addEventListener("click" , function(){
+            //2. 입력 (0~100사이 무한반복, 빈칸검사)
+            for(;;){  //초기값 num1 = -1, num2=-1, op=' '
+              if(   !(num1>=0  &&  num1<=100) | num1==""  ){ //0~100사이가 아니거나  빈문자열
+                 num1 = prompt("1. 정수입력 0~100"); // 50
+              }else if(!(num2>=0  &&  num2<=100) | num2==""){
+                 num2 = prompt("2. 정수입력 0~100"); //3
+              }else if( !(op == '+' || op == '-' || op == '*' || op == '/') ){
+                 op = prompt("3. 연산자입력 (+,-,*,/)");  //+
+              }else{ break;}
+            }
+            //3. 처리
+            switch(op){
+              case '+' : result = Number(num1) + Number(num2); break;
+              case '-' : result = Number(num1) - Number(num2); break;
+              case '*' : result = Number(num1) * Number(num2); break;
+              case '/' : result = Number(num1) / Number(num2); break;
+            }
+            
+            //4. 각 value 각각 셋팅
+            targets[1].value = num1;
+            targets[2].value = op;
+            targets[3].value = num2;
+            targets[4].value = op!='/'? result: result.toFixed(2); //소수점 2
+            
+          });
+      });
+
+
+
+          /* ver-1 (혼자 해본것)
 
           //1. 빈칸검사 + 숫자 입력 0~100 연산자 입력 + - * /
 
@@ -598,8 +651,8 @@
           result1.value = answer;
 
         });
-
-    
+        */
+          
       });
           
     </script>
