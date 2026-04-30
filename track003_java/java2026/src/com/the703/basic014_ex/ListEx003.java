@@ -85,28 +85,12 @@ public class ListEx003 {
 				System.out.println("🗑️ 제거할 아이스크림 이름: ");
 				name = sc.next();
 				System.out.println(list.remove(new IceCreamDTO(name))? "🧹 제거 완료!":"제거 실패.");
-				
-//				int cnt = 0;
-//				for (IceCreamDTO ice : list) {
-//					if (name.equals(ice.getName())) {
-//						list.remove(cnt);
-//						System.out.println("🧹 제거 완료!");
-//						break;
-//					}
-//					cnt++;
-//				}
-				
+
 				break;
 
 			case 4:
 				System.out.println("🔍 확인할 아이스크림 이름: ");
 				name = sc.next();
-				
-				//if (list.contains(new IceCreamDTO(name))) {
-				//		System.out.println("✅ 존재합니다!");
-				//} else {
-				//		System.out.println("❌ 없습니다!");
-				//}
 								
 				System.out.println(list.contains(new IceCreamDTO(name))? "✅ 존재합니다!" : "❌ 없습니다!");
 				break;
@@ -153,10 +137,5 @@ public class ListEx003 {
 2. 기본은 오름차순. Collections.reverseOrder()로 내림차순도 가능
 3. Comparator 를 이용해 사용자 정의 객체도 정렬할 수 있음
 4. Array.sort()와는 정렬 대상이 다르다
-
-
-
-
-
 
 */

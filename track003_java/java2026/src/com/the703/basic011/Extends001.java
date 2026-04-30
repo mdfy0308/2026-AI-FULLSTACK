@@ -51,7 +51,9 @@ public class Extends001 {
  * 
  * 2. super vs sub 부모 자식 상위 하위 parent child super sub
  * 
- * 3. 모든 클래스는 Object 클래스를 상속 (생략된 extends Object...) 4. UML 부모 ← 자식 5. 장점 - 빠른
+ * 3. 모든 클래스는 Object 클래스를 상속 (생략된 extends Object...) 
+ * 
+ * 4. UML 부모 ← 자식 5. 장점 - 빠른
  * 개발, 코드의 중복 제거, 다형성(하나의 타입으로 여러 타입을 관리)
  * 
  * 6. 문법 Class 자식클래스 extends 부모클래스 (O) Class 자식클래스 extends 부모클래스1, 부모클래스2 (X)
