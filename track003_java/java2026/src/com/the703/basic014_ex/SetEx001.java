@@ -88,7 +88,7 @@ public class SetEx001 {
 		
 		for(UserInfo2 u:set1) { total += u.getAge(); }
 		avg = (double)total / set1.size();
-		System.out.printf("나이평균 > " + avg); 
+		System.out.print("나이평균 > " + avg); 
 		
 	} // end main
 

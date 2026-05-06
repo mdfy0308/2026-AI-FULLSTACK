@@ -1,4 +1,4 @@
-package com.the703.basic014;
+package com.the703.days;
 
 class Parent {
 	int x = 100;

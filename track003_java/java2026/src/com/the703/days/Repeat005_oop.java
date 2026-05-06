@@ -1,12 +1,12 @@
-package com.the703.basic014;
+package com.the703.days;
 
 // 설계목적
-interface Animal {
+interface Animal2 {
 	String Company = "(주)네이버";
 	public void sound();
 }
 
-class Dog implements Animal {
+class Dog2 implements Animal2 {
 	@Override
 	public void sound() {
 		System.out.println("멍멍!");
@@ -17,7 +17,7 @@ class Dog implements Animal {
 	}
 }
 
-class Cat implements Animal {
+class Cat2 implements Animal2 {
 	@Override
 	public void sound() {
 		System.out.println("야옹~");
@@ -28,7 +28,7 @@ class Cat implements Animal {
 	}
 }
 
-class Bird implements Animal {
+class Bird implements Animal2 {
 	@Override
 	public void sound() {
 		System.out.println("짹짹!");
@@ -50,11 +50,11 @@ class Bird implements Animal {
  */
 
 class ZooKeeper {
-	public void show(Animal animal) {
+	public void show(Animal2 animal) {
 		
 		animal.sound(); 
-		if (animal instanceof Dog) { ((Dog)animal).playFetch(); 	} 
-		else if (animal instanceof Cat) { ((Cat)animal).scratch();	} 
+		if (animal instanceof Dog2) { ((Dog2)animal).playFetch(); 	} 
+		else if (animal instanceof Cat2) { ((Cat2)animal).scratch();	} 
 		else if (animal instanceof Bird) { ((Bird)animal).fly(); 	}
 	}
 }
@@ -74,7 +74,7 @@ public class Repeat005_oop {
 		//a: abstract
 
 		// Animal 배열에 미리 객체를 담아둠
-		Animal[] animals = { new Dog(), new Cat(), new Bird() };
+		Animal2[] animals = { new Dog2(), new Cat2(), new Bird() };
 
 		while (true) {
 			System.out.println("=== 동물원 메뉴판 ===");
@@ -96,7 +96,7 @@ public class Repeat005_oop {
 			}
 
 			// 배열에서 바로 꺼내오기
-			Animal animal = animals[choice - 1];
+			Animal2 animal = animals[choice - 1];
 
 			// ZooKeeper 클래스의 show() 메서드 호출
 			ZooKeeper keeper = new ZooKeeper();

@@ -1,4 +1,4 @@
-package com.the703.basic014;
+package com.the703.days;
 
 /* 
 📝 문제: OOP 개념(4) — 추상화 / 인터페이스

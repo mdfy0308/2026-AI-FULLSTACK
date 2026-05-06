@@ -32,7 +32,7 @@ public class SetEx002 {
 		Scanner sc = new Scanner(System.in);
 		Set<Integer> draw = new HashSet<>();
 		Random random = new Random();
-		int num, a; 
+		int num; 
 		
 		for(;;) {
 			if(draw.size()<=5) {
@@ -40,15 +40,15 @@ public class SetEx002 {
 				draw.add(num);
 			} else { break; }
 		}
-				
+		
 		System.out.println("=== 이번주 로또 번호 ===");
 		for(Integer i:draw) { System.out.println(i); }
 		
 		System.out.println("> 확인할 번호 입력 : ");
-		a = sc.nextInt();
+		num = sc.nextInt();
 		
 		for(Integer i:draw) { 
-			if(i == a) { System.out.println("포함됨 → " + a); break; }
+			if(i == num) { System.out.println("포함됨 → " + num); break; }
 		}
 		
 	} //
