@@ -72,10 +72,10 @@ Collection Framework
 		add, get, size, remove, contains
 	
 	2) Set - 주머니 (순서 X, 중복 X)
-		add, get(X) 향상된 for/Iterator, size, remove, contains
+		add, 향상된 for/Iterator, size, remove, contains
 	
 	3) Map - 사전 - key, value 쌍
-		add(X) put, get(key), size, remove, contains
+		put, get(key), size, remove, contains
 
 
 
