@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <title>DBDBIG</title>
+  <title>Fetch</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Latest compiled and minified CSS -->
@@ -171,6 +171,7 @@
                 fetch("./data/text4.txt")
                     .then( res => {
                         if(!res.ok){ throw new Error(res.status); }
+                        // res가 정상이 아닌 경우 새 에러를 만들어서 가장 가까운 catch로 throw, return은 패스
                         return res.text();
                     })
                     .then(txt => {
