@@ -1,6 +1,6 @@
 ## 1. Mysql?
 
-### 1. mysql why?
+#### 1. mysql why?
 1. DBMS
     - Database Management System
     - 데이터베이스를 관리해주는 시스템
@@ -17,7 +17,7 @@
     - Oracle, Mysql, MSSql
 
 
-### 2. mysql Setting
+#### 2. mysql Setting
 
 1. MYSQL 다운로드
     https://dev.mysql.com/
@@ -74,3 +74,38 @@
 1. db명 : test, mbasic, db703 3개 db만들기
 2. db 만들어진것 확인
 3. db703 삭제
+
+
+---
+
+## 3. 테이블
+
+1. RDBMS (Relational Database Management System)
+- 관계형 데이터베이스 관리 시스템
+- 테이블의 관계
+- 속성(필드) 연결
+
+2. 테이블 만들기(집안의 방, 가방 안의 분류표)
+DDL (정의: create, alter, drop), 
+DML (조작: insert, select, update, delete), 
+DCL (제어: grant, revoke)
+
+```
+CREATE TABLE table명 (
+    필드1 자료형 옵션,
+    필드2 자료형 옵션
+);
+```
+
+자료형 : 
+    1. 숫자 : int(정수), double(실수)
+    2. 문자 : char(고정, Y/N), varchar(가변, abc, abcd)
+    3. 날짜 : data, datetime
+
+옵션 :
+    필수 입력 - not null
+    숫자 자동 증가 - auto_increment
+    기본키 - primary key
+
+※ ERROR 1046 (3D000): No database selected
+use db명
