@@ -21,7 +21,6 @@
 			Calendar today = Calendar.getInstance();
 			String now = today.get(Calendar.HOUR_OF_DAY) +":"+ today.get(Calendar.MINUTE);
       		out.println( now );
-			
       		%>
 		</p>
 	</div>
