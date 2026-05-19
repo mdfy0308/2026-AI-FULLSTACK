@@ -832,3 +832,6 @@ select * from emp where comm is null and mgr is not null and job in ('MANAGER', 
 -- |  7934 | MILLER | CLERK   | 7782 | 1982-01-23 | 1300 | NULL |     10 |
 -- +-------+--------+---------+------+------------+------+------+--------+
 -- 5 rows in set (0.00 sec)
+
+
+select * from emp where comm is null and mgr is not null and job in ('MANAGER', 'CLERK') and ename not like '_L%';
