@@ -9,7 +9,9 @@ create table milk_order(
     oip varchar(100) not null
 );
 
+use mbasic;
 desc milk_order;
+show tables;
 select * from milk_order;
 
 -- +-------+--------------+------+-----+-------------------+-------------------+
@@ -33,7 +35,7 @@ select * from milk_order where ono=1;
 select * from milk_order;
 
 -- Q4.  milk_order 해당번호의 이름과 갯수 수정
-update milk_order set oname='white', onum=2 where ono=1;
+update milk_order set oname='choco', onum=2 where ono=5;
 
 -- Q5.  milk_order 해당번호의 데이터 삭제
-delete from milk_order where ono=1;
+delete from milk_order where ono<=5;
