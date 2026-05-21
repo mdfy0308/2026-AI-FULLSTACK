@@ -13,6 +13,7 @@
 	try{
     	Class.forName("com.mysql.cj.jdbc.Driver");
     	Connection conn = null; PreparedStatement pstmt = null;
+    	ResultSet rset = null;
     	String url = "jdbc:mysql://localhost:3306/mbasic";
   		String sql = "delete from milk_order where ono=?";
   		

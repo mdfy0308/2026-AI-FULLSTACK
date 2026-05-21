@@ -193,6 +193,30 @@
 					</div>
 				</div>
 			</div>
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<div class="card">
+				<div class="card-header text-white bg-success">
+					<a class="collapsed btn" data-bs-toggle="collapse"
+						href="#collapseFour"> 메뉴 검색 </a>
+				</div>
+				<div id="collapseFour" class="collapse" data-bs-parent="#accordion">
+					<div class="card-body">
+						<form action="jsp012_search.jsp" method="post"
+							onsubmit="return menuCheck()">
+							<div class="my-3">
+								<label for="snum" class="form-label">메뉴 검색</label> <input
+									type="number" class="form-control" placeholder="검색할 메뉴번호를 입력하세요."
+									id="snum" name="snum" />
+							</div>
+							<div class="my-3">
+								<button type="submit" class="btn btn-success" title="검색하기">검색하기</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!--  -->
@@ -242,7 +266,17 @@
 				return false;
 			}
 			return true;
+		}
+		
+		function menuCheck(){
+			let snum = document.getElementById("snum");
 			
+			if (snum.value.trim() == "") {
+				alert("검색할 메뉴 번호를 적어주세요.");
+				snum.focus();
+				return false;
+			}
+			return true;
 		}
 	</script>
 

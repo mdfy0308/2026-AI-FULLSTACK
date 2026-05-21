@@ -99,7 +99,7 @@
                 if(pstmt != null){ pstmt.close(); }
 				if(conn  != null){ conn.close();  } //3. 끊기
 				
-			} catch(Exception e){ e.printStackTrace();}
+			} catch(Exception e){ e.printStackTrace(); }
 			
 		%>
    </div>
