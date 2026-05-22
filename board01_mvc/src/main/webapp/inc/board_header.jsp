@@ -1,3 +1,6 @@
+<%@page import="java.sql.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,7 +15,6 @@
     <link href="./css/board1.css" rel="stylesheet">
 </head>
 <body>
-    <!-- header-->
     <header>
         <h1 class="blind">게시판</h1>
         <div class="p-5 text-bg-light text-cente myvisual">
@@ -20,7 +22,7 @@
             <p>Lorem ipsum...</p>
         </div>
         <nav class="navbar navbar-expand-sm navbar-light">
-            <h2 class="blind">주 메뉴</h2>
+            <h2 class="blind">menu</h2>
             <div class="container-fluid">
                 <a class="navbar-brand" href="javascript:void(0)">Logo</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -48,53 +50,4 @@
             </div>
         </nav>
     </header>
-
-    <section class="container my-5">
-        <h3>MultiBoard</h3>
-        <table class="table table-striped table-hover">
-            <caption> BOARD LIST </caption> <!-- 테이블 작성할 때 caption으로 제목-->
-            <thead>
-                <tr>
-                    <th scope="col">NO</th>
-                    <th scope="col">TITLE</th>
-                    <th scope="col">WRITER</th>
-                    <th scope="col">DATE</th>
-                    <th scope="col">HIT</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>3</td>
-                    <td>첫번째 글쓰기입니다.</td>
-                    <td>john</td>
-                    <td>26.04.17</td>
-                    <td><span class="badge rounded-pill bg-dark">101</span></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>안녕하세요.</td>
-                    <td>mary</td>
-                    <td>26.04.16</td>
-                    <td><span class="badge rounded-pill bg-success">205</span></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>test</td>
-                    <td>july</td>
-                    <td>26.04.15</td>
-                    <td><span class="badge rounded-pill bg-dark">68</span></td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="text-end">
-            <a href="#" title="글 작성 폼으로" class="btn btn-light">글쓰기</a>
-        </div>
-    </section>
-
-    <!-- footer -->
-    <footer class="p-3 text-light text-center">
-        <p> copyrights &copy; 정수정 2026 all rights reserved.</p>
-    </footer>
-
-</body>
-</html>
+    <!-- header-->
