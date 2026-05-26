@@ -39,10 +39,10 @@
 			</div>
 		</form>
 		<script>
-			function check(){
+			function check() {
 				let query = document.getElementById("query");
-				
-				if(query.value.trim()==""){
+
+				if (query.value.trim() == "") {
 					alert("검색어를 입력해주세요.")
 					query.focus();
 					return false;
@@ -51,8 +51,7 @@
 			}
 		</script>
 
-		<br/>
-		<br/>
+		<br /> <br />
 
 		<!--  -->
 		<!--  -->
@@ -74,16 +73,19 @@
 			</div>
 			<!-- user name -->
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" id="check1" name="option1"
-					value="dog"> <label class="form-check-label" for="check1">DOG</label>
+				<input class="form-check-input" type="checkbox" id="check1"
+					name="option1" value="dog"> <label class="form-check-label"
+					for="check1">DOG</label>
 			</div>
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" id="check2" name="option1"
-					value="cat"> <label class="form-check-label" for="check2">CAT</label>
+				<input class="form-check-input" type="checkbox" id="check2"
+					name="option1" value="cat"> <label class="form-check-label"
+					for="check2">CAT</label>
 			</div>
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" id="check3" name="option1"
-					value="pig"> <label class="form-check-label" for="check3">PIG</label>
+				<input class="form-check-input" type="checkbox" id="check3"
+					name="option1" value="pig"> <label class="form-check-label"
+					for="check3">PIG</label>
 			</div>
 			<div class="my-3">
 				<button type="submit" class="btn btn-primary">전송</button>
@@ -91,10 +93,10 @@
 		</form>
 
 		<script>
-			function checkbox(){
+			function checkbox() {
 				let username = document.getElementById("username");
-				
-				if(username.value.trim()==""){
+
+				if (username.value.trim() == "") {
 					alert("이메일을 입력해주세요.")
 					username.focus();
 					return false;
@@ -103,7 +105,7 @@
 			}
 		</script>
 
-		<hr/>
+		<hr />
 		<h4>003. response</h4>
 		<pre class="alert alert-warning">
 		1. http 요청에 대한 응답을 저장하는 객체
@@ -112,42 +114,41 @@
 			(2) RequestDispatcher - 위임(요청 전달)
 									브라우저의 url을 변경하지 않음, request/response 객체가 유지 됨.
      	</pre>
-     	<%
-     		//ver-1 알림창 처리 안 됨.
-	     	// out.println("<script>alert('안녕?');</script>"); // 알림창 동작 안함
-	     	// response.sendRedirect("http://www.naver.com"); // 바로 경로로
-     	%>
-     	
-     	<% 
-     		//ver-2. jsp13_3.jsp
-     		// request.getRequestDispatcher("jsp012_milks.jsp")를 이용해 여기서 처리해주세요!
-     		// response.sendRedirect("jsp013_3.jsp");
-     	%>
-     	
-     	<br/>
-     	<br/>
-     	<pre>
+		<%
+		//ver-1 알림창 처리 안 됨.
+		// out.println("<script>alert('안녕?');</script>"); // 알림창 동작 안함
+		// response.sendRedirect("http://www.naver.com"); // 바로 경로로
+		%>
+
+		<%
+		//ver-2. jsp13_3.jsp
+		// request.getRequestDispatcher("jsp012_milks.jsp")를 이용해 여기서 처리해주세요!
+		// response.sendRedirect("jsp013_3.jsp");
+		%>
+
+		<br /> <br />
+		<pre>
      		 jsp013_implicit.jsp (1) 
              :나이 입력받는 폼 →  jsp013_4.jsp  처리 (2)
                              19세 미만이라면 -   jsp013_child.jsp
                              19세 이상이라면 -  보여주는 주소표시창줄은   jsp013_4.jsp  
                                    		    보이는화면은   jsp013_adult.jsp
      	</pre>
-     	
-     	<form action="jsp013_4.jsp" method="get" onsubmit="return aCheck()">
+
+		<form action="jsp013_4.jsp" method="get" onsubmit="return aCheck()">
 			<div class="my-2">
-				<label for="age">나이 입력</label>
-				<input type="number" class="form-control" placeholder="나이 입력" 
-				id="age" name="age" />
-				<button type="submit" class="btn btn-danger mt-3 d-block">성인 여부</button>
+				<label for="age">나이 입력</label> <input type="number"
+					class="form-control" placeholder="나이 입력" id="age" name="age" />
+				<button type="submit" class="btn btn-danger mt-3 d-block">성인
+					여부</button>
 			</div>
 		</form>
-		
+
 		<script>
-			function aCheck(){
+			function aCheck() {
 				let age = document.getElementById("age");
-				
-				if(age.value.trim()==""){
+
+				if (age.value.trim() == "") {
 					alert("나이를 입력해주세요.")
 					age.focus();
 					return false;
@@ -156,16 +157,66 @@
 			}
 		</script>
 
-		<hr/>
-		<h4>004. scope</h4>
-		<pre>
+		<hr />
+		<h4>004. scope(내장객체 유효범위)</h4>
+		<pre class="alert alert-info">
+			1. application(웹애플리케이션이 실행되고 있는 동안, 서버가 꺼질 때까지 유지) 
+				> session(특정 브라우저와 연결된 세션, 브라우저 종료시 소멸) 
+					> request(요청 : 폼, a) 
+						> page(해당 jsp페이지에서만)
+			2. 객체.setAttribute("속성", "값"); / 객체.getAttribute("속성", "값");
       	</pre>
-      	
-      	
-		<hr/>
+		<%
+      		application.setAttribute("name", "D. application - 웹 애플리케이션 실행");
+	      		session.setAttribute("name", "C. session - 브라우저 종료/로그인 후 아이디 유지");
+	      		request.setAttribute("name", "B. request - a.jsp  → b.jsp 요청할 때/현재 페이지에 요청");
+	      	pageContext.setAttribute("name", "A. 현재 페이지에서만 유지");
+      		
+      	%>
+		<table class="table table-striped">
+			<caption>SCOPE- 내장객체 유효범위</caption>
+			<tbody>
+				<tr>
+					<th scope="row">page</th>
+					<td><%=pageContext.getAttribute("name")%></td>
+				</tr>
+				<tr>
+					<th scope="row">request</th>
+					<td><%=request.getAttribute("name")%></td>
+				</tr>
+				<tr>
+					<th scope="row">session</th>
+					<td><%=session.getAttribute("name")%></td>
+				</tr>
+				<tr>
+					<th scope="row">application</th>
+					<td><%=application.getAttribute("name")%></td>
+				</tr>
+			</tbody>
+		</table>
+		<p>
+			<a href="jsp013_5.jsp" class="btn btn-danger">SCOPE2</a>
+		</p>
+
+		<hr />
 		<h4>005. error</h4>
-		<pre>
+		<pre class="alert alert-warning">
+			error
+			1. 4xx : 클라이언트 오류
+				404 (페이지 없음) / 400 (bad quest)
+			2. 5xx : 서버 오류
+				500 (내부서버오류) / 502(서버 과부하)
+				
+			* 해결방안
+			1. error 페이지 만들기
+			2. [src] - [main] - [webapp] - [web-INF] - web.xml 에러처리 설정
       	</pre>
+
+		<h4 class="card-haeder">1. ERROR 404</h4>
+		<p> <a href="no.jsp" class="btn btn-danger">NO PAGE</ a></p>
+
+		<h4 class="card-haeder">2. ERROR 500</h4>
+		<%-- <%   int i=40/0;  %> --%>
 
 	</div>
 </body>

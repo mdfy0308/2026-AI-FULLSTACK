@@ -19,7 +19,7 @@
        	pstmt = conn.prepareStatement(sql);
 		
 		// 2. 내용을 불러와서 보여주고 > 수정하기 버튼 누르면 action으로 처리하기
-       	rset = pstmt.executeQuery();
+       	rset = pstmt.executeQuery(); 
        	
        	while(rset.next()){
        		bname = rset.getString("bname");

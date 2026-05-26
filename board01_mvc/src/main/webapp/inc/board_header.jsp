@@ -24,30 +24,27 @@
         <nav class="navbar navbar-expand-sm navbar-light">
             <h2 class="blind">menu</h2>
             <div class="container-fluid">
-                <a class="navbar-brand" href="javascript:void(0)">Logo</a>
+                <a class="navbar-brand" href="list.jsp">Logo</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">About</a>
+                            <a class="nav-link" href="login.jsp" id="login">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Services</a>
+                            <a class="nav-link" href="join.jsp">Join</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Portfolio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Board</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Gallery</a>
-                        </li>
+                            <a class="nav-link" href="my_page.jsp">MyPage</a>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+    
+    <script>
+    	
+    </script>
     <!-- header-->
