@@ -59,7 +59,7 @@
 			<div class="my-3">
 				<button type="reset" class="btn btn-dark" title="글 취소">취소</button>
 				<a href="list.jsp" class="btn btn-dark" title="목록 보러가기">목록</a>
-				<button typr="submit" class="btn btn-dark" title="글 수정하기">글수정</button>
+				<button type="submit" class="btn btn-dark" title="글 수정하기">글수정</button>
 			</div>
 		</form>
 	</div>

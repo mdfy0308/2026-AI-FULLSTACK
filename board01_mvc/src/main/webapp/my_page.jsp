@@ -5,9 +5,8 @@
 <!-- header-->
 
 <%
-	
-	String email = (String) session.getAttribute("email");
-	String nickname = "", mobile = "", udate = "", bip = "";
+
+	String mobile = "", udate = "", bip = "";
 	
 	if (email == null) {
 	    response.sendRedirect("login.jsp");
@@ -74,6 +73,9 @@
 				</tr>
 			</tbody>
 		</table>
+		<div class="text-end">
+			<a href="my_edit.jsp" title="내 정보 수정하기" class="btn btn-light">수정</a>
+		</div>
 	</section>
 
 

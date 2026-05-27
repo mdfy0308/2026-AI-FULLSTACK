@@ -31,16 +31,6 @@
 				String url = "jdbc:mysql://localhost:3306/mbasic";
 				conn = DriverManager.getConnection(url, "root", "1234");
 
-				/* ver 1)
-				String count = "select count(*) from mvcboard1 order by bno desc";
-				pstmt = conn.prepareStatement(count);
-				rset = pstmt.executeQuery();
-				
-				int cnt = 0;
-				while (rset.next()) { 
-					cnt = rset.getInt("cnt"); 
-				} */
-
 				String sql = "select *, (select count(*) from mvcboard1) `cnt` from mvcboard1 order by bno desc";
 				pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				rset = pstmt.executeQuery(); // 표
@@ -63,19 +53,12 @@
 				}
 
 				// 끊기
-				if (rset != null) {
-					rset.close();
-				}
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (conn != null) {
-					conn.close();
-				}
+				if (rset != null) { rset.close(); } 
+				if (pstmt != null) { pstmt.close(); } 
+				if (conn != null) { conn.close(); }
 
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			} catch (Exception e) { e.printStackTrace(); }
+			
 			%>
 		</tbody>
 	</table>
@@ -83,11 +66,6 @@
 		<a href="write.jsp" title="글 작성하기" class="btn btn-light">글쓰기</a>
 	</div>
 </section>
-
-<script>
-	
-</script>
-
 
 <!-- footer -->
 <%@include file="./inc/board_footer.jsp"%>

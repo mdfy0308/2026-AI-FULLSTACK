@@ -32,5 +32,7 @@ create table users(
 desc users;
 select * from users;
 
+ALTER TABLE users ADD UNIQUE(email);
+
 delete from users where uno > 1;
 ALTER TABLE users AUTO_INCREMENT = 1;

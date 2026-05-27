@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 
 <%@include file="./inc/board_header.jsp"%>
+
+<% if(email != null){ out.println("<script>alert('먼저 로그아웃해주세요.'); history.go(-1); </script>"); } %>
+
 <!-- header-->
 
    <div class="container card my-5">

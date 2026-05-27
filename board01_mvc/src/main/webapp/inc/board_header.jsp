@@ -1,6 +1,12 @@
 <%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	String email = (String) session.getAttribute("email");
+	String nickname = (String) session.getAttribute("nickname");
+%>
+    
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -30,9 +36,16 @@
                 </button>
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav ms-auto">
+                    <!-- 비로그인 상태 -->
+                    <% if(email == null) {%>
                         <li class="nav-item">
-                            <a class="nav-link" href="login.jsp" id="login">Login</a>
+                            <a class="nav-link" href="login.jsp">Login</a>
                         </li>
+                    <% } else { %>
+                    	<li class="nav-item">
+                            <a class="nav-link" href="logout.jsp">Logout</a>
+                        </li>
+                    <% } %>
                         <li class="nav-item">
                             <a class="nav-link" href="join.jsp">Join</a>
                         </li>

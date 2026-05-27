@@ -213,7 +213,7 @@
       	</pre>
 
 		<h4 class="card-haeder">1. ERROR 404</h4>
-		<p> <a href="no.jsp" class="btn btn-danger">NO PAGE</ a></p>
+		<p><a href="no.jsp" class="btn btn-danger">NO PAGE</a></p>
 
 		<h4 class="card-haeder">2. ERROR 500</h4>
 		<%-- <%   int i=40/0;  %> --%>
