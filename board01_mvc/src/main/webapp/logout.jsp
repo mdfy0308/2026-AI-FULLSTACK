@@ -4,6 +4,6 @@
 <%
 	
 	session.invalidate();
-	response.sendRedirect("list.jsp");
+	out.println("<script>alert('로그아웃 되었습니다.'); location.href='list.jsp'; </script>");
 
 %>
