@@ -12,7 +12,7 @@
 	String bpass = request.getParameter("bpass");
 	String btitle = request.getParameter("btitle");
 	String bcontent = request.getParameter("bcontent");
-	//String bip = request.getParameter("bip");
+	String bip = request.getParameter("bip");
 	
 	try {
 		//드라이버 연동~구문

@@ -1,9 +1,10 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%
 	String email = (String) session.getAttribute("email");
+	String nickname = (String) session.getAttribute("nickname");
 %>
     
 <!DOCTYPE html>
@@ -23,37 +24,33 @@
     <header>
         <h1 class="blind">게시판</h1>
         <div class="p-5 text-bg-light text-cente myvisual">
-            <h1>BOARD</h1>
-            <p>게시판</p>
+            <h1>First Template</h1>
+            <p>Lorem ipsum...</p>
         </div>
         <nav class="navbar navbar-expand-sm navbar-light">
             <h2 class="blind">menu</h2>
             <div class="container-fluid">
-                <a class="navbar-brand" href="./index.jsp">Logo</a>
+                <a class="navbar-brand" href="list.jsp">Logo</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav ms-auto">
                     <!-- 비로그인 상태 -->
-                    <c:if test="${empty sessionScope.email}">
+                    <% if(email == null) {%>
                         <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/LoginAction">Login</a>
+                            <a class="nav-link" href="login.jsp">Login</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath }/JoinAction">Join</a>
-                        </li>
-                    </c:if>
-                    <!-- 로그인 상태 -->
-                    <c:if test="${not empty sessionScope.email}">
-                  		<li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/MyAction">MyPage</a>
-                        </li>
+                    <% } else { %>
                     	<li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/Logout">Logout</a>
+                            <a class="nav-link" href="logout.jsp">Logout</a>
                         </li>
-                    </c:if>
-                        
+                    <% } %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="join.jsp">Join</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="my_page.jsp">MyPage</a>
                     </ul>
                 </div>
             </div>

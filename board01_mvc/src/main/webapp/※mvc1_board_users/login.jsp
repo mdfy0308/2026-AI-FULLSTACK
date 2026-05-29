@@ -6,7 +6,7 @@
 
    <div class="container card my-5">
       <h3 class="card-header">로그인</h3>
-      <form action="LoginAction" method="post" onsubmit="return check()">
+      <form action="login_action.jsp" method="post" onsubmit="return check()">
      	 <div class="my-3">
       		<label for="email">이메일</label>
       		<input type="text" class="form-control" placeholder="이메일을 입력하세요." id="email" name="email" />
@@ -21,8 +21,7 @@
 		</div>
       </form>
    </div>
-
-	<script>
+   <script>
 		function check() {
 			let email = document.getElementById("email");
 			let bpass = document.getElementById("bpass");
@@ -37,9 +36,10 @@
 				bpass.focus();
 				return false;
 			}
+			
 			return true;
 		}
 	</script>
-	
+  
 <!-- footer -->
 <%@include file="./inc/board_footer.jsp"%>

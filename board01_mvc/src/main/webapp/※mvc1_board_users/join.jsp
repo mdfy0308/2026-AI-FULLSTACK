@@ -10,7 +10,7 @@
    <div class="container card my-5">
       <h3 class="card-header">회원가입</h3>
       
-      <form action="JoinAction" method="post" onsubmit="return check()">
+      <form action="join_action.jsp" method="post" onsubmit="return check()">
       	<div class="my-3">
       		<label for="nickname">닉네임</label>
       		<input type="text" class="form-control" id="nickname" name="nickname" />
@@ -62,6 +62,9 @@
 				return false;
 			}
 		}
+   
    </script>
+   
+  
 <!-- footer -->
 <%@include file="./inc/board_footer.jsp"%>

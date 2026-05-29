@@ -5,7 +5,7 @@
 <!-- header-->
 
 <%
-	String nickname= "", bpass="", mobile = "", udate = "", bip = "";
+	String bpass="", mobile = "", udate = "", bip = "";
 	
 	if (email == null) {
 	    response.sendRedirect("login.jsp");
@@ -16,16 +16,16 @@
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
 		String url = "jdbc:mysql://localhost:3306/mbasic";
-		String sql = "select * from users where email=?";
+		String sql = "select * from users where email=? and nickname=?";
 		
 		conn = DriverManager.getConnection(url, "root", "1234");
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, email);
+		pstmt.setString(1, email); 
+		pstmt.setString(2, nickname);
 		
 		rset = pstmt.executeQuery();
 		
 		while(rset.next()){
-			nickname =  rset.getString("nickname");
 			mobile = rset.getString("mobile");
 			udate = rset.getString("udate");
 			bip = rset.getString("bip");

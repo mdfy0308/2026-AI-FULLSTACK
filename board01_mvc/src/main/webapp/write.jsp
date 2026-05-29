@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -7,9 +8,15 @@
 <div class="container card my-5">
 	<h3 class="card-header">글 등록</h3>
 	<form action="write_action.jsp" method="post" onsubmit="return check()">
-		<div class="my-3">
-			<label for="bname">글쓴이</label> <input type="text"
-				class="form-control" id="bname" name="bname" />
+		<div class="my-3"> 
+			<label for="bname">글쓴이</label>
+			<!--  로그인한 상태면 글쓴이 이름에 닉네임을 넣고싶은데?? -->
+			<c:if test="${empty sessionScope.email}">
+				<input type="text" class="form-control" id="bname" name="bname" />
+			</c:if>
+			<c:if test="${not empty sessionScope.email}">
+				<input type="text" class="form-control" value="${nickname}" id="bname" name="bname" readonly />
+			</c:if>
 		</div>
 		<div class="my-3">
 			<label for="bpass">비밀번호</label> <input type="password"
