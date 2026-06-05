@@ -9,38 +9,40 @@
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd">
 
-	<!--  	private String basePackage;
- 	 		private Class<? extends Annotation> annotationClass; -->
+	<!--  3. Mapper : MapperScannerConfigurer
+	private String basePackage;
+ 	private Class<? extends Annotation> annotationClass; -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.the703.dao" />
+		<property name="basePackage"	 value="com.the703.dao" />
 		<property name="annotationClass" value="com.the703.dao.Mapper" />
 	</bean>
 	
 	
-	<!-- STEP2 mybatis 1. SqlSessionFactoryBean : 스프링에서 SqlSession 객체들을 생성 및 관리 
+	<!-- 2-1. Mybatis : SqlSessionFactoryBean
 		private Resource configLocation; 		- 설정파일 
 		private Resource[] mapperLocations; 	- mapper.xml (spq)
 		private DataSource dataSource;			- db연동 -->
 		
 	<context:component-scan base-package="com.the703" />
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:config/mybatis-config.xml" />
+		<property name="dataSource" 		ref="dataSource" />
+		<property name="configLocation" 	value="classpath:config/mybatis-config.xml" />
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:config/test-mapper.xml</value>
-				<value>classpath:config/board-mapper.xml</value>
+				<!-- <value>classpath:config/test-mapper.xml</value>
+				<value>classpath:config/board-mapper.xml</value> -->
 			</list>
 		</property>
 	</bean>
 	
-	<!--  2. SqlSessionTemplate : sql 구문 처리(insert, update, select, delete) -->
+	<!--  2-2. SqlSessionTemplate : sql 구문 처리(insert, update, select, delete) -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
+
+
 	
-	
-	<!-- 데이터소스/세터 드라이버 구동 -->
+	<!-- 1. DataSource : SimpleDriverDataSource -->
 	<context:property-placeholder location="classpath:config/db.properties"/>
 	<bean id="dataSource"  class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="${db.driverClass}" />
