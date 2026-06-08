@@ -1,6 +1,7 @@
 package ex02;
 
 import java.net.UnknownHostException;
+import java.util.HashMap;
 
 import javax.sql.DataSource;
 
@@ -18,10 +19,10 @@ import com.the703.dao.TestMapper;
 import com.the703.dto.BoardDto;
 import com.the703.service.BoardService;
 
-@RunWith(SpringJUnit4ClassRunner.class)  //1. spring ±¸µ¿Å×½ºÆ®
-@ContextConfiguration(locations = "classpath:config/root-context.xml")  //2. ¼³Á¤
+@RunWith(SpringJUnit4ClassRunner.class)  //1. spring ï¿½ï¿½ï¿½ï¿½ï¿½×½ï¿½Æ®
+@ContextConfiguration(locations = "classpath:config/root-context.xml")  //2. ï¿½ï¿½ï¿½ï¿½
 public class ModelTest { 
-	@Autowired  ApplicationContext context;  //3. Bean ( ½ºÇÁ¸µÀÌ °ü¸®ÇÏ´Â °´Ã¼) »ý¼º~¼Ò¸ê
+	@Autowired  ApplicationContext context;  //3. Bean ( ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Ã¼) ï¿½ï¿½ï¿½ï¿½~ï¿½Ò¸ï¿½
 	@Autowired  DataSource  dataSource;
 	@Autowired  SqlSession  sqlSession; 
 	@Autowired  TestMapper  testMapper;  
@@ -29,55 +30,66 @@ public class ModelTest {
 	@Autowired  BoardMapper  boardMapper;  
 	@Autowired  BoardService  service;
 	
-	@Test
+	
+	@Test public void test6() {
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("start", 0);
+		map.put("end", 10);
+		System.out.println("boardMapper.select10(map)");
+		
+		//1. ì „ì²´ê°¯ìˆ˜
+		System.out.println( boardMapper.selectCnt() );
+ 	}
+	
+	@Ignore @Test
 	public void test5() {
-		//»èÁ¦
-		BoardDto dto = new BoardDto();   dto.setBno(4);
-		System.out.println(  service.delete(dto) );
-		//¼öÁ¤
+		//ï¿½ï¿½ï¿½ï¿½
+//		BoardDto dto = new BoardDto();   dto.setBno(4);
+//		System.out.println(  service.delete(dto) );
+		//ï¿½ï¿½ï¿½ï¿½
 		//		BoardDto dto = new BoardDto();
 		//		dto.setBname("first");        dto.setBpass("1111"); dto.setBno(4);
-		//		dto.setBtitle("NEW-service-Ã¹¹øÂ° ±Û¾²±â");  dto.setBcontent("NEW-service-³»¿ë");
+		//		dto.setBtitle("NEW-service-Ã¹ï¿½ï¿½Â° ï¿½Û¾ï¿½ï¿½ï¿½");  dto.setBcontent("NEW-service-ï¿½ï¿½ï¿½ï¿½");
 		//		System.out.println(  service.edit(dto) ); 
 		
-		//°Ë»ö
-		System.out.println(service.detail(4)); 
-		//»ðÀÔ  -  4
+		//ï¿½Ë»ï¿½
+//		System.out.println(service.detail(4)); 
+		//ï¿½ï¿½ï¿½ï¿½  -  4
 		//		BoardDto dto = new BoardDto();
 		//		dto.setBname("first");        dto.setBpass("1111");
-		//		dto.setBtitle("service-Ã¹¹øÂ° ±Û¾²±â");  dto.setBcontent("service-³»¿ë");
+		//		dto.setBtitle("service-Ã¹ï¿½ï¿½Â° ï¿½Û¾ï¿½ï¿½ï¿½");  dto.setBcontent("service-ï¿½ï¿½ï¿½ï¿½");
 		//		System.out.println(  service.insert(dto) );
 		
-		//ÀüÃ¼¸®½ºÆ®
+		//ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½Æ®
 		//System.out.println(service.selectAll());
 	}
 	
 	
 	@Ignore @Test
 	public void test4() throws UnknownHostException {
-//		//»èÁ¦
+//		//ï¿½ï¿½ï¿½ï¿½
 //		System.out.println(boardMapper.delete(1));
-//		//¼öÁ¤
+//		//ï¿½ï¿½ï¿½ï¿½
 //		BoardDto dto2 = new BoardDto();
 //		dto2.setBname("first");        dto2.setBno(2);
-//		dto2.setBtitle("Ã¹¹øÂ° ±Û¾²±â-new");  dto2.setBcontent("³»¿ë-new"); 
-//		System.out.println(boardMapper.update(dto2)); //½ÇÇàÇÑ ÁÙ¼ö1
+//		dto2.setBtitle("Ã¹ï¿½ï¿½Â° ï¿½Û¾ï¿½ï¿½ï¿½-new");  dto2.setBcontent("ï¿½ï¿½ï¿½ï¿½-new"); 
+//		System.out.println(boardMapper.update(dto2)); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¼ï¿½1
 //		
-//		//°Ë»ö
+//		//ï¿½Ë»ï¿½
 //		System.out.println(boardMapper.select(1));
-//		//»ðÀÔ
+//		//ï¿½ï¿½ï¿½ï¿½
 //		BoardDto dto = new BoardDto();
 //		dto.setBname("first");        dto.setBpass("1111");
-//		dto.setBtitle("Ã¹¹øÂ° ±Û¾²±â");  dto.setBcontent("³»¿ë");
+//		dto.setBtitle("Ã¹ï¿½ï¿½Â° ï¿½Û¾ï¿½ï¿½ï¿½");  dto.setBcontent("ï¿½ï¿½ï¿½ï¿½");
 //		dto.setBip(InetAddress.getLocalHost().getHostAddress()); //#1
-//		System.out.println(boardMapper.insert(dto)); //½ÇÇàÇÑ ÁÙ¼ö1
-		//ÀüÃ¼°Ë»ö
-		System.out.println(boardMapper.selectAll());
+//		System.out.println(boardMapper.insert(dto)); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¼ï¿½1
+		//ï¿½ï¿½Ã¼ï¿½Ë»ï¿½
+//		System.out.println(boardMapper.selectAll());
 	}
 	
 	
 	
-	@Ignore @Test public void  test3() { System.out.println(testMapper.now());    }         
-	@Ignore @Test public void  test1() { System.out.println(context);    } 
-	@Ignore @Test public void  test2() { System.out.println(sqlSession); } 
+//	@Ignore @Test public void  test3() { System.out.println(testMapper.now());    }         
+//	@Ignore @Test public void  test1() { System.out.println(context);    } 
+//	@Ignore @Test public void  test2() { System.out.println(sqlSession); } 
 }

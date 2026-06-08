@@ -1,6 +1,7 @@
 package com.the703.service;
 
 import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 import com.the703.dto.BoardDto;
 
 public interface BoardService {
@@ -8,7 +9,7 @@ public interface BoardService {
 	public List<BoardDto>  selectAll();
 	
 	//■2. 글쓰기 기능  
-	public int             insert(BoardDto  dto);
+	public int             insert(BoardDto dto, MultipartFile file);
 	
 	//■3. 글상세보기    - 조회수올리기 / 해당글 
 	public BoardDto        detail(int bno);
@@ -17,8 +18,13 @@ public interface BoardService {
 	public BoardDto        editView(int bno);
 	
 	//■4. 글수정 기능    - 비밀번호가 맞는지 확인 후 글수정
-	public int             edit(BoardDto  dto);
+	public int             edit(BoardDto  dto, MultipartFile file);
 	
 	//■5. 글삭제 기능    - 비밀번호가 맞는지 확인 후 글삭제 
 	public int             delete(BoardDto  dto);
+	
+	/* paging */
+	public List<BoardDto> select10(int pstartno);
+	public int			  selectCnt();
 }
+

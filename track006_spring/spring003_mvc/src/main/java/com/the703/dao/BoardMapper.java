@@ -1,5 +1,6 @@
 package com.the703.dao;
 
+import java.util.HashMap;
 import java.util.List; 
 import com.the703.dto.BoardDto;
 
@@ -8,10 +9,16 @@ public interface BoardMapper {
 	public  int  insert(BoardDto dto);
 	public  int  update(BoardDto dto);
 	public  int  delete(int bno);
-	public  int  hit(int bno);
+	public  int  updateHit(int bno);
+	public  int	 upload(int bno);
 	
 	public  List<BoardDto>  selectAll();
 	public        BoardDto  select(int bno);
+	
+	/* paging */
+	public List<BoardDto> select10(HashMap<String, Integer> map);
+	public int selectCnt();
+	
 }
 
 /*
@@ -65,6 +72,14 @@ read   : select * from mvcobard2  order by bno desc
 update : update  mvcboard2  set  btitle=#{btitle}  , bcontent=#{bcontent}  where bno= #{bno}
 delete : delete  from mvcboard2  where bno= #{bno} 
 
+-- 1) 최신글을 기준으로 10개씩
+
+select * from mvcboard2 order by bno desc limit 0, 10; -- 어디서부터, 몇개
+select * from mvcboard2 order by bno desc limit 10, 10;
+select * from mvcboard2 order by bno desc limit 20, 10;
+
+-- 2) 전체 게시글 갯수
+select count(*) `전체 글 갯수` from mvcboard2;
 
 CREATE TABLE mvcboard2 (
     bno INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

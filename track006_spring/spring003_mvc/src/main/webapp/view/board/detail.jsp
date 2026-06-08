@@ -18,7 +18,7 @@ window.addEventListener("load" , function(){
 
    <div class="container my-5">
       <h3>글 상세보기</h3>
-      <form  action ="#"  method="post">
+      <form  action ="#"  method="post" enctype="multipart/form-data" >
       	<div  class="my-3">
       		<label for="bname"   class="form-label">이름</label>
       		<input type="text"   class="form-control"  value="${dto.bname}"
@@ -29,12 +29,17 @@ window.addEventListener("load" , function(){
       		<input type="text"   class="form-control"    value="${dto.btitle}"
       			 id="btitle"  name="btitle"   readonly />
       	</div>
-      	<div  class="my-3">
-      		<label for="bcontent"  class="form-label">내용</label>
-      		<textarea  class="form-control"    id="bcontent" 
-      			 name="bcontent"  readonly >${dto.bcontent}</textarea>
-      	</div>
-      	<div  class="my-3  text-end"> 
+		<div class="my-3">
+			<label for="bcontent" class="form-label">내용</label>
+			<textarea class="form-control" id="bcontent" name="bcontent" readonly>${dto.bcontent}</textarea>
+		</div>
+		
+		<div class="my-3">
+			<img src="${pageContext.request.contextPath}/upload/${dto.bfile}"
+				alt="${dto.btitle}" style="max-width: 100%;" />
+		</div>
+
+		<div  class="my-3  text-end"> 
       		<a href="${pageContext.request.contextPath}/board/edit.do?bno=${dto.bno}"   class="btn btn-outline-primary"  title="글수정">수정</a>
       		<a href="${pageContext.request.contextPath}/board/delete.do?bno=${dto.bno}" class="btn btn-outline-success"  title="글삭제">삭제</a>
       		<a href="${pageContext.request.contextPath}/board/list.do"  class="btn btn-primary"          title="목록보러가기">목록</a>
