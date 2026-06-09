@@ -19,10 +19,6 @@
     <!--  content -->
     <section class="container my-5">
         <h3> MultiBoard </h3>
-        <pre>
-        페이징 : ${paging}
-        전체리스트 : ${list}
-        </pre>
         <table class="table  table-striped table-bordered table-hover"
 		style="font-size:14px; text-align:center;">
             <caption> BOARD 목록 </caption>
