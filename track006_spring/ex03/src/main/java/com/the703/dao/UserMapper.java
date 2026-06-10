@@ -16,6 +16,7 @@ public interface UserMapper {
 	/* security */
 	public int insertAuth(AuthDto dto);
 	public AuthListDto readAuth(AuthDto dto);
+	public UserDto findByEmailUserInfo(String email);
 	
 }
 

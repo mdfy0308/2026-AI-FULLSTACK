@@ -30,25 +30,37 @@
                 <ul class="navbar-nav ms-auto">
                 <!--  애플리케이션 루트기준  --> 
                 <%@taglib  prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
-                <c:if test="${empty  sessionScope.email}">
-                    <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/LoginAction">Login</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/JoinAction">Join</a>
-                    </li>
-                </c:if>
+                <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %> 
                 
-                <c:if test="${not empty  sessionScope.email}">
-                    <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/MyAction">${sessionScope.email}</a>
+                <!-- 로그인하지 않은 상태 -->
+                <sec:authorize  access="isAnonymous()">
+					<li class="nav-item">
+                    	<a class="nav-link" href="${pageContext.request.contextPath}/security/login">Login</a>
                     </li>
-
                     <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/Logout">Logout</a>
+                   		<a class="nav-link" href="${pageContext.request.contextPath}/security/join">Join</a>
                     </li>
-                </c:if>
-                
+                </sec:authorize>   
+                 
+                 <li class="nav-item">
+                   	<a class="nav-link" href="${pageContext.request.contextPath}/board/list.do">Board</a>
+                 </li>
+                 
+                <!-- 현재 사용자가 인증된 상태 access="isAuthenticated()" 
+                / 특정권한 access="hasRole('ROLE-ADMIN')" -->
+                <sec:authorize  access="isAuthenticated()">
+                	<li class="nav-item">
+                    	<a class="nav-link" href="${pageContext.request.contextPath}/security/mypage">
+                    		<sec:authentication property="principal.dto.email" />
+                    	</a>
+                    </li>
+                    <li class="nav-item">
+                    	<form  action="${pageContext.request.contextPath}/security/logout"   method="post">
+                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                         <input type="submit" class="btn btn-primary" value="로그아웃" />
+                      </form>
+                    </li>
+                </sec:authorize>
                 </ul> 
                 </div>
             </div>

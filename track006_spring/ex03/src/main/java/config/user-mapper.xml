@@ -26,14 +26,17 @@
 		parameterType="String">
 		select count(*) from users where email=#{email}
 	</select>
+	
+	<select resultType="UserDto" id="findByEmailUserInfo" parameterType="String">
+		select * from users where email=#{email}
+	</select>
 
 	<!-- ahthorities -->
 	<insert id="insertAuth" parameterType="AuthDto">
 		insert into
 		authorities(email, auth) values(#{email}, #{auth})
 	</insert>
-	<select resultMap="authListMap" id="readAuth"
-		parameterType="AuthDto">
+	<select resultMap="authListMap" id="readAuth" parameterType="AuthDto">
 		select u.email, u.bpass, a.auth
 		from users u left join authorities a on u.email = a.email
 		where u.email =#{email}
@@ -47,5 +50,6 @@
 		<result property="email" column="email" />
 		<result property="auth" column="auth" />
 	</resultMap>
+	
 
 </mapper>
