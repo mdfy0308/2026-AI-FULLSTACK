@@ -26,7 +26,6 @@
 				let target = document.querySelector(".target");
 				
 				email.addEventListener("keyup", function( e ){
-					// console.log( e.target.value );
 					let value = e.target.value.trim(); // 공백빼기
 					if(value !== ""){ 
 						fetch("${pageContext.request.contextPath}/doubleEmail?email=" + encodeURIComponent(value))

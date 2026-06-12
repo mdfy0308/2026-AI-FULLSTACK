@@ -22,7 +22,7 @@ window.addEventListener("load" , function(){
         페이징 :  ${paging}
         전체리스트 : ${list}
         </pre> --%>
-        <table  class="table  table-striped  table-bordered table-hover" style="text-align:center;">
+        <table  class="table  table-striped  table-bordered table-hover">
             <caption> BOARD 목록 </caption>
             <thead>
                 <tr>
@@ -34,17 +34,15 @@ window.addEventListener("load" , function(){
                 </tr>
             </thead>
             <tbody>
+              
 				<c:forEach   var="dto"   items="${list}"   varStatus="status">
 					<tr> <!-- 1) 256(전체갯수)-1   한개씩 빼기 
 					          2) 전체갯수-0  256~247  / 전체갯수-10  246~237 / 전체갯수-30   246~237
 					    -->
 						<td>${paging.listtotal - paging.pstartno - status.index}</td>
-						<td>
-							<a href="${pageContext.request.contextPath}/board/detail.do?bno=${dto.bno}"
-							style="text-decoration:none; color:inherit;" >   
-								${dto.btitle}
-							</a>
-						</td>
+						<td><a href="${pageContext.request.contextPath}/board/detail.do?bno=${dto.bno}">   
+							${dto.btitle}
+						</a></td>
 						<td>${dto.bname}</td>
 						<td>${dto.bdate}</td>
 						<td>${dto.bhit}</td>

@@ -14,16 +14,15 @@ import org.springframework.web.multipart.MultipartFile;
 import com.the703.dao.BoardMapper;
 import com.the703.dto.BoardDto;
 
-@Service // 없으면 서비스 인식 못함
+@Service
 public class BoardServiceImpl  implements BoardService {
-	
 	@Autowired  BoardMapper  dao;   
 	@Override public List<BoardDto> selectAll() { return dao.selectAll(); }
 
 	@Override public int insert(BoardDto dto  , MultipartFile file) {
 		String fileName   = "the703.png";
 		
-		if( file != null && !file.isEmpty() ) {
+		if( !file.isEmpty() ) {
 			fileName   = file.getOriginalFilename();
 			String uploadPath = "C:/file/";
 			File       demp   = new File(uploadPath + fileName);  
@@ -53,7 +52,7 @@ public class BoardServiceImpl  implements BoardService {
 			
 			String fileName = dto.getBfile();   
 			
-			if( file != null && !file.isEmpty()) {
+			if(  !file.isEmpty()) {
 				fileName = file.getOriginalFilename();
 				String uploadPath = "C:/file/";
 				File demp = new File(  uploadPath + fileName );

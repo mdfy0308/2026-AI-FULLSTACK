@@ -1,15 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../inc/header.jsp" %>
 
+<script>
+window.addEventListener("load" , function(){
+	let  result = '${result}';   // el
+	console.log(result);
+	
+	if( result == "글쓰기 실패" || result == "비밀번호 확인!" || result == "회원가입 실패"){  alert(result);  history.go(-1);  }  // 알림창, 뒤로 가기
+	else if(result.length != 0){  alert(result); }  
+}); 
+</script>
+
+
 <div class="container my-5">
-  <h3>로그인</h3>
-  <!-- 
-	1. Action 경로 고정
-	2. name 값 고정
-		name="username" / name="password"
-   -->
+
+  <h3>로그인</h3> 
   <form action="${pageContext.request.contextPath}/login" method="post" onsubmit="return checkForm()">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+  	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     <div class="my-3">
       <label for="email" class="form-label">이메일</label>
       <input type="email" class="form-control" id="email" name="username" />

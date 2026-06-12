@@ -10,6 +10,7 @@
       <form  action ="${pageContext.request.contextPath}/board/edit.do?bno=${dto.bno}"  
              encType="multipart/form-data"
       		 method="post"   onsubmit="return checkForm()">
+	    <input  type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
       	<div  class="my-3">
       		<label for="bname"   class="form-label">이름</label>
       		<input type="text"   class="form-control"    id="bname"  
