@@ -2,32 +2,39 @@ package com.the703.security;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import com.the703.dto.AuthUserDto;
 
+import com.the703.dto.AuthUserDto;
 import lombok.Getter;
 
 @Getter 
 public class CustomUser extends User{  
 	private static final long serialVersionUID = 1L; 
+ 
+	AuthUserDto  dto;
 	
-	AuthUserDto dto;
-	
-	//1. ìœ ì €ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ë¥¼ ë°›ì•„ì„œ ê¶Œí•œì´ ìˆëŠ”ì§€ í™•ì¸
+	//1.À¯Àú¾ÆÀÌµğ¿Í ºñ¹Ğ¹øÈ£¸¦ ¹Ş¾Æ¼­ ±ÇÇÑÀÌ ÀÖ´ÂÁö Ã¼Å©
 	public CustomUser(String username, 
 				      String password, 
 				      Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities); 
 	}
-	
-	//2. username, passwordì— ë§ê²Œ ì„¸íŒ…
-	public CustomUser(AuthUserDto dto) {
-		super(	dto.getEmail(), dto.getBpass(), 
-				dto.getAuthList().stream()
-				   .map(auth -> new SimpleGrantedAuthority(auth.getAuth()))
-				   .collect(Collectors.toList()));
-		this.dto = dto;
-	}
+
+	//2. username, password¿¡ ¸Â°Ô ¼ÂÆÃ
+    public CustomUser(AuthUserDto  dto) {
+    	super(  dto.getEmail() , dto.getBpass() 
+    						   , dto.getAuthList()
+    						        .stream()
+    						        .map(auth -> new SimpleGrantedAuthority(auth.getAuth()))
+    						        .collect(Collectors.toList()));
+    	this.dto = dto;
+    } 
+    
 }
+
+
+
+

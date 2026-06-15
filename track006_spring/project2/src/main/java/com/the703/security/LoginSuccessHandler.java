@@ -15,11 +15,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, 
-										HttpServletResponse response,
+										 HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 	 
-		List<String>  roles = new ArrayList<>();
-		
+		List<String>  roles = new ArrayList<>(); 
 		authentication.getAuthorities().forEach(auth->{ roles.add(auth.getAuthority()); });
  
 		// if(roles.contains("ROLE_ADMIN"))

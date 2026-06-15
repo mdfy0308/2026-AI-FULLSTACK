@@ -17,8 +17,8 @@ public interface BoardMapper {
 	
 	/*	 paging		*/
 	/*	 paging		*/
-	public   List<BoardDto>   select10(HashMap<String,Integer> map);
-	public   int              selectCnt();
-	
+	public   List<BoardDto>   select10(HashMap<String,Integer> map); 
+	public   int              selectCnt(); 
 }
+
 
