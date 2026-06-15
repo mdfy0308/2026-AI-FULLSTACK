@@ -9,6 +9,7 @@ track005_jsp/tomcat9.0/
 META-INF/
 /Servers/
 lib/
+.jar
 
 # 빌드 결과물 무시
 /bin/
