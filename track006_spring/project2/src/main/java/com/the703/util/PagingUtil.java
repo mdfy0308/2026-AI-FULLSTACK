@@ -7,37 +7,31 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PagingUtil {
 
-	private  int  listtotal;     //#1) ÀüÃ¼±Û 256
-	private  int  onepagelist;   //#2) ÇÑÆäÀÌÁö¿¡ º¸¿©ÁÙ °Ô½Ã¹°ÀÇ ¼ö 10
-	private  int  pagetotal;     //#3) ÃÑÆäÀÌÁö¼ö 256/10 = 26 , 123/10=13  
-	private  int  bottomlist;    //#4) ÇÏ´ÜÀÇ ÆäÀÌÁö ³ª´©±â - ÀÌÀü  11 12 13,,,,,19 20
-	private  int  pstartno;      //#5) ÆäÀÌÁö ½ÃÀÛ¹øÈ£ - ½ºÅ¸Æ® ¹øÈ£ 
+	private  int  listtotal;     //#1) ì „ì²´ê¸€ 256
+	private  int  onepagelist;   //#2) í•œí˜ì´ì§€ì— ë³´ì—¬ì¤„ ê²Œì‹œë¬¼ì˜ ìˆ˜ 10
+	private  int  pagetotal;     //#3) ì´í˜ì´ì§€ìˆ˜ 256/10 = 26 , 123/10=13  
+	private  int  bottomlist;    //#4) í•˜ë‹¨ì˜ í˜ì´ì§€ ë‚˜ëˆ„ê¸° - ì´ì „  11 12 13,,,,,19 20
+	private  int  pstartno;      //#5) í˜ì´ì§€ ì‹œì‘ë²ˆí˜¸ - ìŠ¤íƒ€íŠ¸ ë²ˆí˜¸ 
 	
-	private  int current;        //#6) ÇöÀçÆäÀÌÁö¹øÈ£   15
-	private  int start;          //#7) ½ÃÀÛ   11
-	private  int end;            //#8) ¸¶Áö¸·  20 
+	private  int current;        //#6) í˜„ì¬í˜ì´ì§€ë²ˆí˜¸   15
+	private  int start;          //#7) ì‹œì‘   11
+	private  int end;            //#8) ë§ˆì§€ë§‰  20 
 	
-	public PagingUtil(int listtotal, int pstartno) {  //ÀüÃ¼ÆäÀÌÁö¼ö, ½ÃÀÛÇÏ´Â ¹øÈ£ 1 2 3 4 5 6 ,,,,
+	public PagingUtil(int listtotal, int pstartno) {  //ì „ì²´í˜ì´ì§€ìˆ˜, ì‹œì‘í•˜ëŠ” ë²ˆí˜¸ 1 2 3 4 5 6 ,,,,
 		super();
-		this.listtotal   = listtotal;  // ÀüÃ¼ÆäÀÌÁö¼ö
-		this.onepagelist = 10;         // ÇÑÆäÀÌÁö¿¡ º¸¿©ÁÙ °Ô½Ã¹°ÀÇ ¼ö
+		this.listtotal   = listtotal;  // ì „ì²´í˜ì´ì§€ìˆ˜
+		this.onepagelist = 10;         // í•œí˜ì´ì§€ì— ë³´ì—¬ì¤„ ê²Œì‹œë¬¼ì˜ ìˆ˜
 		this.pagetotal   = listtotal <= 0 ? 1 : 
-						  (int)Math.ceil(listtotal/ (double)onepagelist);  // 256/10 = 25   26À¸·Î...
+						  (int)Math.ceil(listtotal/ (double)onepagelist);  // 256/10 = 25   26ìœ¼ë¡œ...
 		this.bottomlist  = 10; 
-		this.pstartno    = (pstartno-1)*onepagelist; // (1) 1   0¹øÂ°ºÎÅÍ,10°³  (2) 2  10¹øÂ° ºÎÅÍ,10°³   (3)  3  20¹øÂ° ºÎÅÍ 10°³
-		this.current     = pstartno;   //  <ÀÌÀü  11  12  13  14 15(ÇöÀç)   16  17 18   19 20 ´ÙÀ½>
-		this.start       = ((this.current-1)/this.bottomlist) *this.bottomlist +1;  //15¶ó¸é 11·Î ¸¸µé±â    20¶ó¸é 11·Î ¸¸µé±â
-				// 15  ¡æ  11      ¾ÕÀÚ¸®¸¦ 1·Î  ((15-1)/10)*10 + 1 = 11 
-				// 20  ¡æ  11      ¾ÕÀÚ¸®¸¦ 1·Î  ((20-1)/10)*10 + 1 = 11
-		this.end         =   this.start  +  this.bottomlist -1    ; //15¿¡¼­  20À¸·Î ,  20¿¡¼­ 20À¸·Î 
-				// 15  ¡æ  20      11+10-1 = 20
-				// 20  ¡æ  20      11+10-1 = 20
-		if(this.end > this.pagetotal) {  this.end = this.pagetotal; }	// ÀüÃ¼ÆäÀÌÁö °¹¼ö°¡ 256  ¡æ ¸¶Áö¸·Àº 30ÀÌ ¾Æ´Ï¶ó 26
+		this.pstartno    = (pstartno-1)*onepagelist; // (1) 1   0ë²ˆì§¸ë¶€í„°,10ê°œ  (2) 2  10ë²ˆì§¸ ë¶€í„°,10ê°œ   (3)  3  20ë²ˆì§¸ ë¶€í„° 10ê°œ
+		this.current     = pstartno;   //  <ì´ì „  11  12  13  14 15(í˜„ì¬)   16  17 18   19 20 ë‹¤ìŒ>
+		this.start       = ((this.current-1)/this.bottomlist) *this.bottomlist +1;  //15ë¼ë©´ 11ë¡œ ë§Œë“¤ê¸°    20ë¼ë©´ 11ë¡œ ë§Œë“¤ê¸°
+				// 15  â†’  11      ì•ìë¦¬ë¥¼ 1ë¡œ  ((15-1)/10)*10 + 1 = 11 
+				// 20  â†’  11      ì•ìë¦¬ë¥¼ 1ë¡œ  ((20-1)/10)*10 + 1 = 11
+		this.end         =   this.start  +  this.bottomlist -1    ; //15ì—ì„œ  20ìœ¼ë¡œ ,  20ì—ì„œ 20ìœ¼ë¡œ 
+				// 15  â†’  20      11+10-1 = 20
+				// 20  â†’  20      11+10-1 = 20
+		if(this.end > this.pagetotal) {  this.end = this.pagetotal; }	// ì „ì²´í˜ì´ì§€ ê°¯ìˆ˜ê°€ 256  â†’ ë§ˆì§€ë§‰ì€ 30ì´ ì•„ë‹ˆë¼ 26
 	}         	 
 }
-
-
-
-
-
-

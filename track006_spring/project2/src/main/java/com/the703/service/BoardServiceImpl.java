@@ -37,6 +37,8 @@ public class BoardServiceImpl  implements BoardService {
 		catch (UnknownHostException e) { e.printStackTrace(); }
 		return dao.insert(dto);
 	} 
+
+	///////////////////////////////////////////////////////////////////
 	
 	@Override public BoardDto detail(int bno) {
 		dao.updateHit(bno);      
@@ -66,6 +68,8 @@ public class BoardServiceImpl  implements BoardService {
 		} 
 		return result;
 	} 
+	
+	///////////////////////////////////////////////////////////////////
 	
 	@Override public int delete(BoardDto dto) { 
 		int result = -1;    

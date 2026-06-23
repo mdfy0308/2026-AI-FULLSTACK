@@ -10,6 +10,7 @@ META-INF/
 /Servers/
 lib/
 .jar
+.properties
 
 # 빌드 결과물 무시
 /bin/

@@ -34,7 +34,6 @@ window.addEventListener("load" , function(){
                 </tr>
             </thead>
             <tbody>
-              
 				<c:forEach   var="dto"   items="${list}"   varStatus="status">
 					<tr> <!-- 1) 256(전체갯수)-1   한개씩 빼기 
 					          2) 전체갯수-0  256~247  / 전체갯수-10  246~237 / 전체갯수-30   246~237
