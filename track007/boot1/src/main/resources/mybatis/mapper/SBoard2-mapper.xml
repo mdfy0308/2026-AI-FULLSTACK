@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.the703.dao.SBoard2Dao">
+	
+	<!-- insert -->
+	<insert id="insert" parameterType="SBoard2Dto">
+		insert into sboard2(ID, APP_USER_ID, BTITLE, BCONTENT, BPASS, BFILE, BIP)
+		values(sboard2_seq.nextval, #{appUserId}, #{btitle}, #{bcontent}, #{bpass}, #{bfile, jdbcType=VARCHAR}, #{bip})
+	</insert>
+	
+	<!-- 전체 select -->
+	<select id="selectAll" resultType="SBoard2Dto">
+		select * from sboard2 order by ID desc
+	</select>
+	
+	<!-- 전체 페이징 -->
+	<select id="selectPaging" resultType="SBoard2Dto" parameterType="java.util.HashMap">
+		select * from sboard2 order by ID desc offset #{start} rows fetch next #{end} rows only
+	</select>
+	
+	<!-- 전체 컨텐츠 수 -->
+	<select id="selectCnt" resultType="int">
+		select count(*) from sboard2
+	</select>
+	
+	<!-- 해당 번호의 select -->
+	<select id="selectById" parameterType="SBoard2Dto" resultType="SBoard2Dto">
+		select * from sboard2 where ID = #{id}
+	</select>
+	
+	<!-- 해당 번호 조회수 올리기 -->
+	<update id="updateHit" parameterType="SBoard2Dto">
+		update sboard2 set BHIT = BHIT + 1 where ID = #{id}
+	</update>
+	
+	<!-- 해당 번호 업데이트 -->
+	<update id="update" parameterType="SBoard2Dto">
+		update sboard2 
+		set BTITLE=#{btitle}, BCONTENT=#{bcontent}, BFILE=#{bfile, jdbcType=VARCHAR}
+		where ID = #{id}
+	</update>
+	
+	<!-- 해당 번호 삭제 -->
+	<delete id="delete" parameterType="SBoard2Dto">
+		delete from sboard2 where ID = #{id}
+	</delete>
+	
+</mapper>

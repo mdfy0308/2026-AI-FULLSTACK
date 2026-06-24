@@ -68,7 +68,6 @@ select * from dept;
 -- 4. Sequence (숫자 자동 증가)
 -- create sequence dept_seq;
 insert into dept values (dept_seq.nextval, 'AIDEV', 'SEOUL');
-drop sequence dept_seq;
 
 select * from dept;
 
