@@ -103,13 +103,13 @@ class Boot1ApplicationTests {
 		assertEquals(1, result); // 자동확인 : 결과물이 1인지 junit 체크
 	}
 
-	@Disabled
+	
 	@Test
 	public void test03_byId() {// id, 조회수올리기
 		Sboard2Dto dto = new Sboard2Dto();
-		dto.setId(27);
+		dto.setId(1);
 		Sboard2Dto result = sboard2Dao.selectById(dto);
-		assertEquals(27, result.getId());
+		assertEquals(1, result.getId());
 	}
 
 	@Disabled

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorate="~{fragments/layout}">
+<!--    #1. layout 렌더링    -->
+<head lang="ko">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h3> 1. 텍스트 출력 - <span class="text-danger">th:text</span></h3>
+		<div class="alert alert-warning">
+			html 태그 안의 내용을 서버에서 보낸 값으로 교체
+		</div>
+		<p th:text="${msg}"></p>
+		<p th:text=${nums}></p>
+		
+		<hr class="mt-5" />
+		<h3> 2. 조건문 - <span class="text-danger">th:if</span></h3>
+		<div class="alert alert-warning"> 특정 조건 </div>
+		<p th:if="${10>3}"> 10이 3보다 크다. </p>
+		<p th:if="${10<3}"> 10은 3보다 작다. </p> <!-- 처리 안 됨 -->
+		
+		<div class="alert alert-warning"> $변수, #타임리프에서 제공하는 값 - 유틸리티 객체식 </div>
+		<p th:if="${#lists.size(nums) > 3}"> NUMS의 데이터가 3개 이상 </p>
+		
+		<hr class="mt-5" />
+		<h3> 3. 반복문 - <span class="text-danger">th:each</span></h3>
+		<div class="alert alert-warning"> 반복문 </div>
+		<ul>
+			<li th:each="n : ${nums}" th:text="|숫자 : ${n}|"></li>
+		</ul>
+		
+		<hr class="mt-5" />
+		<h3> 4. 속성 변경 - <span class="text-danger">th:href, th:src, th:value</span></h3>
+		<div class="alert alert-warning"> 
+			@주소 / board 다른 경로 거치면 pageContext.request.contextPath
+		</div>
+		<a href="/board/list">BOARD1</a>
+		<a th:href="@{/board/list}">BOARD2</a>
+		
+		<a href="board/detail?id=3">상세보기1</a>
+		<a href="@{/board/detail(id=3)}">상세보기2</a>
+	</div>
+</body>
+</html>
