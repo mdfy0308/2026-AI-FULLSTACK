@@ -46,7 +46,6 @@ public class Sboard2Controller {
 	//4. 상세보기 get: /board/detail
 	@GetMapping("/detail")
 	public String detail(Model model, Sboard2Dto dto) { 
-		Sboard2Dto sboard2dto = service.detail(dto);
 		model.addAttribute("dto", service.detail(dto));
 		return "board/detail";
 	}
