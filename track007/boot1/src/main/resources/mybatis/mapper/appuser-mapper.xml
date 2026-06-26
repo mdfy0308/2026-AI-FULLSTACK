@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.the703.dao.AppUserDao">
+
+	<!-- 회원 가입 -->
+	<insert id="insertAppUser" parameterType="AppUserDto">
+		insert into
+		appuser(APP_USER_ID, EMAIL, PASSWORD, MBTI_TYPE_ID,
+		CREATED_AT, UFILE, MOBILE, NICKNAME, PROVIDER, PROVIDER_ID)
+		values(appuser_seq.nextval, #{email}, #{password}, #{mbtiTypeId}, 
+		sysdate, #{ufile}, #{mobile}, #{nickname}, #{provider}, #{providerId})
+	</insert>
+
+	<!-- 로그인 -->
+	<select id="readAuthByEmail" parameterType="AppUserDto" resultType="AppUserAuthDto">
+		select u.email, u.password, a.auth
+		from appuser u left join
+		authorities a on u.email=a.email
+		where u.email = #{email}
+	</select>
+
+	<!-- 마이페이지 - 메일로 정보 찾기 -->
+	<select id="findByEmail" parameterType="AppUserDto" resultType="AppUserDto">
+		select * from appuser where email = #{email}
+	</select>
+
+	<!-- 아이디 중복 체크(이메일 중복 검사) -->
+	<select id="iddoubleByEmail" parameterType="AppUserDto" resultType="int">
+		select count(*) from appuser where email = #{email}
+	</select>
+
+	<!-- 회원 정보 수정 -->
+	<update id="updateAppUser" parameterType="AppUserDto">
+		update appuser
+		set password = #{password},
+		mbti_type_id = #{mbtiTypeId},
+		ufile = #{ufile},
+		nickname = #{nickname},
+		mobile = #{mobile},
+		provider = #{provider},
+		provider_id = #{providerId}
+		where app_user_id = #{appUserId}
+	</update>
+
+	<!-- 회원 삭제 -->
+	<delete id="deleteAppUser" parameterType="AppUserDto">
+		delete from appuser
+		where app_user_id = #{appUserId}
+	</delete>
+
+	<!-- 권한 삽입 -->
+	<insert id="insertAuth" parameterType="AuthDto">
+		insert into authorities(AUTH_ID, EMAIL, AUTH)
+		values (authorities_seq.nextval, #{email}, #{auth})
+	</insert>
+
+	<!-- 권한 삭제 -->
+	<delete id="deleteAuth" parameterType="AuthDto">
+		delete from authorities
+		where email = #{email}
+	</delete>
+</mapper>
