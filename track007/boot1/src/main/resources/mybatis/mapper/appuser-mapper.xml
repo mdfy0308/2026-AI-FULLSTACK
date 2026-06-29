@@ -7,16 +7,25 @@
 	<insert id="insertAppUser" parameterType="AppUserDto">
 		insert into
 		appuser(APP_USER_ID, EMAIL, PASSWORD, MBTI_TYPE_ID,
-		CREATED_AT, UFILE, MOBILE, NICKNAME, PROVIDER, PROVIDER_ID)
-		values(appuser_seq.nextval, #{email}, #{password}, #{mbtiTypeId}, 
+		CREATED_AT, UFILE,
+		MOBILE, NICKNAME, PROVIDER, PROVIDER_ID)
+		values(appuser_seq.nextval,
+		#{email}, #{password}, #{mbtiTypeId},
 		sysdate, #{ufile}, #{mobile}, #{nickname}, #{provider}, #{providerId})
 	</insert>
 
+	<resultMap id="AppUserAuthResultMap" type="AppUserAuthDto">
+		<result property="email" column="email" />
+		<result property="password" column="password" />
+		<collection property="authList" ofType="com.the703.dto.AuthDto">
+			<result property="auth" column="auth" />
+		</collection>
+	</resultMap>
+
 	<!-- 로그인 -->
-	<select id="readAuthByEmail" parameterType="AppUserDto" resultType="AppUserAuthDto">
+	<select id="readAuthByEmail" parameterType="AppUserDto" resultMap="AppUserAuthResultMap">
 		select u.email, u.password, a.auth
-		from appuser u left join
-		authorities a on u.email=a.email
+		from appuser u left join authorities a on u.email=a.email
 		where u.email = #{email}
 	</select>
 
@@ -33,13 +42,15 @@
 	<!-- 회원 정보 수정 -->
 	<update id="updateAppUser" parameterType="AppUserDto">
 		update appuser
-		set password = #{password},
-		mbti_type_id = #{mbtiTypeId},
-		ufile = #{ufile},
-		nickname = #{nickname},
-		mobile = #{mobile},
-		provider = #{provider},
-		provider_id = #{providerId}
+		<set>
+			<!-- <if test="password != null"> password = #{password} </if> -->
+			<if test="mbtiTypeId != null"> mbti_type_id = #{mbtiTypeId}, </if>
+			<if test="ufile != null"> ufile = #{ufile}, </if>
+			<if test="nickname != null"> nickname = #{nickname}, </if>
+			<if test="mobile != null"> mobile = #{mobile}, </if>
+			<if test="provider != null"> provider = #{provider}, </if>
+			<if test="providerId != null"> provider_id = #{providerId} </if>
+		</set>
 		where app_user_id = #{appUserId}
 	</update>
 
@@ -51,8 +62,10 @@
 
 	<!-- 권한 삽입 -->
 	<insert id="insertAuth" parameterType="AuthDto">
-		insert into authorities(AUTH_ID, EMAIL, AUTH)
-		values (authorities_seq.nextval, #{email}, #{auth})
+		insert into
+		authorities(AUTH_ID, EMAIL, AUTH)
+		values (authorities_seq.nextval,
+		#{email}, #{auth})
 	</insert>
 
 	<!-- 권한 삭제 -->

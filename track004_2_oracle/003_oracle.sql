@@ -12,6 +12,7 @@ create table appuser(
     PROVIDER_ID VARCHAR2(100)
 );
 
+drop sequence appuser_seq;
 create sequence appuser_seq;
 
 create table authorities(

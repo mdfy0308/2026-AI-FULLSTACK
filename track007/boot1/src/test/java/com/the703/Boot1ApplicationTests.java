@@ -2,150 +2,161 @@ package com.the703;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.HashMap;
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
-import com.the703.dao.SBoard2Dao;
-import com.the703.dao.TestDao;
-import com.the703.dto.Sboard2Dto;
-import com.the703.service.Sboard2Service;
+
+import com.the703.dao.AppUserDao;
+import com.the703.dto.AppUserAuthDto;
+import com.the703.dto.AppUserDto;
+import com.the703.dto.AuthDto;
+import com.the703.service.AppUserService;
 
 @SpringBootTest
 class Boot1ApplicationTests {
-	@Autowired TestDao dao;
-	@Autowired SBoard2Dao sboard2Dao;
-	@Autowired Sboard2Service sboard2Service;
-
-	@Disabled @Test
-	public void test010_delete() {
-		Sboard2Dto dto = new Sboard2Dto();
-		dto.setId(1); // 있는 id
-		assertEquals(1, sboard2Service.delete(dto));
-	}
-
-	// 41
-	@Disabled
-	@Test
-	public void test09_update() {
-		Sboard2Dto dto = new Sboard2Dto();
-		dto.setAppUserId(1);
-		dto.setBtitle("title-new");
-		dto.setBcontent("content-new");
-		dto.setBpass("1111");
-		dto.setId(1);
-
-		MockMultipartFile file = new MockMultipartFile("file", "test.txt", "text/plain", "data".getBytes());
-		// import org.springframework.mock.web.MockMultipartFile;
-		int result = sboard2Service.update(file, dto);
-		assertEquals(1, result);
-	}
-
-	@Disabled
-	@Test
-	public void test08_detail() {
-		Sboard2Dto dto = new Sboard2Dto();
-		dto.setId(1);
-		assertEquals(1, sboard2Service.detail(dto).getId());
-	}
-
-	@Disabled
-	@Test
-	public void test07_service_paging() {
-		assertEquals(7, sboard2Service.list10(1).size());
-
-		assertEquals(7, sboard2Service.selectCnt());
-	}
-
-	@Disabled
-	@Test
-	public void test06_service_insert() {
-		Sboard2Dto dto = new Sboard2Dto();
-		dto.setAppUserId(1);
-		dto.setBtitle("title");
-		dto.setBcontent("content");
-		dto.setBpass("1111");
-
-		MockMultipartFile file = new MockMultipartFile("file", "test.txt", "text/plain", "data".getBytes());
-		// import org.springframework.mock.web.MockMultipartFile;
-
-		int result = sboard2Service.insert(file, dto);
-		assertEquals(1, result);
-	}
-
-	/*                           */
-	/*                           */
-	/*                           */
-	@Disabled
-	@Test
-	public void test05_delete() { // 삭제
-		Sboard2Dto dto = new Sboard2Dto();
-		dto.setId(27);
-		int result = sboard2Dao.delete(dto);
-		assertEquals(1, result);
-	}
-
-	@Disabled
-	@Test
-	public void test04_update() {// 수정
-		Sboard2Dto dto = new Sboard2Dto();
-		dto.setBtitle("title-new");
-		dto.setBcontent("content-new");
-		dto.setBfile("1.png");
-		dto.setId(27);
-
-		int result = sboard2Dao.update(dto);
-		assertEquals(1, result); // 자동확인 : 결과물이 1인지 junit 체크
-	}
-
+	@Autowired AppUserDao dao;
+	@Autowired AppUserService service;
 	
-	@Test
-	public void test03_byId() {// id, 조회수올리기
-		Sboard2Dto dto = new Sboard2Dto();
-		dto.setId(1);
-		Sboard2Dto result = sboard2Dao.selectById(dto);
-		assertEquals(1, result.getId());
+	// 삭제
+	@Disabled @Test public void deleteService_User() {
+		AppUserDto user = new AppUserDto();
+		user.setEmail("2@2");
+		user.setPassword("2");
+		user.setAppUserId(61);
+		assertEquals(1, service.delete(user, true));
 	}
-
-	@Disabled
-	@Test
-	public void test02_paging() { // 페이징, 갯수
-		HashMap<String, Object> para = new HashMap<>();
-		para.put("start", 0);
-		para.put("end", 10);
-		List<Sboard2Dto> list10 = sboard2Dao.selectPaging(para);
-		assertEquals(6, list10.size()); // 6숫자는 지금 있는 list 의 갯수로 ( 예상되는 결과 , 해당코드 )
-		assertNotNull(list10);
-		assertEquals(6, sboard2Dao.selectCnt()); // 전체갯수 6개
+	
+	// 수정
+	@Disabled @Test public void updateService_User() {
+		AppUserDto user = new AppUserDto();
+		user.setEmail("2@2"); user.setPassword("2");
+		user.setMbtiTypeId(2); user.setUfile("2.png");
+		user.setMobile("01012345678"); user.setNickname("BETA");
+		user.setProvider("local"); user.setProviderId("local_002");
+		user.setAppUserId(61);
+		
+		MockMultipartFile file = new MockMultipartFile("file", "test.text", "text/plain", "data".getBytes());
+		
+		assertEquals(1, service.update(file, user)); // 예상되는 결과, 코드
 	}
-
-	@Disabled
-	@Test
-	public void test01_Insert() throws UnknownHostException { // insert
-		Sboard2Dto dto = new Sboard2Dto();
-		dto.setAppUserId(1);
-		dto.setBtitle("title");
-		dto.setBcontent("content");
-		dto.setBpass("1111");
-		dto.setBfile("1.png");
-		dto.setBip(InetAddress.getLocalHost().getHostAddress());
-
-		int result = sboard2Dao.insert(dto);
-		System.out.println(".....1 > " + result); // 기존방식 - 수동으로 값확인 : 콘솔에 1
-		assertEquals(1, result); // 자동확인 : 결과물이 1인지 junit 체크
+	
+	// 이메일 중복
+	@Disabled @Test public void iddoubleService_User() {
+		int result = service.iddouble("2@1", "local");
+		System.out.println(result == 1? "중복":"사용 가능");
 	}
-
-	// @Ignore - JUnit4
-	@Disabled // @Test
-	void contextLoads() {
-		System.out.println("..........................");
-		System.out.println(dao.readTime());
-		System.out.println("..........................");
+	
+	// 마이페이지
+	@Disabled @Test public void mypageService_User() {
+		AppUserDto mypage = service.selectEmail("2@1", "local");
+		assertNotNull(mypage);
+		System.out.println(mypage);
 	}
+		
+	// 로그인
+	@Disabled @Test public void login_Service_User() {
+		AppUserAuthDto login =  service.readAuthByEmail("2@1", "local");
+		assertNotNull(login);
+		assertEquals("2@1", login.getEmail());
+		assertTrue( login.getAuthList().stream().anyMatch(a -> "ROLE_MEMBER".equals(a.getAuth())) );
+	}
+	
+	// 등록
+	@Test public void insert_Service_User() {
+		AppUserDto user = new AppUserDto();
+		user.setEmail("2@2");
+		user.setPassword("2");
+		user.setMbtiTypeId(1);
+		user.setUfile("2.png");
+		user.setMobile("01012345678");
+		user.setNickname("ALPHA");
+		user.setProvider("local");
+		user.setProviderId("local_001");
+		
+		MockMultipartFile file = new MockMultipartFile("file", "test.text", "text/plain", "data".getBytes());
+		
+		int result = service.insert(file, user);
+		assertEquals(1, result); // 예상되는 결과, 코드
+
+	}
+	
+	//////////////////////////////////////////////////////////////
+	
+	//6. 수정 (동적SQL)
+	@Disabled @Test
+	public void update_user() {
+		AppUserDto user = new AppUserDto();
+		user.setAppUserId(21);
+		user.setNickname("first");
+		
+		System.out.println("...................");
+		System.out.println(user);
+	}
+	
+	//5. 사용자 + 권한 삭제
+	@Disabled @Test 
+	public void delete_user() {
+		AppUserDto user = new AppUserDto();
+		user.setAppUserId(21);
+		assertEquals(1, dao.deleteAppUser(user));
+		
+		AuthDto auth = new AuthDto();
+		auth.setEmail("1@1");
+		assertEquals(1, dao.deleteAuth(auth));
+	}
+	
+	//4. 마이페이지
+	@Disabled @Test 
+	public void mypage_User() {
+		AppUserDto user = new AppUserDto();
+		user.setEmail("1@1");
+		// assertEquals( "1@1", dao.findByEmail(user).getEmail() );
+		System.out.println(user);
+	}
+	
+	//3. 아이디중복
+	@Disabled @Test 
+	public void iddoubleByEmail() {
+		AppUserDto user = new AppUserDto();
+		user.setEmail("1@1");
+		int result = dao.iddoubleByEmail(user);
+		assertEquals(1, result);
+	}
+	
+	//2. 로그인
+	@Disabled @Test
+	public void login_user(){
+		AppUserDto user = new AppUserDto();
+		user.setEmail("1@1");
+		assertNotNull(dao.readAuthByEmail(user));
+	}
+	
+	@Disabled @Test
+	public void insert_User(){ // 1. 회원가입 - 유저 등록 + 권한 등록
+		AppUserDto user = new AppUserDto();
+		user.setEmail("1@1");
+		user.setPassword("1");
+		user.setMbtiTypeId(1);
+		user.setUfile("1.png");
+		user.setMobile("01012345678");
+		user.setNickname("ALPHA");
+		user.setProvider("local");
+		user.setProviderId("local_001");
+		
+		int result = dao.insertAppUser(user);
+		assertEquals(1, result); // 예상되는 결과, 코드
+		// org.junit.jupiter.api.Assertions.assertEquals;
+		
+		AuthDto auth = new AuthDto();
+		auth.setEmail("1@1");
+		auth.setAuth("ROLE_USER");
+		int result_auth = dao.insertAuth(auth);
+		assertEquals(1, result_auth);
+		
+	}	
 
 }
