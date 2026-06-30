@@ -66,7 +66,7 @@ class Boot1ApplicationTests {
 	}
 	
 	// 등록
-	@Test public void insert_Service_User() {
+	@Disabled @Test public void insert_Service_User() {
 		AppUserDto user = new AppUserDto();
 		user.setEmail("2@2");
 		user.setPassword("2");

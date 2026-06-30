@@ -33,12 +33,14 @@ public class AppUserServiceImpl implements AppUserService {
 			try { dto.setUfile(upload.fileUpload(file)); } 
 			catch (IOException e) { e.printStackTrace(); }
 		}
-
-		// 비밀번호 암호화
+		dto.setMbtiTypeId(1); // 확장버전 : mbti
+		dto.setProviderId("the703-1"); // UUID - 추가
 		dto.setProvider("the703");
+		
+		// 비밀번호 암호화
 		dto.setPassword(passwordEncoder.encode(dto.getPassword()));
 		int result = dao.insertAppUser(dto); // # sql 1번
-		// @Transactional - sql 구문을 2개 이상 사용했을 경우, 1번의 sql이 실패하면 false
+		// @Transactional - sql 구문을 2개 이상 사용했을 경우, 둘중 하나라도 실패하면 롤백
 
 		// 권한
 		AuthDto udto = new AuthDto();

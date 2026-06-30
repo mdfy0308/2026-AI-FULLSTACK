@@ -18,7 +18,7 @@ public class SecurityConfig {
 		
 		//1. 허용경로
 		http.authorizeHttpRequests( auth -> auth
-					.requestMatchers("users/join", "users/login", "api/**").permitAll()			
+					.requestMatchers("users/join", "users/login", "/users/iddouble", "api/**").permitAll()			
 					.requestMatchers("users/mypage", "users/update", "users/delete").authenticated()
 					.anyRequest().permitAll()
 		)//2. 로그인처리

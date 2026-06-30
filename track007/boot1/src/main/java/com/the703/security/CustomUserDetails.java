@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.the703.dto.AppUserAuthDto;
 import com.the703.dto.AppUserDto;
@@ -16,12 +17,15 @@ import com.the703.dto.AppUserDto;
 import lombok.Getter;
 
 @Getter
-class CustomUserDetails implements UserDetails { // UserDetails (security), oauth2-client)
+public class CustomUserDetails implements UserDetails, OAuth2User {
 
+	private static final long serialVersionUID = 1L;
+
+	// 1. UserDetails (security)
 	private AppUserDto user;
 	private AppUserAuthDto authDto;
 	private Map<String, Object> attributes = new HashMap<>();
-	
+
 	/////////////////////////////////////////
 	public CustomUserDetails(AppUserDto user, AppUserAuthDto authDto) {
 		super();
@@ -30,30 +34,66 @@ class CustomUserDetails implements UserDetails { // UserDetails (security), oaut
 		this.attributes.put("email", user.getEmail());
 		this.attributes.put("provider", user.getProvider());
 	}
+
 	/////////////////////////////////////////
 	@Override
-	   public Collection<? extends GrantedAuthority> getAuthorities() { 
-	      if( authDto ==null || authDto.getAuthList()  == null || authDto.getAuthList().isEmpty() ) {
-	         return List.of( new SimpleGrantedAuthority("ROLE_MEMBER") );
-	      } // 권한 없으면 ROLE_MEMBER
-	   
-	      return authDto.getAuthList().stream()
-	            .filter( a->a.getAuth() != null  &&  !a.getAuth().isBlank() )
-	            .map(    a-> new SimpleGrantedAuthority(a.getAuth()))
-	            .collect(Collectors.toList());
-	   }
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		if (authDto == null || authDto.getAuthList() == null || authDto.getAuthList().isEmpty()) {
+			return List.of(new SimpleGrantedAuthority("ROLE_MEMBER"));
+		} // 권한 없으면 ROLE_MEMBER, social 로그인할 경우
+
+		return authDto.getAuthList().stream().filter(a -> a.getAuth() != null && !a.getAuth().isBlank())
+				.map(a -> new SimpleGrantedAuthority(a.getAuth())).collect(Collectors.toList());
+	}
 
 	@Override
-	public String getPassword() { return user.getPassword(); }
+	public String getPassword() {
+		return user.getPassword();
+	}
 
 	@Override
-	public String getUsername() { return user.getEmail() + ":" + user.getProvider(); }	
-	// 1@1 : local, 2@2 : kakao
-	
+	public String getUsername() {
+		return user.getEmail() + ":" + user.getProvider();
+	}
+
 	/////////////////////////////////////////
-	
-	public Integer getAppUserId() { return user.getAppUserId(); }
-	public String getEmail() { return user.getEmail(); }
-	public String getProvider() { return user.getProvider(); }
-	
+
+	public Integer getAppUserId() {
+		return user.getAppUserId();
+	}
+
+	public String getEmail() {
+		return user.getEmail();
+	}
+
+	public String getProvider() {
+		return user.getProvider();
+	}
+
+	////////////////////////////////////////////////////////////////////////////
+	// 2. social
+	// java : alt + shift + s
+
+	public CustomUserDetails(AppUserDto user, Map<String, Object> attributes) {
+		super();
+		this.user = user;
+		this.authDto = new AppUserAuthDto();
+		this.attributes = new HashMap<>(attributes != null ? attributes : Map.of());
+		this.attributes.put("email", user.getEmail());
+		this.attributes.put("provider", user.getProvider());
+	}
+
+	@Override
+	public Map<String, Object> getAttributes() {
+		return attributes;
+	}
+
+	public void setAttributes(Map<String, Object> attributes) {
+		this.attributes = attributes;
+	}
+
+	@Override
+	public String getName() {
+		return user.getEmail() + ":" + user.getProvider();
+	}
 }
