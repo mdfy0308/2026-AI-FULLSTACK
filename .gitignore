@@ -11,6 +11,7 @@ META-INF/
 lib/
 .jar
 .properties
+application-oauth.properties
 
 # 빌드 결과물 무시
 /bin/

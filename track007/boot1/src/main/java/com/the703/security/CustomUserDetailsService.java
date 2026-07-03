@@ -21,9 +21,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 		// 1. username "1@1:local" "2@2:kakao"
 		String[] parts = username.split(":");
 		String email = parts[0];
-		String provider = parts.length > 1? parts[1] : "local";
+		String provider = parts.length > 1? parts[1] : "the703"; // local - 회원가입한 사람
 		
-		AppUserDto dto = new AppUserDto(); 
+		AppUserDto dto = new AppUserDto();
 		dto.setEmail(email); dto.setProvider(provider);
 		
 		AppUserAuthDto authDto = dao.readAuthByEmail(dto); // username, password, List<authDto>

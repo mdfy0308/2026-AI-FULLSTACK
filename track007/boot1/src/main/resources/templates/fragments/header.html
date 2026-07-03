@@ -21,8 +21,11 @@
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 			<div class="container-fluid">
 				<ul class="navbar-nav me-auto">
-					<li class="nav-item"><a class="nav-link"
-						sec:authorize="isAnonymous()" th:href="@{/board/list}">BOARD</a></li>
+					<li class="nav-item">
+						<a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/board/list}">
+							BOARD
+						</a>
+					</li>
 				</ul>
 				<ul class="d-flex navbar-nav">
 					<li class="nav-item">
@@ -31,8 +34,8 @@
 					<li class="nav-item">
 						<a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/users/join}">JOIN</a>
 					</li>
-					<li class="nav-item">
-						<form th:action="@{/users/logout}" method="post">
+					<li class="nav-item" sec:authorize="isAuthenticated()">
+						<form th:action="@{/users/logout}"  method="post">
 							<button type="submit" class="nav-link">LOGOUT</button>
 						</form>
 					</li>

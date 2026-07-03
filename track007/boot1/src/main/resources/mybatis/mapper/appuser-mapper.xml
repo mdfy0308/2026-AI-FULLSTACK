@@ -43,7 +43,6 @@
 	<update id="updateAppUser" parameterType="AppUserDto">
 		update appuser
 		<set>
-			<!-- <if test="password != null"> password = #{password} </if> -->
 			<if test="mbtiTypeId != null"> mbti_type_id = #{mbtiTypeId}, </if>
 			<if test="ufile != null"> ufile = #{ufile}, </if>
 			<if test="nickname != null"> nickname = #{nickname}, </if>
