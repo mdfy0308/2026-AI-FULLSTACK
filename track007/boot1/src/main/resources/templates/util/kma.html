@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout}">
+<!--    #1. layout 렌더링    -->
+<head lang="ko">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content">
+	
+		<h3 class="card-header my-3">KMA 기상청 단기</h3>
+		<table
+			class="table table-striped  table-bordered  table-hover  weather_result">
+			<caption>우리동네 단기예보</caption>
+			<thead>
+				<tr>
+					<th scope="col">CATEGORY</th>
+					<th scope="col">TIME</th>
+					<th scope="col">DATA</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+
+		<script>
+         window.addEventListener('load', () => { 
+            //1. tbody 비우기
+               const tbody = document.querySelector(".weather_result tbody");
+               if (tbody) { tbody.innerHTML = ""; }
+    
+             //2. fetch   
+               fetch("/api/util/kmaWeather")  
+             		// 백엔드와 통신하기 fetch API, 브라우저가 스프링 서버의 컨트롤러 주소("/api/util/kmaWeather")로 비동기 GET 요청
+             		// ApiKmaWeather 클래스가 동작하며 기상청 데이터를 문자열로 반환
+                   .then(response => {  
+                	   //자료형
+                       if (!response.ok) { // 만약 요청이 실패하면 에러 텍스트 반환
+                    	   return response.text().then(errText => { throw new Error(errText); }); 
+                    	}
+                	   return  response.text();
+                   })
+                   .then(data => { // 성공시 데이터 파싱, string 형태의 xml을 xml 객체로 변환
+                      const parser = new DOMParser();
+                   	  // 단순한 텍스트 XML를 JS가 인식할 수 있는 구조화된 객체(Document)로 변환해주는 변환기
+                      const xml = parser.parseFromString(data, "application/xml");
+                   	  // 기상청에서 받아온 문자열(data)를 실제 xml구조로 파싱하고 html태그처럼 내부에 접근할 수 있게 해줌
+                      console.log(xml);
+                      
+                      //item 가져오기
+                      const items = xml.querySelectorAll("item");
+                      // 기상청 데이터를 구성하는 여러 개의 item을 querySelectorAll로 선택해 리스트 형태로 가져온다
+                      
+                      items.forEach( el => {
+                    	  const tr = document.createElement("tr");
+                    	  const td1 = document.createElement("td");
+                    	  const td2 = document.createElement("td");
+                    	  const td3 = document.createElement("td");
+                    	  
+                    	  td1.textContent = el.querySelector("category")?.textContent || "";
+                    	  td2.textContent = el.querySelector("baseTime")?.textContent || "";
+                    	  td3.textContent = el.querySelector("obsrValue")?.textContent || "";
+                    	  
+                    	  tr.appendChild(td1);
+                    	  tr.appendChild(td2);
+                    	  tr.appendChild(td3);
+                    	  
+                    	  tbody?.appendChild(tr);
+                      });
+                   })
+                   .catch(error => {
+                       console.error("에러 발생:", error);
+                       if (tbody) {
+                           tbody.textContent = error.message;
+                       }
+                   });
+           });
+         </script>
+	</div>
+	<!--    http://localhost:8080/api/util/kma -->
+	<!--    http://localhost:8080/api/util/kmaWeather -->
+</body>
+</html>
