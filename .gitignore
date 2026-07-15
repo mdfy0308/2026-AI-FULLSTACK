@@ -12,6 +12,7 @@ lib/
 .jar
 .properties
 application-oauth.properties
+.env
 
 # 빌드 결과물 무시
 /bin/
@@ -24,3 +25,6 @@ application-oauth.properties
 # OS별 임시파일
 *.DS_Store
 Thumbs.db
+
+
+track008_1_NODEREACT/back/node_modules
