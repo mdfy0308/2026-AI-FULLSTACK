@@ -1,4 +1,3 @@
-// npx jest reducers/user.test.js
 import reducer, {
     initialState , 
     LOG_IN_REQUEST , LOG_IN_SUCCESS , LOG_IN_FAILURE , 
@@ -97,3 +96,5 @@ describe( 'user reducer' , ()=>{
     });
 
 });
+
+// npx jest reducers/user.test.js
