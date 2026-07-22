@@ -269,6 +269,7 @@ c. store   (치킨집  - 모든상태를 모아두는 중앙창고 / 주방(redu
 2. [reducers] - index.js
 3. [reducers] - user.test.js
 
+
 ```
 사용자 액션 (버튼클릭, 로그인 요청 등)
              ↓
@@ -309,6 +310,7 @@ c. store   (치킨집  - 모든상태를 모아두는 중앙창고 / 주방(redu
     _______________________________
     - useSelector로 상태읽기
 ```
+
 
 6. 개발 (reducer - saga - view) (2) saga
 
@@ -360,6 +362,7 @@ console.log(gen2.next());
 4. put : redux 액션을 dispatch
 5. takeLatest : 특정 액션을 감지하고 가장 마지막 액션만 처리
 
+
 ```
 주소경로
 post : /user/register (requestBody)
@@ -369,3 +372,52 @@ get  : /user/
 patch: /user/{id}/nickname 
 delete: /user/{id} 
 ```
+
+
+7. 개발 (reducer - saga - view) (3) store
+
+```
+front/
+├── store/                  # ✅ Redux 스토어 설정 폴더
+│   ├── configureStore.js   # Redux 스토어 설정
+│   └── configureStore.test.js # 스토어 테스트 코드
+```
+
+
+8. View
+
+```
+front/
+├── pages/                  # ✅ Next.js 라우팅 기반 페이지 폴더
+│   ├── _app.js             # 전체 앱의 공통 설정 (Redux Provider, 글로벌 스타일 등)
+│   ├── index.js            # 메인 페이지
+│   ├── login.js            # 로그인 페이지
+│   ├── signup.js           # 회원가입 페이지
+│   └── users.js            # 사용자 목록 또는 정보 페이지 
+```
+
+1. `useSelector`  → Redux Store에서 사용자 상태 가져오기
+  - 상태 조회 : 스토어에 저장된 전역 상태(State) react에서 가져오기
+  - useSelect( (state) => state.user)
+
+2. `useEffect`    → 로그인 여부 확인 및 사용자 목록 불러오기
+  - 생명주기 및 부수효과 처리
+  - 부품이 처음 나왔을 때, 사라질 때, 특정 상태 변경시 
+
+3. `dispatch`     → 액션 발생(로그인, 사용자 삭제)
+  - 알림 : 스토어에게 어떤 액션이 발생했음을 알림
+  - store.dispatch({type: LOG_IN_REQUEST});
+
+
+실습 0) back - app.js
+```js
+app.use( expess.json() ); // json 파싱 미들웨어(POST 요청 BODY를 json 읽기)
+app.use( express.urlencoded({extended:true}) ); // form 데이터 처리
+app.use( cors({
+  origin : 'http://localhost:3000', // 프론트엔드 주소를 정확히 명시
+  credentials: true                 // 쿠키 세션 허옹
+}) );
+```
+
+
+실습 1) front/pages/_app.js

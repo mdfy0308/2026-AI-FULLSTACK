@@ -77,8 +77,8 @@ export function* logout(){
     }
 }
 
-function* watchlogout(){
-    yield takeLatest( LOG_OUT_REQUEST, signUp ); 
+function* watchLogout(){
+    yield takeLatest( LOG_OUT_REQUEST, logout ); 
 }
 
 // ----------------------------- 회원가입   watchSignUp

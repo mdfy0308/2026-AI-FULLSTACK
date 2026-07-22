@@ -1,7 +1,8 @@
 //pages/_app.js
-import 'bootstrap/dist/css/bootstrap.min.css'; // bootstrap css
-import Layout from '../components/Layout';     // 공통레이아웃 컴포넌트
-import '../styles/globals.css';                // 글로벌 css
+import 'bootstrap/dist/css/bootstrap.min.css';      // bootstrap css
+import Layout from '../components/Layout';          // 공통레이아웃 컴포넌트
+import '../styles/globals.css';                     // 글로벌 css
+import {wrapper} from '../store/configureStore';    // store 연결##
 
 function MyApp( {Component, pageProps} ){      // 현재 렌더링할 컴포넌트, 해당 페이지에 전달되는 초기 Props
     return (
@@ -12,4 +13,4 @@ function MyApp( {Component, pageProps} ){      // 현재 렌더링할 컴포넌�
     );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp); // next-redux-wrapper store 연결##

@@ -5,7 +5,7 @@
 - 현재는 user reducer만 포함 */
 
 import {combineReducers} from 'redux';  // 여러 개의 리듀서를 합치는 Redux 함수
-import { use }           from './user'; // 사용자 관련 상태를 관리하는 user 리듀서
+import user          from './user'; // 사용자 관련 상태를 관리하는 user 리듀서
 //import post            from './post'; // 사용자 관련 상태를 관리하는 post 리듀서
 
 const rootReducer = combineReducers({

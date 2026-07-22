@@ -19,7 +19,7 @@ async function createUser(email, password, nickname, mobile, mbtiTypeId, ufile) 
             APP_USER_ID, EMAIL, PASSWORD, NICKNAME, MOBILE, MBTI_TYPE_ID, UFILE, CREATED_AT
             ) VALUES (
             APPUSER_SEQ.NEXTVAL, :email, :password, :nickname, :mobile, :mbtiTypeId, :ufile, sysdate
-            )`, { email, password:hashedPassword, nickname, mobile, mbtiTypeId, ufile }
+            )`, { email, password: hashedPassword, nickname, mobile, mbtiTypeId, ufile }
             , options); // sql, 사용자 입력값, 옵션
     }catch(err){ 
         console.log(`createUser Error`, err);
@@ -73,9 +73,9 @@ async function verifyUser(email, password){
     const user = await findUserByEmail(email);
     if(!user) return null;
 
-    const match = await bcrypt.compare(password, user.password);
+    const match = await bcrypt.compare(password, user.PASSWORD);
     if(!match) return null;
-
+    
     return {
         id : user.APP_USER_ID,
         email : user.email,

@@ -65,7 +65,11 @@ const reducer = ( state=initialState, action )=>{ // 현재상태, 요청액션
             return { ...state, isLoading: false, 
                     me: state.me && state.me.id === action.data.id
                     ? { ...state.me, nickname: action.data.nickname } 
-                    : state.me  };
+                    : state.me,
+                    users: state.users.map(u =>
+                    u.id === action.data.id ? { ...u, nickname: action.data.nickname } : u
+                    ),
+                };
         case DELETE_USER_SUCCESS:
             return { ...state, isLoading: false,
                 me: state.me?.id === action.data.id? null : state.me,
