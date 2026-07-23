@@ -114,6 +114,7 @@ async function updateUserNickname(nickname, id){
             WHERE APP_USER_ID = :id`
             , {nickname, id}
             , options);
+        return result; // 결과 처리
     }catch(err){ 
         console.log(`updateUserNickname Error`, err);
         throw err;
@@ -144,14 +145,16 @@ async function deleteUser(id){
 //2-8. 닉네임 조회
 async function findUserByNickname(nickname){
     let conn;
+    
     try{ 
         conn = await oracleDB.getConnection(dbConfig);
         const result = await conn.execute(`
-            SELECT COUNT(*) 
+            SELECT APP_USER_ID, EMAIL, PASSWORD, NICKNAME, MOBILE, MBTI_TYPE_ID, UFILE, CREATED_AT
             FROM APPUSER
             WHERE NICKNAME = :nickname`
             , {nickname}
             , options);
+        return result.rows[0];
     }catch(err){ 
         console.log(`findUserByNickname Error`, err);
         throw err;

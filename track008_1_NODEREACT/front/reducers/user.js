@@ -6,6 +6,8 @@ reducers/user.js
 - 1. 각 액션 타입 정의 / 2. 초기 상태 / 3. reducer 함수 
 */
 
+import { checkEmail } from "../sagas/user";
+
 //1. 각 액션 타입 정의
 export const LOG_IN_REQUEST = 'LOG_IN_REQUEST'; // 로그인 요청
 export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS'; // 로그인 성공
@@ -31,6 +33,15 @@ export const DELETE_USER_REQUEST = 'DELETE_USER_REQUEST'; // 사용자 삭제 �
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS'; // 사용자 삭제 성공
 export const DELETE_USER_FAILURE = 'DELETE_USER_FAILURE'; // 사용자 삭제 실패
 
+export const CHECK_EMAIL_REQUEST = 'CHECK_EMAIL_REQUEST'; // 이메일 중복 확인 요청
+export const CHECK_EMAIL_SUCCESS = 'CHECK_EMAIL_SUCCESS'; // 이메일 중복 확인 성공
+export const CHECK_EMAIL_FAILURE = 'CHECK_EMAIL_FAILURE'; // 이메일 중복 확인 실패
+
+export const CHECK_NICKNAME_REQUEST = 'CHECK_NICKNAME_REQUEST'; // 닉네임 중복 확인 요청
+export const CHECK_NICKNAME_SUCCESS = 'CHECK_NICKNAME_SUCCESS'; // 닉네임 중복 확인 성공
+export const CHECK_NICKNAME_FAILURE = 'CHECK_NICKNAME_FAILURE'; // 닉네임 중복 확인 실패
+
+
 //2. 초기 상태
 export const initialState={
     me: null,           // 로그인 사용자 정보 { id, email, nickname }
@@ -38,6 +49,15 @@ export const initialState={
     isLoading: false,   // api 요청 중 여부
     error: null,        // 에러 메세지
     signUpDone: false,  // 회원가입 완료여부
+    checkEmailLoading: false,   // email - api 요청중
+    checkEmailDone: false,
+    checkEmailError: null,
+    isEmailAvailable: null,     // true : 사용 가능, false : 중복
+
+    checkNicknameLoading: false,    // Nickname - api 요청중
+    checkNicknameDone: false,
+    checkNicknameError: null,
+    isNicknameAvailable: null,      // true : 사용 가능, false : 중복
 };
 
 //3. reducer 함수 
@@ -51,6 +71,20 @@ const reducer = ( state=initialState, action )=>{ // 현재상태, 요청액션
         case UPDATE_NICKNAME_REQUEST:
         case DELETE_USER_REQUEST:
             return { ...state, isLoading: true, error: null };
+        case CHECK_EMAIL_REQUEST:
+            return { 
+                ...state,
+                checkEmailLoading: true, 
+                checkEmailDone: false,
+                checkEmailError: null,
+                isEmailAvailable: null };
+        case CHECK_NICKNAME_REQUEST:
+            return { 
+                ...state,
+                checkNicknameLoading: true,
+                checkNicknameDone: false,
+                checkNicknameError: null,
+                isNicknameAvailable: null };
         
         // 성공 액션 → 상태 업데이트
         case LOG_IN_SUCCESS:
@@ -75,6 +109,18 @@ const reducer = ( state=initialState, action )=>{ // 현재상태, 요청액션
                 me: state.me?.id === action.data.id? null : state.me,
                 users: state.users.filter((u) => u.id !== action.data.id)
             };
+        case CHECK_EMAIL_SUCCESS:
+            return { 
+                ...state,
+                checkEmailLoading: false, 
+                checkEmailDone: true,
+                isEmailAvailable: action.data.isAvailable };
+        case CHECK_NICKNAME_SUCCESS:
+            return { 
+                ...state,
+                checkNicknameLoading: false,
+                checkNicknameDone: true,
+                isNicknameAvailable: action.data.isAvailable };
     
         // 실패 액션 → 에러 메시지
         case LOG_IN_FAILURE:
@@ -84,6 +130,16 @@ const reducer = ( state=initialState, action )=>{ // 현재상태, 요청액션
         case UPDATE_NICKNAME_FAILURE:
         case DELETE_USER_FAILURE:
             return { ...state, isLoading: false, error: action.error?.message || action.error };
+        case CHECK_EMAIL_FAILURE:
+            return { ...state,
+                checkEmailLoading: false,
+                checkEmailError: action.error,
+                isEmailAvailable: false };
+        case CHECK_NICKNAME_FAILURE:
+            return { ...state,
+                checkNicknameLoading: false,
+                checkNicknameError: action.error,
+                isNicknameAvailable: false };
 
         // 기본값 → 상태 변경 없음
         default:
