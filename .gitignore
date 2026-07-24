@@ -28,6 +28,11 @@ track007/test1/
 Thumbs.db
 
 
+# 모듈 파일
 track008_1_NODEREACT/back/node_modules
 track008_1_nodereact/front/node_modules
 track008_1_nodereact/front/.next
+
+track008_test/back/node_modules
+track008_test/front/node_modules
+track008_test/front/.next
