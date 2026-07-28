@@ -116,10 +116,10 @@ grant  create table to boot;
 
 ##### [실습] 4. Boot + React ver.1 (기본 게시판 + 회원가입)
 1. board
-- [✔] 1. project
-- [✔] 2. 부품객체 () : gradle
+- [x] 1. project
+- [x] 2. 부품객체 () : gradle
   ※ https://mvnrepository.com/
-- [✔] 3. application.yml
+- [x] 3. application.yml
 ```yml
 spring:
   datasource:
@@ -175,8 +175,10 @@ file:
 #server:
 #  port: 8484
 ```
-  ※ (oracle db:table) → dto → mapper → service → controller → view
-- [✔] 4. entity (테이블을 객체로 처리)
+  ※ 이전: (oracle db:table) → mapper → dto → service → controller → view
+  ※ 현재: @Entity       → repository → dto → service → controller → view
+
+- [x] 4. entity (테이블을 객체로 처리)
   back1
   └─ src/main/java
     └─ com.the703.entity
@@ -201,21 +203,132 @@ file:
       > Post(여러 개의 글)
       @ManyToOne
 
-- [✔] 5. Dto
+- [x] 5. Dto
   back1
       └─ src/main/java
         └─ com.the703.repository
           ├─ AppUserRepository
           └─ PostRepository
-- [✔] 6. Repository
+
+- [x] 6. Repository
   back1
     └─ src/main/java
       └─ com.the703.repository
         ├─ AppUserRepository
         └─ PostRepository
-- [] 7. Service
-- [] 8. Controller
-- [] 9. View
+
+- [x] 7. Service
+  back1
+    └─ src/main/java
+      └─ com.the703.service
+        ├─ UserService
+        └─ PostService
+
+7-1. 클래스 명   : UserService (package com.thejoa703.service;)
+메서드 명
+- createUser (회원가입 / 사용자 등록 기능)
+- getUser (사용자 단건 조회 기능)
+
+7-2. 클래스 명   : PostService
+- getAllPosts (모든 글)
+- getPostById (단건 조회)
+- getPostPaged (오라클 네이티브 페이징 조회)
+- createPost (게시글 생성)
+- updatePost (게시글 수정)
+- deletePost (게시글 삭제)
 
 
-2. 회원가입
+- [x] 8. Controller
+  back1
+    ㄴ src/main/java
+      ㄴ com.thejoa703.controller
+          - UserController
+          - PostController
+
+  1. User Api    - 사용자 관련 API
+  - POST   /api/users      회원가입
+  - GET    /api/users/{id}    사용자 단건 조회
+
+  2. Post API    - 게시글 관련 API
+  - GET      /api/posts/{id}  게시글 단건 조회   ※  getPostById 
+  - PUT      /api/posts/{id}  게시글 수정       ※  updatePost
+  - DELETE   /api/posts/{id}  게시글 삭제       ※  deletePost
+  - GET      /api/posts       전체 게시글 조회   ※  getAllPosts, getPostPaged
+  - POST     /api/posts       게시글 작성       ※  createPost 
+  
+  ※ swagger는 갱신 안되므로 서버 다시 재부팅
+
+...............................
+- [x] 9. View
+
+1. 회원가입
+   ↓
+2. 마이페이지
+   ↓
+3. 글쓰기
+   ↓
+4. 글수정   
+   ↓
+5. 글삭제
+
+Step 1) 프로젝트 만들기
+```
+mkdir front1
+cd front1
+npm init
+```
+Step 2) 기본 세팅(store)
+```
+package.json 세팅
+npm install
+```
+Step 3) Reducer
+Step 4) Saga
+Step 5) View
+
+```
+front/
+├── .next/                  # Next.js 빌드 결과물 (자동 생성, 배포 시 사용)
+├── components/         # 재사용 가능한 UI 컴포넌트 폴더
+│   └── Layout.js         # 페이지 공통 레이아웃 컴포넌트
+├── node_modules/       # 설치된 npm 패키지들
+├── pages/                  # Next.js 라우팅 기반 페이지 폴더
+│   ├── posts/             
+│      └──new.js       #  글쓰기 파일
+│   ├── _app.js             # 전체 앱의 공통 설정 (Redux Provider, 글로벌 스타일 등)
+│   ├── signup.js              # 회원가입
+│   ├── mypage.js         # 마이페이지
+│   └── index.js            # 메인 페이지
+├── reducers/               # Redux 리듀서 폴더 - 전역상태공유
+│   ├── __tests__/       
+│      ├── postr.test.js        # 게시판 테스트 코드 
+│      └── user.test.js        # 리듀서 테스트 코드
+│   ├── index.js            # 루트 리듀서 (combineReducers)
+│   ├── authReducer.js             # 사용자 관련 리듀서
+│   └── postReducer.js             # 게시판 관련 리듀서 
+├── sagas/                  # Redux-Saga 폴더
+│   ├── __tests__/       
+│      ├── postr.test.js        # 게시판 사가 테스트 코드
+│      └── user.test.js         # 유저  사가 테스트 코드
+│   ├── index.js            # 루트 사가
+│   ├── user.js             # 사용자 관련 사가
+│   └── post.js             # 게시판 관련 사가 
+├── store/                  # Redux 스토어 설정 폴더
+│   ├── configureStore.js   # Redux 스토어 설정
+│   └── configureStore.test.js # 스토어 테스트 코드
+├── styles/                 # CSS 스타일 폴더
+│   └── globals.css         # 글로벌 스타일
+├── .babelrc                # Babel 설정 파일
+├── .eslintrc               # ESLint 설정 파일
+├── package-lock.json       # npm 의존성 잠금 파일
+├── package.json            # 프로젝트 메타 정보 및 의존성
+└── setupTests.js           #  테스트 환경 설정 파일
+```
+
+
+##### [실습] 5. Boot + React + 세션/쿠키 ver.2 (기본 게시판 + 회원가입 + 이미지/해시태그/좋아요/팔로우)
+@Entity → repository → dto → service → controller 
+
+
+
+##### [실습] 6. Boot + React + jwt + security + redis ver.3 (기본 게시판 + 회원가입 + 이미지/해시태그/좋아요/팔로우)

@@ -20,7 +20,7 @@ import jakarta.transaction.Transactional;
 
 @SpringBootTest
 @Transactional // 테스트 완료 후 데이터 자동 롤백
-class Boot1ApplicationTests {
+class Boot1ApplicationTests1_Entity {
 	@Autowired	AppUserRepository appUserRepository;
 	@Autowired	PostRepository postRepository;
 
