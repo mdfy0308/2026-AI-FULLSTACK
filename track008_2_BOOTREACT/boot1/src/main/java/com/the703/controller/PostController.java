@@ -51,7 +51,6 @@ public class PostController {
 		return ResponseEntity.ok( lists );
 	}
 
-	
 	// 게시글 단건 조회
 	@Operation(summary = "게시글 조회", description = "게시글의 상세내용을 조회합니다.")
 	@GetMapping("/{id}")
@@ -78,7 +77,6 @@ public class PostController {
 		postService.deletePost(id);
 		return ResponseEntity.ok(id); // 200
 	}
-
 }
 
 // http://localhost:8080/swagger-ui/index.html
