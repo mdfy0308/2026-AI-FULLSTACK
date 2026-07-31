@@ -6,7 +6,7 @@ import {
     fetchUserRequest, fetchUserSuccess, fetchUserFailure,
     resetUserState, } from '../reducers/authReducer';
 
-const USER_API_BASE = 'http://localhoset:8080/api/users';
+const USER_API_BASE = 'http://localhost:8080/api/users';
 
 // --- 회원가입 POST  /api/users ---
 export  const signupApi = ( userData )=> axios.post(USER_API_BASE, userData);

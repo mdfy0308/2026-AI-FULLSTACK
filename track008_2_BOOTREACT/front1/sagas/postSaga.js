@@ -10,7 +10,7 @@ import {
     resetPostState,
 } from '../reducers/postReducer';
 
-const POST_API_BASE = 'http://localhoset:8080/api/posts';
+const POST_API_BASE = 'http://localhost:8080/api/posts';
 
 //////////////////////////////////////////////////////////////////////////////
 // watchFetchPosts  - GET /api/posts 전체 게시글 조회 ---
