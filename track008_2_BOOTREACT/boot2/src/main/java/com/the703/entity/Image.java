@@ -1,0 +1,29 @@
+package com.the703.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="IMAGES")
+public class Image {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "image_seq")
+	@SequenceGenerator(name="image_seq", sequenceName="IMAGE_SEQ", allocationSize = 1)
+	private Long id;
+	
+	@Column(length=200, nullable=false)
+	private String src;
+	
+	// 하나의 글은 [여러 이미지]를 갖는다
+	@ManyToOne
+	@JoinColumn(name="POST_ID", nullable=false) // POST_ID 외래키 FK,	POST Entity의 PK(ID) 참조
+	private Post post;
+}

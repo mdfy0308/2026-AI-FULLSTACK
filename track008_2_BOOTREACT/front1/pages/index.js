@@ -1,9 +1,12 @@
 // pages/index.js
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useRouter } from "next/router";
-import { fetchPostsRequest } from '../reducers/postReducer';
-import { Row, Col, Form, Button, Upload, Spin, Input, Card, Descriptions } from "antd";
+import React, { useState, useEffect } from "react"; // 이벤트 변경 감지, 변수 변경
+import { useSelector, useDispatch } from "react-redux"; // 전역상태, 스토어 알림
+import { useRouter } from "next/router"; // 경로 변경
+import { Spin } from "antd"; // 디자인
+
+import { deletePostRequest, fetchPostsRequest, updatePostRequest } from '../reducers/postReducer';
+import PostList from "../components/PostList";
+import EditPostModal from "../components/EditPostModal";
 
 export default function Home(){
 
@@ -20,19 +23,46 @@ export default function Home(){
         dispatch(fetchPostsRequest());
     }, [dispatch]);
 
-    ////////////////////////
+    ////////////////////////////////////////////////////////// 수정
+    // isEditModalVisible, setIsEditModalVisible - 수정 모달
+    const [isEditModalVisible, setIsEditModalVisible] = useState(false); 
+    
+    // editPost, setEditPost - 수정할 글
+    const [editPost, setEditPost] = useState(null);
+
+    // handleEditSubmit - 수정 기능
+    const handleEdit = (post)=>{
+        setEditPost(post); // 수정 글 세팅
+        setIsEditModalVisible(true); // 수정화면 보이기
+    };
+    const handleEditSubmit = (values)=>{
+        dispatch(
+            updatePostRequest({postId: editPost.id, dto:{content: values.content}})
+        ); // 수정 기능 후
+        setIsEditModalVisible(false); // 화면 안 보이게
+        setEditPost(null);
+    };
+
+    ////////////////////////////////////////////////////////// 삭제
+    // handleDelete
+    const handleDelete = (postId)=>{
+        dispatch(deletePostRequest( postId )); // 해당 글 번호
+    }
+
+    //////////////////////////////////////////////////////////
     return (
-        <div>
-            {/* 게시판 리스트 */}
-            <h3> 게시글 : {posts.length} </h3>
-            { posts.map((post, index)=>(
-                <Card key={post.id || index} style={{ marginBottom: "10px"}}>
-                    <p>{post.content}</p>
-                </Card>
-            )) }            
-        </div>
-        
+        <>
+            <PostList 
+                posts={posts}
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+            />
+            <EditPostModal
+                visible={isEditModalVisible}
+                onCancel={()=> setIsEditModalVisible(false)}
+                editPost={editPost}
+                onSubmit={handleEditSubmit}
+            />
+        </>
     );
 }
-
-// npm run dev

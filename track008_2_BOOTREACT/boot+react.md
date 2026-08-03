@@ -7,7 +7,7 @@
 ㄴ BACK  :  boot  + jpa  + oracle  + (mybatis) + jwt + redis
 ㄴ FRONT :  react + next + antd
 
-### 1. BACK
+# 1. BACK
 1. JAVA 17
 2. SPRING BOOT (gradle)
 3. security + jwt +  redis + oauth2.0 + jpa + mybatis + oracle
@@ -31,7 +31,7 @@
 4.  jpa + mybatis  → 데이터베이스 접근 (orm + sql mapper 병행)
 
 
-##### [실습]  1. 스프링부트 프로젝트 
+## [실습]  1. 스프링부트 프로젝트 
 - [x] 1. 개발개요안내
 - [x] 2. java.sun.com - JAVA 17 다운로드 - 설치
 - [x] 3. SPRING BOOT   - https://spring.io/ - 다운로드 - 설치
@@ -41,7 +41,7 @@
 - [x] 5. lombok
 
  
-##### [실습]  2. docker 설치
+## [실습]  2. docker 설치
 - [x] 1. docker 설치
 - https://www.docker.com/products/docker-desktop/ (AMD)
 - 다운로드 및 설치 → 1. window 업데이트 2. USE WSL 2
@@ -95,7 +95,7 @@ get  저장이름
 - 로그아웃 시 즉시 삭제
 
 
-##### [실습] 3. oracle 유저 세팅
+## [실습] 3. oracle 유저 세팅
 
 ```sql
 -- cmd
@@ -114,7 +114,7 @@ grant  create table to boot;
 ```
 
 
-##### [실습] 4. Boot + React ver.1 (기본 게시판 + 회원가입)
+## [실습] 4. Boot + React ver.1 (기본 게시판 + 회원가입)
 1. board
 - [x] 1. project
 - [x] 2. 부품객체 () : gradle
@@ -344,9 +344,86 @@ front/
 <Link href="/posts/new">  posts/new.js  # 글쓰기 파일
 
 
-##### [실습] 5. Boot + React + 세션/쿠키 ver.2 (기본 게시판 + 회원가입 + 이미지/해시태그/좋아요/팔로우)
+
+
+## [실습] 5. Boot + React + 세션/쿠키 ver.2 (기본 게시판 + 회원가입 + 이미지/해시태그/좋아요/팔로우)
 @Entity → repository → dto → service → controller 
 
+###  (1) : 회원가입 + board(crud)
+###  (2) : 멤버기능 + board(이미지 업로드, 해시태그, 좋아요)
+
+boot 2- 프로젝트 만들기
+- table   → mapper      → service → controller
+- @Entity → repository  → service → controller
+
+1) 유저는 많은 글을 쓸 수 있다.
+<AppUser> → <Post>
+
+```java
+// <AppUser>
+// [한 사람]이 → 여러 개의 글을 작성할 수 있다.
+// 1. mappedBy = "user" : Post 엔티티에 있는 user 필드와 연결 - 읽기만 가능 / 수정 X
+// 2. cascade = CascadeType.ALL : AppUser 변화(생성, 수정, 삭제)를 연결된 POST에 반영
+// 3. orphanRemoval = true : 유저 탈퇴시 유저가 작성한 글도 삭제
+@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<Post> posts = new ArrayList<>();
+
+// <Post>
+@ManyToOne   //1. 다대일 (테이블 필드)
+@JoinColumn(name="APP_USER_ID" , nullable = false)
+private AppUser user; 
+```
 
 
-##### [실습] 6. Boot + React + jwt + security + redis ver.3 (기본 게시판 + 회원가입 + 이미지/해시태그/좋아요/팔로우)
+2) 글은 많은 이미지를 가진다.
+<Post> → <Image>
+
+```java
+//<Post>
+@OneToMany
+
+//<Image>
+@ManyToOne
+```
+
+
+3) 글은 많은 해시태그를 가진다. / 해시태그는 많은 글을 가진다.
+<Post> → <Hashtag>          / <Hashtag> → <Post>
+
+```
+@ManyToMany
+<Post>                        <Hashtag>
+content                          like
+delete                           hot
+          ↔ <POST_HASHTAG> ↔
+                1   1
+                1   2
+                2   1
+                2   2
+```
+
+
+4) 
+- 글은 많은 좋아요를 가진다
+0 한 글에 여러 유저가 좋아요를 누를 수 있다
+<Post>                           <POST_LIKE>
+@OneToMany                        @ManyToOne  AppUser user;
+List<POST_LIKE> likes;            @ManyToOne  Post  post;
+
+<AppUser>
+@OneToMany                        @ManyToOne  AppUser user;
+List<POST_LIKE> likes; 
+
+5) 리트윗
+
+
+
+6) 팔로우
+
+
+
+
+front 2 - 프로젝트 복사하기
+
+
+## [실습] 6. Boot + React + jwt + security + redis ver.3 (기본 게시판 + 회원가입 + 이미지/해시태그/좋아요/팔로우)
