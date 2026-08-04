@@ -7,7 +7,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update  #  test환경  create-drop 매번초기화 / update 부분수정  
+      ddl-auto: create-drop  #  test환경  create-drop 매번초기화 / update 부분수정  
     properties:
       hibernate:
         format_sql: true
@@ -17,7 +17,7 @@ spring:
     multipart:
       enabled: true
       max-file-size: 10MB
-      max-request-size: 20MB      
+      max-request-size: 20MB
 
 #  data:
 #    redis:
@@ -30,10 +30,10 @@ spring:
 #      - optional:application-oauth.yml
 #      - optional:file:.env[.properties]
 
-#mybatis:
-#  config-location: classpath:mybatis-config.xml
-#  mapper-locations: classpath:mapper/**/*.xml
-#  type-aliases-package: com.thejoa703.domain 
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: com.the703.domain
 
 #jwt:
 #  issuer: thejoa703
