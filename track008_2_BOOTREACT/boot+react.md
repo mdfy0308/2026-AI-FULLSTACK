@@ -376,137 +376,140 @@ Step5) view
 
 ##  (1) : 회원가입 +  board (crud)
 ##  (2) : 멤버기능 +  board (이미지업로드, 해쉬태그 , 좋아요)
-
-### boot2 -  프로젝트만들기
+[1] boot2 -  프로젝트만들기
 - table     →   mapper      (dto)   →  service    →   controller
 - @Entity   →   repository  (dto)   →  service    →   controller
 
-1) 유저는 많은 글을 쓸 수 있다.
-<AppUser>  → <Post>
-```
-<AppUser>
-@OneToMany( mappedBy = "user" ,cascade = CascadeType.ALL, orphanRemoval = true )
-private List<Post> posts = new ArrayList<>(); 
+[2] @Entity     →  table
+[3] repository  →   mapper 
+  1) 유저는 많은 글을 쓸 수 있다.
+  <AppUser>  → <Post>
+  ```
+  <AppUser>
+  @OneToMany( mappedBy = "user" ,cascade = CascadeType.ALL, orphanRemoval = true )
+  private List<Post> posts = new ArrayList<>(); 
 
-<Post>
-@ManyToOne   //1. 다대일  (테이블필드)
-@JoinColumn(name="APP_USER_ID" , nullable = false)
-private AppUser user; 
-```
+  <Post>
+  @ManyToOne   //1. 다대일  (테이블필드)
+  @JoinColumn(name="APP_USER_ID" , nullable = false)
+  private AppUser user; 
+  ```
 
-2) 글은 많은 이미지를 갖는다.
-<Post> → <Image>
+  2) 글은 많은 이미지를 갖는다.
+  <Post> → <Image>
 
-```
-  <Post>	// 한 글은 여러 이미지를 갖는다
-	@OneToMany( mappedBy= "post",   cascade = CascadeType.ALL , orphanRemoval = true)
-	private List<Image>  images = new ArrayList<>();
+  ```
+    <Post>	// 한 글은 여러 이미지를 갖는다
+    @OneToMany( mappedBy= "post",   cascade = CascadeType.ALL , orphanRemoval = true)
+    private List<Image>  images = new ArrayList<>();
 
-  <Image>	
-  @ManyToOne // 한 글은 여러 이미지를 갖는다
-	@JoinColumn(name="POST_ID" , nullable = false)   // POST_ID 외래키 (FK)   POST엔티티의 PK(ID) 참조
-	private Post post;
-```
-
-
-3) 글은 많은 해쉬태그를 갖는다.    / 해쉬태그는 많은 글을 갖는다.
-1)   다:다
-2)   중간테이블 
-<Post> → <Hashtag>       글(여러)은 많은 해쉬태그를 갖는다.
-<Hashtag> → <Post>       해쉬태그는 많은 글을 갖는다.
-
-<Post>                                     <Hashtag>
-content                                    1  test123 
-deleted                                    2  like 
-                    
-         ↔     <Post_Hashtag>  ↔
-                    1   1
-                    1   2 
-                    2   1
-                    2   2 
-                 1번글  test123
-                 1번글  like
-
-```
-<Post>
-	@ManyToMany
-	@JoinTable(name="POST_HASHTAG" ,
-		joinColumns = @JoinColumn(name="POST_ID") ,
-		inverseJoinColumns =  @JoinColumn(name="HASHTAG_ID") 
-	)
-	private List<Hashtag>  hashtags = new ArrayList<>();
-
-<Hashtag>
-	@ManyToMany(mappedBy = "hashtags")
-	private List<Post>  posts = new ArrayList<>();
-```
-
-4) 글은 많은 좋아요를 갖는다   
-한글에 여러유저가 좋아요를 눌러요
-<Post>                                     <POST_LIKE>     
-@OneToMany List<POST_LIKE> likes;          @ManyToOne    AppUser user;  
-@OneToMany List<POST_LIKE> likes;          @ManyToOne    Post    post;    
-<AppUser>
-                                          좋아요번호   글번호   유저번호
-                                          1           1      1
-                                          2           1      2
-                                          3           1      3
-                                          4           2      2
-                                          5           2      3
+    <Image>	
+    @ManyToOne // 한 글은 여러 이미지를 갖는다
+    @JoinColumn(name="POST_ID" , nullable = false)   // POST_ID 외래키 (FK)   POST엔티티의 PK(ID) 참조
+    private Post post;
+  ```
 
 
-5) 리트윗
-6) 팔로우
-팔로워 :  나를 구독하는 사람들  ,내팬 
-팔로잉 :  내가 한 구독             ,김우빈/신민아/카리나
+  3) 글은 많은 해쉬태그를 갖는다.    / 해쉬태그는 많은 글을 갖는다.
+  1)   다:다
+  2)   중간테이블 
+  <Post> → <Hashtag>       글(여러)은 많은 해쉬태그를 갖는다.
+  <Hashtag> → <Post>       해쉬태그은 많은 글를 갖는다.
 
-		follower	     followee
-		1	     2
-		1	     3
-		2                3	
+  <Post>                                     <Hashtag>
+  content                                    1  test123 
+  deleted                                    2  like 
+                      
+          ↔     <Post_Hashtag>  ↔
+                      1   1
+                      1   2 
+                      2   1
+                      2   2 
+                  1번글  test123
+                  1번글  like
 
-		1 나	2 김우빈	3신민아	4카리나	 	 
+  ```
+  <Post>
+    @ManyToMany
+    @JoinTable(name="POST_HASHTAG" ,
+      joinColumns = @JoinColumn(name="POST_ID") ,
+      inverseJoinColumns =  @JoinColumn(name="HASHTAG_ID") 
+    )
+    private List<Hashtag>  hashtags = new ArrayList<>();
+
+  <Hashtag>
+    @ManyToMany(mappedBy = "hashtags")
+    private List<Post>  posts = new ArrayList<>();
+  ```
+
+  4) 글은 많은 좋아요를 갖는다   
+  한글에 여러유저가 좋아요를 눌러요
+  <Post>                                     <POST_LIKE>     
+  @OneToMany List<POST_LIKE> likes;          @ManyToOne    AppUser user;  
+  @OneToMany List<POST_LIKE> likes;          @ManyToOne    Post    post;    
+  <AppUser>
+                                            좋아요번호   글번호   유저번호
+                                            1           1      1
+                                            2           1      2
+                                            3           1      3
+                                            4           2      2
+                                            5           2      3
 
 
-> 포트폴리오
-1. boot - 두번째
-1) 포폴1 - 옮기기 ( 리뉴얼 )
-	1. 프로젝트
-	2. 테이블구성 @Entity  숙제)
-	3. mybatis 셋팅  (mapper)  / repository  
-	4. service  
-	5. RestController   	
+  5) 리트윗
+  6) 팔로우
+  팔로워 :  나를 구독하는 사람들  ,내팬 
+  팔로잉 :  내가 한 구독             ,김우빈/신민아/카리나
 
-2) 포폴2 - 새롭게 구성되는파트
+      follower	     followee
+      1	     2
+      1	     3
+      2                3	
+
+      1 나	2 김우빈	3신민아	4카리나	 	 
 
 
+■ 과정명   : [취업기업확대]AI활용 풀스택(프론트엔드,백엔드)부트캠프(자바,파이썬,플러터)
+■ 훈련과목 : (비NCS)프로젝트(완성된 웹서비스 플랫폼 프로젝트 리뉴얼)
+> boot + security + jwt + redis / jpa( mybatis ) +oracle / react + next     → aws
 
-[4] Dto /Service
+[4] Dto / Service  
 - table     →   mapper      (dto)   →  service    →   controller
 - @Entity   →   repository  (dto)   →  service    →   controller
 
-■ 멤버 관리
-회원가입 ( 이메일/닉네임 중복 검사 )
+■ 멤버관리
+회원가입    ( 이메일중복검사, 닉네임중복검사 )
 ↓
-로그인 ( 로그아웃 )
+로그인       
 ↓
-마이페이지 (닉네임 변경, 프로필 이미지 변경, 회원 탈퇴) ※ 팔로워/팔로잉
+마이페이지  (닉네임변경, 프로필이미지변경 , 회원탈퇴 , 로그아웃)  ※ 팔로워 / 팔로잉
 
-(UserDto : UserRequestDto / UserResponseDto)
-UserRequestDto < email, password, nickname, ☆image(다음번에) / provider, mobile, mbtitype>
-UserResponseDto <  email, perm, nickname, image />
+1) UserDto :  UserRequestDto   /  UserResponseDto  
+UserRequestDto  < email , password, nickname,  ☆image (ufile: Multipart 빠짐)   /  provider , mobile, mbtitype  >
+UserResponseDto < email , role    , nickname,   ufile  , password(비밀번호암호화 빠진)    / id, provider , mobile , mbtitype >
 
-LoginRequest < email, password >
+2) LoginRequest  < email, password , provider >
 
-
-■ 게시글 관리
-게시글 작성
+■ 게시글관리
+게시글작성
 ↓
-게시글 목록 (전체글 / 좋아요한글 / 내글+리트윗)
-※ 1. 각 세부내용 / 수정 / 삭제
-※ 2. 좋아요 / 리트윗 / 댓글
+게시글목록 ( 전체글 / 좋아요한글 / 내글+리트윗 )
+※ 1. 각세부내용 / 수정/ 삭제   
+※ 2. 좋아요/ 리트윗/ 댓글
 
 
 
-### front2 - 프로젝트복사하기
+[5]  RestController   	
 
+> Ver2. frontend
+1. 프로젝트 만들기(npm init)
+```
+mkdir front2
+cd front2
+npm init
+```
+
+2. 프로그램 설치(npm install)
+```
+npm install
+```

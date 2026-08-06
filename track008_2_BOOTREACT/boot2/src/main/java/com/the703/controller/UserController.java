@@ -28,7 +28,7 @@ import lombok.RequiredArgsConstructor;
 
 @Tag(name = "User Api", description = "사용자 관련 API") // swagger
 @RestController // @Controller + @ResponseBody
-@RequestMapping("/api/users")
+@RequestMapping("/auth") // /api/users
 @RequiredArgsConstructor
 //@CrossOrigin(origins="*") // 연습용
 public class UserController {
@@ -42,7 +42,7 @@ public class UserController {
 	public ResponseEntity<UserResponseDto> createUser(@ModelAttribute UserRequestDto request,
 			@Parameter(description = "프로필 이미지 파일") @RequestPart(name = "ufile", required = false) MultipartFile ufile) {
 		UserResponseDto response = userService.createUser(request, ufile);
-		return ResponseEntity.ok(userService.createUser(request, ufile));
+		return ResponseEntity.ok(response);
 	}
 
 	// 이메일 중복확인
