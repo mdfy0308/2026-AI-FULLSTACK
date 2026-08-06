@@ -83,7 +83,7 @@ export function* updateNickname(action){
 //////////////////////////////////////////////////////////////////////////////
 // --- 프로필 이미지 변경 PATCH : /auth/{userId}/profile-image, formData ---
 export function updateProfileImageApi( {userId, file} ){ 
-    const formData = new formData();
+    const formData = new FormData();
     formData.append("ufile", file);
     return axios.patch(`${USER_API_BASE}/${userId}/profile-image`, formData, 
         { headers: { "Content-Type" : "multipart/form-data" }
