@@ -94,3 +94,10 @@ export default AppLayout;
 // Drawer:  https://ant.design/components/drawer 
 // Grid:    https://ant.design/components/grid 
 // Button:  https://ant.design/components/button
+
+/*
+
+Q1. 로그인한 상태 : 글쓰기 / 마이페이지 / 로그아웃
+Q2. 로그인 안 한 상태 : 로그인 / 회원가입 / 
+
+*/

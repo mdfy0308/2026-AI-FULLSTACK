@@ -15,42 +15,43 @@ const postReducer=createSlice({
     name: "post",
     initialState,
     reducers: {
+
+        // --- 상태 초기화 ---
+        resetPostState : (state)=>{
+            state.loading = false;
+            state.error   = null;
+            state.success = false;
+        },
         
         // --- 게시글 전체 목록 조회 ---
         fetchPostsRequest: (state)=>{
             state.loading = true;
             state.error = null;
-            state.success = false;
         },
         fetchPostsSuccess: (state, action)=>{
             state.loading = false;
             state.posts = action.payload;
-            state.success = true;
         },
         fetchPostsFailure: (state, action)=>{
             state.loading = false;
             state.error = action.payload;
-            state.success = false;
         },
         
         // --- 게시글 단건 조회 ---
         fetchPostDetailRequest: (state)=>{
             state.loading = true;
             state.error = null;
-            state.success = false;
         },
         fetchPostDetailSuccess: (state, action)=>{
             state.loading = false;
             state.currentPost = action.payload;
-            state.success = true;
         },
         fetchPostDetailFailure: (state, action)=>{
             state.loading = false;
             state.error = action.payload;
-            state.success = false;
         },
 
-        // --- 게시글 등록 ---
+        // --- 게시글 작성 ---
         createPostRequest: (state)=>{
             state.loading = true;
             state.error = null;
@@ -58,20 +59,20 @@ const postReducer=createSlice({
         },
         createPostSuccess: (state, action)=>{
             state.loading = false;
-            state.posts = [action.payload, ...state.posts]; // 새 글을 목록 상단에 추가
+            // state.posts = [action.payload, ...state.posts]; // 새 글을 목록 상단에 추가 → 덮어쓰기
+            state.posts.unshift(action.payload); // 위와 결과물은 동일함
+            // action.payload - 새로 작성된 게시글 / unshift 배열의 맨 앞에 새 요소추가(직접 배열 수정)
             state.success = true;
         },
         createPostFailure: (state, action)=>{
             state.loading = false;
             state.error = action.payload;
-            state.success = false;
         },
 
         // --- 게시글 수정 ---
         updatePostRequest: (state)=>{
             state.loading = true;
             state.error = null;
-            state.success = false;
         },
         updatePostSuccess: (state, action)=>{
             state.loading = false;
@@ -79,39 +80,27 @@ const postReducer=createSlice({
                 post.id === action.payload.id? action.payload : post);
             // post의 id와 action의 id가 같은 값일때 : 수정된 값으로 교체 or 아닐시 기존 값 유지
             state.currentPost = action.payload;
-            state.success = true;
         },
         updatePostFailure: (state, action)=>{
             state.loading = false;
             state.error = action.payload;
-            state.success = false;
         },
 
         // --- 게시글 삭제 ---
         deletePostRequest: (state)=>{
             state.loading = true;
             state.error   = null;
-            state.success = false;
         },
         deletePostSuccess: (state, action)=>{
             state.loading = false;
             // 삭제된 게시글의 아이디를 받아서 목록에서 제외
             state.posts   = state.posts.filter(post => post.id !== action.payload)
-            state.success = true;
         },
         deletePostFailure: (state, action)=>{
             state.loading = false;
             state.error   = action.payload;
-            state.success = false;
         },
-        
-        // --- 상태 초기화 ---
-        resetPostState : (state)=>{
-            state.loading = false;
-            state.error   = null;
-            state.success = false;
-        },
-    },
+    }
 });
 
 //3. action

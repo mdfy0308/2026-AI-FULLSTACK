@@ -30,15 +30,28 @@ export default function Home(){
     // editPost, setEditPost - 수정할 글
     const [editPost, setEditPost] = useState(null);
 
+    // 수정할 이미지 파일
+    const [uploadFiles, setUploadFiles] = useState([]); // ##1.
+
     // handleEditSubmit - 수정 기능
     const handleEdit = (post)=>{
         setEditPost(post); // 수정 글 세팅
         setIsEditModalVisible(true); // 수정화면 보이기
+        setUploadFiles([]); // ##
     };
+
+    // saga에 넘기는 데이터 확인 { userId, postId, dto(content+hashtag), files }
     const handleEditSubmit = (values)=>{
         dispatch(
-            updatePostRequest({postId: editPost.id, dto:{content: values.content}})
-        ); // 수정 기능 후
+            updatePostRequest({
+                userId: user?.id, // 옵셔널 체이닝
+                postId: editPost.id,
+                dto:{
+                    content: values.content,
+                    hashtags: values.hashtags? values.hashtags.join(",") 
+                    : values.hashtags},
+                files: uploadFiles
+            }) ); // 수정 기능 후
         setIsEditModalVisible(false); // 화면 안 보이게
         setEditPost(null);
     };
@@ -62,6 +75,8 @@ export default function Home(){
                 onCancel={()=> setIsEditModalVisible(false)}
                 editPost={editPost}
                 onSubmit={handleEditSubmit}
+                uploadFiles={uploadFiles}
+                setUploadFiles={setUploadFiles}
             />
         </>
     );

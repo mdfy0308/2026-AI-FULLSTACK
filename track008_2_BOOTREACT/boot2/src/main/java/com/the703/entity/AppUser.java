@@ -30,7 +30,7 @@ public class AppUser {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appuser_seq")
 	@SequenceGenerator(name = "appuser_seq", sequenceName = "APPUSER_SEQ", allocationSize = 1)
 	@Column(name="APP_USER_ID")
-	private long id;
+	private Long id;
 	
 	@Column(length = 120, nullable=false)
 	private String email;

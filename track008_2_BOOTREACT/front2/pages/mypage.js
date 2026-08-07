@@ -1,6 +1,7 @@
 // pages/mypage.js
 //1. require / import
-import { Button, Card, Descriptions, Avatar } from "antd";    
+import {
+  Card, Avatar, Spin, Descriptions, Form, Input, Button, Upload, List, Tabs, message, } from "antd";
 import { UploadOutlined } from "@ant-design/icons";  
 
 // store : useSelector(전역), useDispatch(스토어 이벤트 알림)
@@ -9,13 +10,19 @@ import { UploadOutlined } from "@ant-design/icons";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import { fetchUserRequest, resetUserState } from "../reducers/authReducer";
+import { updateNicknameRequest, updateProfileImageRequest } from "../reducers/authReducer";
 
 //2. function
 function MyPage(){
     //Redux에서 회원가입시 저장된 사용자 정보 반영하기 - user
-    const { user } = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
     const router = useRouter();
+    const { user } = useSelector((state) => state.auth);
+    const [fileList, setFileList] = useState([]);
+
+    const onFinishUpdateNickname = (value)=>{
+        dispatch( updateNicknameRequest( {userId: user.id, nickname: value.nickname}) );
+    };
 
     if(!user){
         return (
@@ -27,6 +34,8 @@ function MyPage(){
             </div>
         );
     }
+
+
     ///////////////////////
     return (
         <div style={ {maxWidth: 600, margin: "40px auto"} }>
@@ -39,6 +48,39 @@ function MyPage(){
                         <Descriptions.Item label="닉네임">{user.nickname}</Descriptions.Item>
                     </Descriptions>
                 </div>
+                {/* 닉네임 수정 */}
+                <Form layout="inline" style={{ margin: "20px 0" }}
+                    onFinish={onFinishUpdateNickname} >
+                    <Form.Item name="nickname" >
+                        <Input placeholder="새 닉네임" />
+                    </Form.Item>
+                    <Button type="primary" htmlType="submit">닉네임 변경</Button>
+                </Form>
+                {/* 프로필 이미지 수정 */}
+                <Form layout="inline" style={{ margin: "20px 0" }} >
+                    <Form.Item name="nickname" >
+                        <Upload
+                            beforeUpload={()=>false}
+                            fileList={ fileList }
+                            onChange={ ( {fileList} )=>{ setFileList(fileList) } }
+                            action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+                            listType="picture"
+                            maxCount={1}
+                        >
+                            <Button icon={<UploadOutlined />}> 이미지 선택 </Button>
+                        </Upload>
+                    </Form.Item>
+                    <Button 
+                    type="primary" 
+                    onClick={()=>{ if(!user || fileList.length === 0){
+                            message.warning('변경할 이미지를 선택해주세요.'); return;
+                        } 
+                        const file = fileList[0]?.originFileObj;
+                        dispatch( updateProfileImageRequest({userId:user.id, file}) );
+                        setFileList([]); // 전송 후 파일 선택 목록 초기화
+                    }}
+                    htmlType="submit">프로필 이미지 변경</Button>
+                </Form>
             </Card>
         </div>
     );

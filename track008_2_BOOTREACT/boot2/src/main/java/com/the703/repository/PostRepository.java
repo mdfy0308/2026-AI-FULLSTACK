@@ -12,7 +12,7 @@ import com.the703.entity.Post;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> { // Entity, PK
 	
-	List<Post> findByDeletedFalse(); // List<Post> - 결과가 여러 개일 때
+	List<Post> findByDeletedFalseOrderByCreatedAtDesc(); // List<Post> - 결과가 여러 개일 때
 	
 	// 해시태그 이름으로 게시글 검색하기
 	List<Post> findByHashtags_NameAndDeletedFalse(String name);
