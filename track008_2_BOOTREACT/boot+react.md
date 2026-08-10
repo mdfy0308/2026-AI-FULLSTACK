@@ -4,8 +4,8 @@
 
 2. 기술스택
 [PROJECT]
-ㄴ BACK  :  boot  + jpa  + oracle  + (mybatis) + jwt + redis
-ㄴ FRONT :  react + next + antd 
+└─ BACK  :  boot  + jpa  + oracle  + (mybatis) + jwt + redis
+└─ FRONT :  react + next + antd 
 
 ### 1. BACK
 1. JAVA 17
@@ -196,8 +196,8 @@ file:
 
 - [x] 4. entity  ( 테이블을 객체로 처리 )
   back1
-    ㄴ src/main/java
-      ㄴ com.thejoa703.entity
+    └─ src/main/java
+      └─ com.thejoa703.entity
           - AppUser
           - Post
 
@@ -223,8 +223,8 @@ file:
 
 - [x] 5. Repository
   back1
-    ㄴ src/main/java
-      ㄴ com.thejoa703.repository
+    └─ src/main/java
+      └─ com.thejoa703.repository
           - AppUserRepository
           - PostRepository
   https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html
@@ -233,16 +233,16 @@ file:
 
 - [x] 6. Dto
   back1
-    ㄴ src/main/java
-      ㄴ com.thejoa703.dto
+    └─ src/main/java
+      └─ com.thejoa703.dto
           - UserDto
           - PostDto
 
 
 - [x] 7. Service
   back1
-    ㄴ src/main/java
-      ㄴ com.thejoa703.service
+    └─ src/main/java
+      └─ com.thejoa703.service
           - UserService
           - PostService
 
@@ -262,8 +262,8 @@ file:
 
 - [x] 8. Controller
   back1
-    ㄴ src/main/java
-      ㄴ com.thejoa703.controller
+    └─ src/main/java
+      └─ com.thejoa703.controller
           - UserController
           - PostController
 
@@ -297,39 +297,39 @@ file:
 front/
 ├── .next/                  # Next.js 빌드 결과물 (자동 생성, 배포 시 사용)
 ├── components/         # 재사용 가능한 UI 컴포넌트 폴더
-│   └── Layout.js         # 페이지 공통 레이아웃 컴포넌트
+│   └─── Layout.js         # 페이지 공통 레이아웃 컴포넌트
 ├── node_modules/       # 설치된 npm 패키지들
 ├── pages/                  # Next.js 라우팅 기반 페이지 폴더
 │   ├── posts/             
-│   │ └──new.js       #  글쓰기 파일
+│   │ └───new.js       #  글쓰기 파일
 │   ├── _app.js             # 전체 앱의 공통 설정 (Redux Provider, 글로벌 스타일 등)
 │   ├── singup.js              # 회원가입
 │   ├── mypage.js         # 마이페이지
-│   └── index.js            # 메인 페이지
+│   └─── index.js            # 메인 페이지
 ├── reducers/               # Redux 리듀서 폴더
 │   ├── __tests__/       
 │   │	├── post.test.js        # 게시판 테스트 코드 
-│   │	└── user.test.js        # 리듀서 테스트 코드
+│   │	└─── user.test.js        # 리듀서 테스트 코드
 │   ├── index.js              # 루트 리듀서 (combineReducers)
 │   ├── authReducer.js             # 사용자 관련 리듀서
-│   └── postReducer.js             # 게시판 관련 리듀서 
+│   └─── postReducer.js             # 게시판 관련 리듀서 
 ├── sagas/                  # Redux-Saga 폴더
 │   ├── __tests__/       
 │   │	├── post.test.js     # 게시판 사가 테스트 코드
-│   │	└── user.test.js      #  유저   사가  테스트 코드
+│   │	└─── user.test.js      #  유저   사가  테스트 코드
 │   ├── index.js            # 루트 사가
 │   ├── authSaga.js             # 사용자 관련 사가
-│   └── postSaga.js             # 게시판 관련 사가 
+│   └─── postSaga.js             # 게시판 관련 사가 
 ├── store/                  # Redux 스토어 설정 폴더
 │   ├── configureStore.js   # Redux 스토어 설정
-│   └── configureStore.test.js # 스토어 테스트 코드
+│   └─── configureStore.test.js # 스토어 테스트 코드
 ├── styles/                 # CSS 스타일 폴더
-│   └── globals.css         # 글로벌 스타일
+│   └─── globals.css         # 글로벌 스타일
 ├── .babelrc                # Babel 설정 파일
 ├── .eslintrc               # ESLint 설정 파일
 ├── package-lock.json       # npm 의존성 잠금 파일
 ├── package.json            # 프로젝트 메타 정보 및 의존성
-└── setupTests.js           #  테스트 환경 설정 파일
+└─── setupTests.js           #  테스트 환경 설정 파일
 
 
 Step1) 프로젝트만들기
@@ -360,11 +360,11 @@ Step5) view
 ```
 ├── pages/                # Next.js 라우팅 기반 페이지 폴더
 │   ├── posts/             
-│   │ └──new.js           #  글쓰기 파일
+│   │ └───new.js           #  글쓰기 파일
 │   ├── _app.js           # 전체 앱의 공통 설정 (Redux Provider, 글로벌 스타일 등)
 │   ├── singup.js         # 회원가입
 │   ├── mypage.js         # 마이페이지
-│   └── index.js          # 메인 페이지  
+│   └─── index.js          # 메인 페이지  
 ```
 <Link href="/">          index.js     # 메인 페이지  
 <Link href="/mypage">    mypage.js    # 마이 페이지  
@@ -523,8 +523,133 @@ npm install
 - [x] login.js 로그인
 - [x] 닉네임 수정
 - [x] 이미지 프로필 수정
-- [] 게시판 작성
+- [x] 게시판 작성
 - [] 게시판 수정
 
+* 1) 부분 수정
+* 2) 게시판 리스트 > boot - List<PostResponseDto>
+* 3) 이미지-캐로셀
+* 4) 해시태그
 
 4. 보안+시큐리티
+0) 프로젝트 복사
+  > back
+  > front
+1) build.gradle 시큐리티 / .env
+  - 각종 설정파일: WebConfig(세션, 쿠키 - false)
+
+2) security : Jwt + Redis
+com.the703.security
+  ├─ JwtAuthenticationFilter  (4) 출입증 검사
+  ├─ JwtProperties            (1) Jwt 토큰
+  ├─ JwtProvider              (2) 발급
+  └─ TokenStore               (3) redis 보관
+
+3) oauth2 : 소셜 처리(구글/카카오/네이버 등 인증)
+com.the703.oauth2
+  ├─ UserInfoOAuth2 (1) 공통속성 추출
+  ├─ UserInfoNaver, UserInfoKakao, UserInfoGoogle (2)각 소셜마다 처리
+  ├─ CustomOAuth2User (3) Security: local + Oauth2: 소셜 - 유저 정보
+  └─ OAuth2SuccessHandler (4) 소셜 로그인시
+
+4) service
+5) controller
+6) react
+
+
+STEP1)
+```
+[사용자]
+   ├─▶ 로컬 회원가입/로그인
+   │       - 이메일/비밀번호 → DB 저장
+   │       - 로그인 성공 시 JWT 발급
+   │
+   └─▶ 소셜 로그인(OAuth2)
+           - 구글/카카오/네이버 인증
+           - OAuth2SuccessHandler 실행
+             • 사용자 정보 추출
+             • DB 저장/조회
+             • Access Token 발급 (출입증)
+             • Refresh Token 발급 (장기체류증) → Redis 저장 + 쿠키
+```
+
+STEP2)
+```
+[프론트엔드]
+   └─▶ Access Token localStorage 저장
+        API 호출 시 Authorization 헤더에 Bearer 붙임
+```
+
+STEP3)
+```
+[Spring Boot 서버]
+   ├─▶ JwtAuthenticationFilter
+   │       - 토큰 검증 (출입증 검사)
+   │       - SecurityContext에 사용자 정보 저장
+   │
+   └─▶ Controller/Service
+           - userId 기반 DB 조회
+           - 응답 반환 (사원증 스캔)
+```
+
+■ 핵심 정리
+1. JWT VS 세션
+- 세션 : 서버 메모리에 사용자 상태를 저장 - 서버 확장시 부담
+        (서버에서 출입 명단을 직접 들고 있기)
+- JWT(Json Web Token) : 토큰 자체에 인증정보를 포함
+        (사용자가 직접 출입증을 들고 다니기)
+
+2. Access Token VS Refresh Token
+- Access Token  : 짧은 기간 유효(출입증) → API 호출시 사용
+- Refresh Token : 긴 기간 유효(장기체류증) → redis에 안전보관
+
+3. Redis 사용
+- 토큰 냉장고 → 장기체류중 안전하게 보관, 필요시 꺼내서 사용
+- Refresh Token 중앙에서 관리
+- TTL(만료시간)로 자동만료처리
+- 로그아웃시 즉시 삭제
+
+4. 구조 확인
+  1) security + jwt + redis
+    - JwtProperties : 토큰
+      * secret, issuer, expSeconds : 기본 속성
+    - JwtProvider  : 토큰 발급 / 검증
+      * Access Token  : 짧은 기간 유효(출입증) → API 호출시 사용
+      * Refresh Token : 긴 기간 유효(장기체류증) → redis에 안전보관
+    - TokenStore
+      * Redis 저장소, Refresh Token 
+    - JwtAuthenticationFilter : 보안 게이트
+      * 매 요청마다 Authorization 헤더 확인 → 토큰 검증 → SecurityContext에 사용자 정보 저장
+      * api 사용시 신분증을 검사하는 게이트
+
+  2) oauth2.0
+    - OAuth2  : 입국 심사대
+    - UserInfoOAuth2 / UserInfoNaver , UserInfoKakao , UserInfoGoogle
+    - CustomOAuth2User
+    - OAuth2SuccessHandler
+
+  3) 설정파일
+    - SecurityConfig
+    - WebConfig
+    - RedisConfig
+    - SwaggerConfig
+
+  4) jwt 구조
+  1. Header → 토큰의 머릿말 ( 이 토큰은 HS256 알고리즘으로 서명했어!  정보 )
+    ```json
+    { "alg": "HS256", "typ": "JWT" }
+    ```
+  2. Payload(Claims)   →  토큰의 몸통 ( 누가, 어떤권한, 언제까지  사용자의 신분증정보)
+  ```json
+    {
+      "iss": "the703",      // 발급자
+      "sub": "12345",       // 사용자 ID
+      "role": "USER",       // 권한
+      "email": "user@test.com",
+      "exp": 1737000000     // 만료 시간
+    }
+  ```
+  3. Signature     →  토큰의 도장 ( 서버만 아는 비밀키로 찍은 도장 → 위변조 방지)
+  ```json
+    HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret)
+  ```   
