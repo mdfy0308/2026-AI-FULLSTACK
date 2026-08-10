@@ -550,10 +550,13 @@ com.the703.oauth2
   ├─ UserInfoOAuth2 (1) 공통속성 추출
   ├─ UserInfoNaver, UserInfoKakao, UserInfoGoogle (2)각 소셜마다 처리
   ├─ CustomOAuth2User (3) Security: local + Oauth2: 소셜 - 유저 정보
-  └─ OAuth2SuccessHandler (4) 소셜 로그인시
+  └─ OAuth2SuccessHandler (4) 소셜 로그인시 - redis/jwt 설정
 
-4) service
+4) service - 기존 활용
+  └─ AuthUserJwtService (유저 정보 활용)
 5) controller
+  ├─ UserController (로그인시 - access Token, refresh Token / cookie 설정)
+  └─ post에서 AuthUserJwtService 활용해 가져오기
 6) react
 
 
