@@ -656,3 +656,23 @@ STEP3)
   ```json
     HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret)
   ```   
+
+
+2. react
+1) 폴더만들기
+2) 프로젝트 설치
+3) reducer saga page
+4) jwt 사용
+  front3
+  - api/axios.js
+  - pages
+    - signup.js
+    - login.js
+```
+mkdir front3
+cd front3
+
+.next/node_module 제외하고 콘텐츠 복사하기
+
+npm install
+```

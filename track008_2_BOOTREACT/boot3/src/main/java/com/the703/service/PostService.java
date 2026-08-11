@@ -97,6 +97,7 @@ public class PostService {
 	}
 
 	// 5. 게시글 수정 ## (save 안쓰고 update 쿼리 반영)
+	@Transactional
 	public PostResponseDto updatePost(Long userId, Long postId, PostRequestDto dto, List<MultipartFile> files) {
 		Post post = postRepository.findById(postId)
 				.orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다. ID: " + postId));
@@ -139,6 +140,7 @@ public class PostService {
 	}
 
 	// 6. 게시글 삭제 (delete)
+	@Transactional
 	public void deletePost(Long userId, Long postId) {
 		Post post = postRepository.findById(postId)
 				.orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다. ID: " + postId));
