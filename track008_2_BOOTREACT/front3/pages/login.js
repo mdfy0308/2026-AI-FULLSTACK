@@ -31,6 +31,10 @@ export default function LoginPage() {
         }
     }, [ user, router ]);
 
+    const handleSocialLogin=(provider)=>{ 
+        window.location.href = `http://localhost:8080/oauth2/authorization/${provider}`;
+    };
+
     return (
         // Q5. justify 이용해서 중앙으로 배치, 위쪽에 여백주기
         <Row justify="center" style={ {marginTop: "40px"} }>
@@ -63,6 +67,29 @@ export default function LoginPage() {
                         </Button>
                     </div>
                 </Form> 
+
+                {/*   소셜  로그인 이미지 버튼 */}
+                <div style={{ marginTop: 20, textAlign: "center" }}>
+                    <img
+                        src="/images/google.png"       alt="Google Login"
+                        style={{ cursor: "pointer", width: "200px", marginBottom: "10px" }}
+                        onClick={()=> handleSocialLogin("google")}
+                    />
+                </div> 
+                <div style={{ marginTop: 20, textAlign: "center" }}>
+                    <img
+                        src="/images/kakao.png"      alt="Kakao Login"
+                        style={{ cursor: "pointer", width: "200px", marginBottom: "10px" }}
+                        onClick={()=> handleSocialLogin("kakao")}
+                    />
+                </div>
+                <div style={{ marginTop: 20, textAlign: "center" }}>
+                    <img
+                        src="/images/naver.png"      alt="Naver Login"
+                        style={{ cursor: "pointer", width: "200px", marginBottom: "10px" }}
+                        onClick={()=> handleSocialLogin("naver")}
+                    />
+                </div>
             </Col>
         </Row>
     );

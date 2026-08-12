@@ -676,3 +676,20 @@ cd front3
 
 npm install
 ```
+
+3. social 개발자 사이트 - 키 찾기
+> kakao / naver / google 개발자
+> boot의 .env 파일 바꾸기
+
+/boot3
+└─ service : public AppUser saveSocialUser() - @transaction/security 처리
+
+/front3
+└─ public
+  └─ images
+    └─ image(파일)
+└─ pages
+  └─ oauth2
+    └─ callback.js
+    
+    String targetUrl = redirectUrl + "?accessToken=" + access;
