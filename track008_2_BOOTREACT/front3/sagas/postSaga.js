@@ -128,7 +128,7 @@ function* watchUpdatePost(){ yield takeLatest( updatePostRequest.type, updatePos
 function* watchDeletePost(){ yield takeLatest( deletePostRequest.type, deletePost ); }
 
 
-export default function * postSaga(){
+export default function* postSaga(){
     yield all([
         call(watchFetchPosts),
         call(watchPostDetail),
