@@ -1,217 +1,273 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link href="./css/reset.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="./css/portfolio.css" rel="stylesheet">
-    <link href="./css/keyframe.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>정수정 | Portfolio</title>
+<meta name="description" content="사내 ERP의 인사·근태·평가 도메인을 설계하고 구현했습니다. 정수정 포트폴리오.">
+<meta property="og:title" content="정수정 | Portfolio">
+<meta property="og:description" content="사내 ERP의 인사·근태·평가 도메인을 설계하고 구현했습니다.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <h1 class="blind">정수정 포트폴리오</h1>
-        <nav class="navbar navbar-expand-sm">
-            <h2 class="blind">주 메뉴</h2>
-            <div class="container-fluid">
-                <a class="navbar-brand" href="javascript:void(0)">Logo</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="mynavbar">
-                    <ul class="navbar-nav ms-auto"> <!-- start: 왼쪽, end: 오른쪽 -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Portfolio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">About Me</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Gallery</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
 
-    <!-- VISUAL -->
-    <section id="demo" class="visual carousel slide" data-bs-ride="carousel">
-        <!-- Indicators/dots -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-        </div>
-        
-        <!-- The slideshow/carousel -->
-        <div class="slide-box carousel-inner">
-            <div class="visual-text">
-                <h3>Portfolio</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div class="slide carousel-item active"><img src="./img/ocean1.jpg" alt="포트폴리오 이미지" /></div>
-            <div class="slide carousel-item"><img src="./img/ocean2.jpg" alt="포트폴리오 이미지" /></div>
-            <div class="slide carousel-item"><img src="./img/ocean3.jpg" alt="포트폴리오 이미지" /></div>
-            
-            <div class="card-box">
-                <div>
-                    <h4>Project Title</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div>
-                    <h4>Account</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-            </div>
+<header class="topbar">
+  <a class="topbar__name" href="#top">정수정</a>
+  <nav class="topbar__nav" aria-label="주 메뉴">
+    <a href="#work">PROJECT</a>
+    <a href="#stack">SKILL</a>
+    <a href="#about">ABOUT</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+</header>
 
-            <!-- Left and right controls/icons -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-        </div>
-    </section>
+<main id="main">
 
-    <!-- INFO -->
-    <section class="info">
-        <div class="container">
-            <h3>ABOUT ME</h3>
-            <div class="row">
-                <div class="col-sm-4">
-                    <p><img src="./img/five.png" alt="프로필 이미지" class="w-50"/></p>
-                </div>
-                <div class="col-sm-4">
-                    <h4>정수정</h4>
-                    <ul>
-                        <li>mdfy0308@gmail.com</li>
-                        <li><a href="https://github.com/mdfy0308/2026-AI-FULLSTACK.git" 
-                            title="깃허브 포트폴리오 바로가기" target="blank">깃허브</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4">
-                    <h4>Education</h4>
-                    <ul>
-                        <li>AI활용 풀스택(프론트엔드,백엔드)부트캠프(자바,파이썬,플러터)(26.03.26~26.10.08)</li>
-                    </ul>
-                    <h4>KeyWord</h4>
-                    <ul>
-                        <li>키워드 1</li>
-                        <li>키워드 2</li>
-                        <li>키워드 3</li>
-                    </ul>
-                </div>        
-            </div>
-        </div>
-    </section>
-
-    <!-- PORTFOLIO -->
-    <section class="portfolio">
-        <h3>PORTFOLIO</h3>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4">
-                    <h4>포트폴리오 동영상</h4>
-                    <button>포트폴리오 더보기</button>
-                </div>
-                <div div class="col-sm-4">
-                    <h4>spring boot + jpa + react portfolio</h4>
-                    <ul>
-                        <li><strong>Spring Boot + JPA</strong>기반의 백엔드와 데이터 처리 로직 구현</li>
-                        <li><strong>React</strong>를 활용한 사용자 중심의 프론트엔드 UI 개발</li>
-                        <li><strong>JWT 인증</strong>과 <strong>CI/CD 자동 배포</strong>로 보안성과 효율성 강화</li>
-                    </ul>
-                </div>
-                <div div class="col-sm-4">
-                    <h4>기술스택</h4>
-                    <ul>
-                        <li>Spring Boot 2.7.14</li>
-                        <li>Spring Security 5.7.x</li>
-                        <li>Spring Data JPA 2.7.x</li>
-                        <li>Hibernate 5.6.x</li>
-                        <li>Oracle 11</li>
-                        <li>React 18.x</li>
-                        <li>Axios 1.x</li>
-                        <li>React Router v6</li>
-                        <li>JWT</li>
-                        <li>Git & GitHub</li>
-                        <li>GitHub Actions</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 ar-box">
-                    <h3>CONTACT</h3>
-                    <span class="arrow">▶</span>
-                    <span class="arrow">▶</span>
-                    <span class="arrow">▶</span>
-                </div>
-                <div class="col-sm-6">
-                    <form action="/action_page.php">
-                        <div>
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-                        </div>
-                        <div>
-                            <label for="comment">Comments</label>
-                            <textarea class="form-control" rows="5" id="comment" placeholder="Comments" name="text"></textarea>
-                        </div>
-                        <div class="button-box">
-                            <button type="submit">Submit</button>
-                        </div>
-                    </form>
-                </div>
-                
-            </div>
-
-        </div>
-        
-    </section>
-
-
-    <div class="background">
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
-        <span>5</span>
-        <span>6</span>
-        <span>7</span>
-        <span>8</span>
-        <span>9</span>
-        <span>10</span>
-        <span>11</span>
-        <span>12</span>
-        <span>13</span>
-        <span>14</span>
-        <span>15</span>
-        <span>16</span>
-        <span>17</span>
-        <span>18</span>
-        <span>19</span>
-        <span>20</span>
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="top">
+  <div class="hero__body">
+    <p class="hero__role">풀스택 개발자</p>
+    <h1 class="hero__line">
+      사람과 근태를 다루는<br>
+      업무 시스템을 만듭니다.
+    </h1>
+    <p class="hero__lede">
+      사내 ERP의 인사·근태·평가 도메인을 맡아 서버와 화면을 함께 만들었습니다.
+      한 번에 완성하기보다 세 번에 걸쳐 다시 짜면서, 구조가 왜 그렇게 되어야
+      하는지를 배웠습니다.
+    </p>
+    <div class="hero__cta">
+      <a class="btn btn--solid" href="#work">SBerp 살펴보기</a>
+      <a class="btn" href="https://github.com/mdfy0308" target="_blank" rel="noopener">GitHub</a>
     </div>
+  </div>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>© copyrights 정수정 2026 all. rights reserved</p>
-    </footer>
+  <!-- 값은 확인 후 확정하세요 -->
+  <dl class="record" aria-label="요약">
+    <div class="record__row">
+      <dt>담당 영역</dt><dd><span class="num">8</span>개</dd>
+    </div>
+    <div class="record__row">
+      <dt>프로젝트 반복</dt><dd><span class="num">3</span>차</dd>
+    </div>
+    <div class="record__row">
+      <dt>팀 구성</dt><dd><span class="num">4</span>인</dd>
+    </div>
+    <div class="record__row">
+      <dt>주력</dt><dd>Spring Boot · Oracle</dd>
+    </div>
+  </dl>
+</section>
+
+<!-- ═══════════ WORK ═══════════ -->
+<section class="section" id="work">
+  <h2 class="section__title">PROJECT</h2>
+  <p class="section__sub">SBerp · Spring Breeze ERP</p>
+
+  <!-- ▣ 이미지 자리 : 대표 화면 -->
+  <div class="ph ph--wide">
+    <span class="ph__label">대표 화면 스크린샷</span>
+    <span class="ph__spec">가로형 · 1600×900 권장</span>
+  </div>
+
+  <div class="intro">
+    <div class="intro__lead">
+      <h3>어떤 서비스인가</h3>
+      <p>
+        중소기업이 사원 등록부터 근태 집계, 연차 정산, 인사평가까지 한 곳에서
+        처리할 수 있는 웹 ERP입니다. 회사별로 데이터가 완전히 분리되는 구조 위에
+        올려, 여러 회사가 같은 시스템을 나눠 쓸 수 있게 했습니다.
+      </p>
+      <p>
+        저는 사원·직급·권한·인사평가·근태·연차 여섯 개 도메인의 서버와 화면을
+        맡았고, 여기에 인사 규정을 답해주는 AI 챗봇과 관리자 대시보드를 더했습니다.
+      </p>
+    </div>
+    <dl class="meta">
+      <div><dt>기간</dt><dd>2026.__ – 2026.__</dd></div>
+      <div><dt>인원</dt><dd>4인 팀</dd></div>
+      <div><dt>역할</dt><dd>백엔드 · 프론트엔드</dd></div>
+      <div><dt>담당</dt><dd>인사 · 근태 · 평가 · 권한</dd></div>
+    </dl>
+  </div>
+
+  <!-- ── 버전별 고도화 ── -->
+  <h3 class="sub-title">버전별 고도화</h3>
+  <p class="sub-lede">
+    같은 서비스를 세 번 다시 만들었습니다. 기능을 늘리는 방식이 아니라,
+    앞 버전에서 불편했던 구조를 다음 버전에서 바꾸는 방식으로 진행했습니다.
+  </p>
+
+  <ol class="versions">
+
+    <li class="ver">
+      <p class="ver__mark">1차</p>
+      <!-- ▣ 이미지 자리 : 1차 -->
+      <div class="ph ph--card">
+        <span class="ph__label">1차 화면</span>
+        <span class="ph__spec">16:9</span>
+      </div>
+      <div class="ver__body">
+        <h4>기본 흐름 세우기</h4>
+        <p class="tags"><span class="tag">Java</span><span class="tag">JSP</span><span class="tag">MyBatis</span><span class="tag">Oracle</span></p>
+        <!-- TODO: 1차 실제 내용으로 교체 -->
+        <p>
+          사원 등록과 조회, 로그인처럼 시스템이 돌아가기 위한 최소한의 흐름을
+          먼저 만들었습니다. 화면과 로직이 한 파일에 섞여 있어, 기능 하나를
+          고칠 때마다 영향 범위를 가늠하기 어려웠습니다.
+        </p>
+        <p class="ver__take">관심사를 왜 나눠야 하는지를 몸으로 알게 된 단계.</p>
+      </div>
+    </li>
+
+    <li class="ver">
+      <p class="ver__mark">2차</p>
+      <!-- ▣ 이미지 자리 : 2차 -->
+      <div class="ph ph--card">
+        <span class="ph__label">2차 화면</span>
+        <span class="ph__spec">16:9</span>
+      </div>
+      <div class="ver__body">
+        <h4>계층 분리와 도메인 나누기</h4>
+        <p class="tags"><span class="tag">Spring Boot</span><span class="tag">MyBatis</span><span class="tag">Spring Security</span><span class="tag">React</span></p>
+        <!-- TODO: 2차 실제 내용으로 교체 -->
+        <p>
+          서버와 화면을 분리하고, 팀원마다 맡을 도메인의 경계를 그었습니다.
+          권한 체계를 도입해 사원과 관리자가 볼 수 있는 범위를 갈랐습니다.
+          다만 조회 조건이 늘어날수록 쿼리가 길어지는 문제가 남았습니다.
+        </p>
+        <p class="ver__take">남의 파일을 건드리지 않고 함께 일하는 방법을 익힌 단계.</p>
+      </div>
+    </li>
+
+    <li class="ver ver--final">
+      <p class="ver__mark">3차</p>
+      <!-- ▣ 이미지 자리 : 3차 -->
+      <div class="ph ph--card">
+        <span class="ph__label">3차 화면</span>
+        <span class="ph__spec">16:9</span>
+      </div>
+      <div class="ver__body">
+        <h4>운영을 염두에 둔 재설계</h4>
+        <p class="tags"><span class="tag">Spring Boot 4</span><span class="tag">JPA + MyBatis</span><span class="tag">Redis</span><span class="tag">Next.js</span><span class="tag">OpenAI API</span></p>
+        <p>
+          기존 테이블은 손대지 않고 MyBatis에 그대로 둔 채, 평가·연차처럼 새로
+          만든 영역만 JPA로 옮겼습니다. 두 방식이 섞이면 추적이 어려워지므로
+          서로를 엔티티로 엮지 않고 참조 컬럼만 들고 있도록 경계를 그었습니다.
+        </p>
+        <p>
+          인사평가 리포트 생성이나 안내 메일처럼 외부로 나가는 작업은 트랜잭션이
+          끝난 뒤에 실행되도록 미뤘습니다. 뒤늦게 롤백됐을 때 이미 발송된 메일은
+          되돌릴 수 없기 때문입니다.
+        </p>
+        <p>
+          여기에 사내 인사 규정을 근거로 답하는 챗봇을 붙였습니다. 한국어 문서에서는
+          고정된 유사도 기준이 잘 맞지 않아, 가장 관련 있는 문단을 기준으로 삼는
+          상대적인 방식으로 바꿔 엉뚱한 답변을 줄였습니다.
+        </p>
+        <p class="ver__take">기능이 도는 것과 운영에서 버티는 것은 다르다는 감각을 얻은 단계.</p>
+      </div>
+    </li>
+
+  </ol>
+
+  <div class="links">
+    <!-- 실제 주소로 교체하세요 -->
+    <a class="btn" href="#" target="_blank" rel="noopener">저장소</a>
+    <a class="btn" href="#" target="_blank" rel="noopener">시연 영상</a>
+    <a class="btn" href="#" target="_blank" rel="noopener">기술 문서</a>
+  </div>
+</section>
+
+<!-- ═══════════ STACK ═══════════ -->
+<section class="section" id="stack">
+  <h2 class="section__title">SKILL</h2>
+  <p class="section__sub">프로젝트를 진행하며 사용한 기술</p>
+
+  <dl class="stack">
+    <div class="stack__row">
+      <dt>서버</dt>
+      <dd>
+        <p class="tags"><span class="tag">Java 17</span><span class="tag">Spring Boot 4</span><span class="tag">Spring Security</span><span class="tag">JWT</span></p>
+        <p>인사·근태 도메인의 API와 권한 체계를 처음부터 설계해 구현.</p>
+      </dd>
+    </div>
+    <div class="stack__row">
+      <dt>데이터</dt>
+      <dd>
+        <p class="tags"><span class="tag">Oracle</span><span class="tag">MyBatis</span><span class="tag">JPA</span><span class="tag">Redis</span></p>
+        <p>기존 테이블은 MyBatis, 신규 영역은 JPA로 나눈 혼합 구조를 운영. 시퀀스 증가폭과 채번 설정 불일치까지 맞춰 본 경험.</p>
+      </dd>
+    </div>
+    <div class="stack__row">
+      <dt>화면</dt>
+      <dd>
+        <p class="tags"><span class="tag">React</span><span class="tag">Redux Toolkit</span><span class="tag">Redux-Saga</span><span class="tag">Ant Design</span></p>
+        <p>담당 도메인의 상태 관리와 비동기 흐름, 목록·상세·결재 화면을 직접 작성.</p>
+      </dd>
+    </div>
+    <div class="stack__row">
+      <dt>AI</dt>
+      <dd>
+        <p class="tags"><span class="tag">OpenAI API</span><span class="tag">RAG</span></p>
+        <p>사내 문서를 문단으로 쪼개 질문과 맞춰보고, 근거가 되는 문단만 골라 답변에 넣는 경량 파이프라인.</p>
+      </dd>
+    </div>
+    <div class="stack__row">
+      <dt>협업</dt>
+      <dd>
+        <p class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Notion</span></p>
+        <p>도메인 경계를 나눠 충돌 없이 병행 개발. 학습과 결정 사항은 매일 문서로 남김.</p>
+      </dd>
+    </div>
+  </dl>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section class="section section--split" id="about">
+  <div>
+    <h2 class="section__title">ABOUT ME</h2>
+    <p class="about__text">
+      코드가 왜 그렇게 동작하는지 알기 전에는 다음으로 넘어가지 못하는 편입니다.
+      그래서 남들보다 한 번 더 되짚어 보고, 그 과정에서 이미 지나간 코드의
+      문제를 발견하는 일이 많았습니다.
+    </p>
+    <p class="about__text">
+      팀에서는 맡은 영역 밖을 함부로 건드리지 않는 편이 결국 빠르다고 생각합니다.
+      필요한 변경은 먼저 말하고, 커밋을 나눠 되돌릴 수 있게 남겨 둡니다.
+    </p>
+  </div>
+  <dl class="record record--flush">
+    <div class="record__row">
+      <dt>교육</dt><dd>AI 활용 풀스택 부트캠프<br><span class="muted">2026.03 – 2026.10</span></dd>
+    </div>
+    <div class="record__row">
+      <dt>관심</dt><dd>도메인 설계 · 운영 안정성</dd>
+    </div>
+  </dl>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section class="section contact" id="contact">
+  <h2 class="section__title">CONTACT</h2>
+  <ul class="contact__list">
+    <li><span>메일</span><a href="mailto:mdfy0308@gmail.com">mdfy0308@gmail.com</a></li>
+    <li><span>GitHub</span><a href="https://github.com/mdfy0308" target="_blank" rel="noopener">github.com/mdfy0308</a></li>
+  </ul>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p>© 2026 정수정. All rights reserved.</p>
+</footer>
+
+<script src="./js/main.js"></script>
 </body>
 </html>
