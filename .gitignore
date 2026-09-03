@@ -13,6 +13,7 @@ lib/
 .properties
 application-oauth.properties
 .env
+.pem
 
 # 빌드 결과물 무시
 /bin/
@@ -43,3 +44,5 @@ track008_test/front/.next
 track008_2_BOOTREACT/front1/node_modules
 track008_2_BOOTREACT/front2/node_modules
 track008_2_BOOTREACT/front3/node_modules
+track009_linux_aws_std/the703-sj.pem
+track009_linux_aws_std/the703-js_accessKeys.csv

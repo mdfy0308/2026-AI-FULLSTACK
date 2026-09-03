@@ -500,6 +500,3 @@ root@7d11daf96426:/# ./date_log.sh
 Tue Sep  1 07:04:54 UTC 2026
 log.txt done
 ```
-
-
-## Part002. Aws
