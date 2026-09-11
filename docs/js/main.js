@@ -55,4 +55,55 @@
 
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
+
+  /* ── 모달 열기 / 닫기 ── */
+  var body = document.body;
+
+  function openModal(id) {
+    var modal = document.getElementById(id);
+    if (!modal) return;
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    body.classList.add("modal-locked");
+
+    /* 패널 안 스크롤 초기화 */
+    var scrollArea = modal.querySelector(".modal__body");
+    if (scrollArea) scrollArea.scrollTop = 0;
+  }
+
+  function closeModal(modal) {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    body.classList.remove("modal-locked");
+  }
+
+  /* 버튼 클릭 → 열기 */
+  document.addEventListener("click", function (e) {
+    var trigger = e.target.closest("[data-modal]");
+    if (trigger) {
+      openModal(trigger.getAttribute("data-modal"));
+      return;
+    }
+
+    /* X 버튼 → 닫기 */
+    var closeBtn = e.target.closest(".modal__close");
+    if (closeBtn) {
+      closeModal(closeBtn.closest(".modal"));
+      return;
+    }
+
+    /* 배경 클릭 → 닫기 */
+    var backdrop = e.target.closest(".modal__backdrop");
+    if (backdrop) {
+      closeModal(backdrop.closest(".modal"));
+    }
+  });
+
+  /* ESC 키 → 닫기 */
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      var open = document.querySelector(".modal.is-open");
+      if (open) closeModal(open);
+    }
+  });
 })();

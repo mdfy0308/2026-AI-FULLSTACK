@@ -358,6 +358,154 @@ a { color: inherit; }
   margin-bottom: 0.15rem;
 }
 
+/* ---------- 기능 상세 버튼 ---------- */
+.feat__more {
+  display: inline-block;
+  margin-top: 0.6rem;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--stamp);
+  background: var(--stamp-soft);
+  border: 1.5px solid var(--stamp);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, transform 0.12s, box-shadow 0.12s;
+}
+.feat__more:hover {
+  background: var(--stamp);
+  color: #fff;
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.feat__more:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+/* ---------- 모달 ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s;
+}
+.modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+.modal__panel {
+  position: relative;
+  width: min(92vw, 42rem);
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  box-shadow: 8px 8px 0 var(--ink);
+  transform: translateY(12px);
+  transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.modal.is-open .modal__panel {
+  transform: none;
+}
+.modal__close {
+  position: sticky;
+  top: 0;
+  align-self: flex-end;
+  z-index: 2;
+  width: 2.4rem; height: 2.4rem;
+  margin: 0.6rem 0.6rem 0 0;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--ink);
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+.modal__close:hover {
+  background: var(--stamp);
+  color: #fff;
+}
+.modal__body {
+  overflow-y: auto;
+  padding: 0 clamp(1.2rem, 4vw, 2.2rem) clamp(1.5rem, 4vw, 2.5rem);
+  overscroll-behavior: contain;
+}
+.modal__title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+.modal__desc {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--hair);
+}
+.modal__body h4 {
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em;
+  color: var(--stamp);
+  margin: 1.8rem 0 0.8rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--hair);
+}
+.modal__list {
+  margin-bottom: 1.2rem;
+}
+.modal__list li {
+  position: relative;
+  padding-left: 0.95rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.94rem;
+  color: var(--ink-2);
+}
+.modal__list li::before {
+  content: "";
+  position: absolute; left: 0; top: 0.72em;
+  width: 5px; height: 5px;
+  background: var(--stamp);
+}
+.modal__shot {
+  margin: 1rem 0;
+}
+/* 모달 안 이미지 자리표시가 아닌 실제 이미지일 때 */
+.modal__body img,
+.modal__body video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  border: 1.5px solid var(--hair);
+}
+
+/* 모달 열린 동안 본문 스크롤 잠금 */
+body.modal-locked { overflow: hidden; }
+
+@media (max-width: 640px) {
+  .modal__panel {
+    width: 96vw;
+    max-height: 90vh;
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+}
+
 /* ---------- 접기 / 펼치기 ---------- */
 .fold {
   grid-column: 1 / -1;
