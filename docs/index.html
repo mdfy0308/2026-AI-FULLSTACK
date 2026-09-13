@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>정수정 | Portfolio</title>
-<meta name="description" content="정수정의 포트폴리오.">
+<meta name="description" content="정수정 | 화면 앞의 사용자를 먼저 생각하고, 화면 뒤의 서버까지 책임지는 풀스택 개발자.">
 <meta property="og:title" content="정수정 | Portfolio">
-<meta property="og:description" content="사내 ERP의 인사·근태·평가 도메인을 설계하고 구현했습니다.">
+<meta property="og:description" content="사내 ERP의 인사·근태·평가 도메인을 설계하고 구현했습니다. 실패까지 설계하는 개발자.">
 <meta property="og:type" content="website">
-<!-- TODO: 1200×630 이미지를 만들어 절대 주소로 넣으세요
+<!-- 1200×630
 <meta property="og:image" content="https://mdfy0308.github.io/저장소이름/img/og.png"> -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="./css/reset.css">
@@ -34,32 +34,32 @@
      1. ABOUT — 자기소개
      ═══════════════════════════════════════════ -->
 <section class="hero" id="top">
-  <div class="hero__body">
-    <p class="hero__role">풀스택 개발자</p>
-    <h1 class="hero__line">
-      캐치 프레이즈1<br>
-      캐치 프레이즈2,<br>
-      정수정입니다.
-    </h1>
-
-    <p class="hero__lede">
-      여기에 본인 소개 문구를 넣습니다.
-    </p>
-
-    <div class="hero__cta">
-      <a class="btn btn--solid" href="#work">프로젝트 보기</a>
-      <a class="btn" href="https://github.com/mdfy0308" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
-
   <div class="hero__side">
-    <!-- ▣ 이미지 자리 : 프로필 사진 (선택) -->
     <div class="ph ph--portrait">
       <span class="ph__label">프로필 사진</span>
       <span class="ph__spec">4:5 · 넣지 않아도 됩니다</span>
     </div>
     <!-- 결재 도장 -->
     <p class="stamp"><span>구직 중</span></p>
+  </div>
+
+  <div class="hero__body">
+    <p class="hero__role">풀스택 개발자</p>
+    <h1 class="hero__line">
+      화면 앞의 사용자를 먼저 생각합니다.<br>
+    </h1>
+
+    <p class="hero__lede">
+      웹 퍼블리싱을 하며 화면 앞의 사용자를 먼저 떠올리는 습관이 생겼고,
+      데이터가 어떻게 오가는지 알고 싶어 풀스택 부트캠프에 들어왔습니다.
+      팀 프로젝트에서 Java와 Spring Boot, React로 사내 ERP의 
+      인사·근태·평가 도메인을 설계하고 구현했습니다.
+    </p>
+
+    <div class="hero__cta">
+      <a class="btn btn--solid" href="#work">프로젝트 보기</a>
+      <a class="btn" href="https://github.com/mdfy0308" target="_blank" rel="noopener">GitHub</a>
+    </div>
   </div>
 </section>
 
@@ -111,6 +111,10 @@
       <span class="feat__k">평가</span>인사평가 기간 관리, AI 평가 리포트 요약
       <button class="feat__more" data-modal="modal-eval" type="button">상세 보기</button>
     </li>
+    <li>
+      <span class="feat__k">챗봇</span>사내 HR 규정 기반 RAG 챗봇
+      <button class="feat__more" data-modal="modal-chat" type="button">상세 보기</button>
+    </li>
   </ul>
 
   <!-- ── 기능 상세 모달 ── -->
@@ -123,24 +127,33 @@
       <div class="modal__body">
         <h3 class="modal__title">인사</h3>
         <p class="modal__desc">사원·직급·권한 관리, 온보딩 메일 자동 발송</p>
-        <!-- TODO: 실제 스크린샷으로 교체 -->
         <div class="modal__shot ph ph--card">
           <span class="ph__label">사원 관리 화면</span>
           <span class="ph__spec">스크린샷 / GIF</span>
         </div>
-        <h4>기능 설명</h4>
+        <h4>사원 관리</h4>
         <ul class="modal__list">
-          <li>사원 등록·수정·삭제, 상세 조회</li>
-          <li>직급 관리와 권한 체계 설정</li>
-          <li>온보딩 안내 메일 자동 발송 (입사 즉시 + 3일 후 적응 확인)</li>
-          <li>실시간 이메일·연락처·사번 중복 검사</li>
-          <li>권한별 화면 분기 (관리자 / 본인)</li>
+          <li>사원 등록·수정·삭제, 상세 조회, 비밀번호 초기화</li>
+          <li>이메일·연락처·사번 입력 중 비동기 중복 검사</li>
+          <li>권한별 화면 분기 — 관리자와 본인이 볼 수 있는 버튼을 나눠 표시</li>
+          <li>직급(Position) CRUD와 권한(Permission) 체계 설정</li>
         </ul>
-        <!-- 추가 스크린샷 -->
+        <h4>온보딩 메일 자동화</h4>
+        <ul class="modal__list">
+          <li>사원 등록 즉시 환영 메일 @Async 발송 — 트랜잭션 커밋 후 실행</li>
+          <li>입사 3일 후 적응 확인 메일 @Scheduled 배치 (평일 오전 9시)</li>
+          <li>환영 메일 안전망 배치 — 서버 다운 등으로 누락된 메일을 매일 01:30에 복구 발송</li>
+          <li>AtomicBoolean 동시 실행 방지로 중복 발송 차단</li>
+        </ul>
         <div class="modal__shot ph ph--card">
-          <span class="ph__label">온보딩 메일 설정</span>
+          <span class="ph__label">온보딩 메일 흐름</span>
           <span class="ph__spec">스크린샷 / GIF</span>
         </div>
+        <h4>데이터 격리</h4>
+        <ul class="modal__list">
+          <li>모든 조회·수정 쿼리에 회사 식별자(comId) 조건 적용</li>
+          <li>주소창 사원번호 변조로 타사 데이터 접근하는 경로까지 차단</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -157,15 +170,24 @@
           <span class="ph__label">출퇴근 집계 화면</span>
           <span class="ph__spec">스크린샷 / GIF</span>
         </div>
-        <h4>기능 설명</h4>
+        <h4>출퇴근 관리</h4>
         <ul class="modal__list">
-          <li>출퇴근 기록 집계 및 근무시간 계산</li>
-          <li>연차 자동 부여·정산 배치 처리</li>
-          <li>휴가 중 퇴근 요청 등 예외 경로 분기 처리</li>
-          <li>관리자 대시보드에서 전체 근태 현황 조회</li>
+          <li>출근 시각 기준 정상/지각 자동 판정 (09:00 기준)</li>
+          <li>금일 중복 출근 방지 — 이미 출근 처리된 경우 차단</li>
+          <li>연차·오전 반차·오후 반차 등록일에는 출근 요청 자체를 분기 처리</li>
+          <li>퇴근 시 근무시간 자동 계산 (Duration 기반)</li>
+          <li>관리자 전체 조회 + 본인 조회 분리</li>
+        </ul>
+        <h4>연차 관리</h4>
+        <ul class="modal__list">
+          <li>매년 1월 1일 전사 연차 일괄 자동 부여 (@Scheduled cron)</li>
+          <li>근속 연수 기반 연차 일수 산정 (근로기준법 반영)</li>
+          <li>중복 부여 방지 — 서버 재시작으로 중복 실행되어도 안전</li>
+          <li>연차 사용·잔여 현황 조회 (관리자 전체 / 본인 이력)</li>
+          <li>회사 간 데이터 격리 — assertSameCompany 검증 일관 적용</li>
         </ul>
         <div class="modal__shot ph ph--card">
-          <span class="ph__label">연차 정산 배치</span>
+          <span class="ph__label">연차 현황 조회</span>
           <span class="ph__spec">스크린샷 / GIF</span>
         </div>
       </div>
@@ -181,18 +203,63 @@
         <h3 class="modal__title">평가</h3>
         <p class="modal__desc">인사평가 기간 관리, AI 평가 리포트 요약</p>
         <div class="modal__shot ph ph--card">
-          <span class="ph__label">인사평가 관리 화면</span>
+          <span class="ph__label">평가 회차 관리 화면</span>
           <span class="ph__spec">스크린샷 / GIF</span>
         </div>
-        <h4>기능 설명</h4>
+        <h4>회차·평가 관리</h4>
         <ul class="modal__list">
-          <li>평가 기간을 6단계 상태로 관리</li>
-          <li>마감 시점 AI 코멘트 요약 → 리포트 자동 생성</li>
-          <li>생성 중 / 실패 상태 분리로 재시도 가능</li>
-          <li>5초 간격 진행률 폴링으로 실시간 처리 현황 표시</li>
+          <li>평가 기간(회차)을 6단계 상태로 관리 — 준비 → 진행 → 마감 → 생성 중 → 완료 / 실패</li>
+          <li>사원별 평가 작성·제출·조회, 평가자-피평가자 관계 기반</li>
+          <li>회차별 현재 상태를 관리자가 한눈에 확인</li>
+        </ul>
+        <h4>AI 리포트 배치</h4>
+        <ul class="modal__list">
+          <li>마감 시점에 사원별 코멘트를 OpenAI API로 요약 → 리포트 자동 생성</li>
+          <li>@Async("reportExecutor") 전용 스레드 풀로 분리 — 트랜잭션 커밋 후 실행</li>
+          <li>실패 코드 매핑 (-1: 회차 없음, -2: 허용되지 않은 상태, -3: 대상 없음)</li>
+          <li>생성 실패 시 REPORTING_FAILED 상태로 전환 → 안전하게 재시도 가능</li>
+          <li>프론트에서 5초 간격 폴링으로 실시간 처리 현황 표시</li>
         </ul>
         <div class="modal__shot ph ph--card">
-          <span class="ph__label">AI 리포트 생성</span>
+          <span class="ph__label">AI 리포트 생성 진행률</span>
+          <span class="ph__spec">스크린샷 / GIF</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 챗봇 -->
+  <div class="modal" id="modal-chat" aria-hidden="true">
+    <div class="modal__backdrop"></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-label="챗봇 기능 상세">
+      <button class="modal__close" type="button" aria-label="닫기">&times;</button>
+      <div class="modal__body">
+        <h3 class="modal__title">HR 규정 챗봇</h3>
+        <p class="modal__desc">사내 HR 규정 PDF를 근거로 답변하는 RAG 챗봇</p>
+        <div class="modal__shot ph ph--card">
+          <span class="ph__label">챗봇 대화 화면</span>
+          <span class="ph__spec">스크린샷 / GIF</span>
+        </div>
+        <h4>RAG 파이프라인</h4>
+        <ul class="modal__list">
+          <li>사내 HR 규정 PDF를 문단(Chunk) 단위로 분할하여 임베딩 벡터로 변환</li>
+          <li>질문 임베딩 → 회사별 활성 규정 청크와 코사인 유사도 계산 (Java 자체 구현)</li>
+          <li>상위 5개 청크를 근거 후보로 추출 (Top-K = 5)</li>
+        </ul>
+        <h4>환각 방지</h4>
+        <ul class="modal__list">
+          <li>고정 임계값 대신 상대 유사도 기준 적용 — 1위 대비 50% 이상인 청크만 포함</li>
+          <li>근거 부족 시 GPT를 호출하지 않고 고정 안내문 반환 → 불필요한 API 호출 차단</li>
+          <li>근거 청크 원문 미리보기(120자)를 답변과 함께 제공 → 사용자가 출처 확인 가능</li>
+        </ul>
+        <h4>부가 기능</h4>
+        <ul class="modal__list">
+          <li>질문·답변·근거 청크 ID를 대화 로그에 기록 (HrAiChatLog)</li>
+          <li>규정 문서 관리 — 업로드·활성화·비활성화 (HrPlcyDoc)</li>
+          <li>회사별 데이터 격리 — comId 기준으로 청크 검색 범위 제한</li>
+        </ul>
+        <div class="modal__shot ph ph--card">
+          <span class="ph__label">근거 문단 표시</span>
           <span class="ph__spec">스크린샷 / GIF</span>
         </div>
       </div>
@@ -517,7 +584,7 @@
         <div><dt>기간</dt><dd>2026.03 – 2026.10</dd></div>
         <div><dt>링크</dt>
           <dd>
-            <a href="https://app.notion.com/p/AI-35f8eca4eb6b80a18d41f2f66a2b67b6?source=copy_link" target="_blank" rel="noopener">Notion 학습 기록 전체 보기</a>
+            <a href="https://app.notion.com/p/2026-3d88eca4eb6b81d59cc2d00b0acf53c9?source=copy_link" target="_blank" rel="noopener">Notion 학습 기록 전체 보기</a>
           </dd>
         </div>
       </dl>

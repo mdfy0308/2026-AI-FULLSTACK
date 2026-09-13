@@ -1,7 +1,3 @@
-/* ═══════════════════════════════════════════
-   정수정 포트폴리오 — 밝은 버전
-   ═══════════════════════════════════════════ */
-
 :root {
   --paper:   #f5f4f0;   /* 바탕 */
   --card:    #ffffff;   /* 올라온 면 */
@@ -87,7 +83,7 @@ a { color: inherit; }
   margin: 0 auto;
   padding: clamp(3rem, 10vh, 6rem) var(--pad) clamp(3.5rem, 9vh, 6rem);
   display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.4fr);
   gap: clamp(2rem, 6vw, 5rem);
   align-items: end;
 }
@@ -109,12 +105,16 @@ a { color: inherit; }
 }
 .hero__lede { max-width: 33em; font-size: 1.04rem; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2rem; }
-.hero__side { position: relative; align-self: end; }
+.hero__side {
+  position: relative;
+  align-self: end;
+  max-width: 14rem;
+}
 
 /* ---------- 결재 도장 ---------- */
 .stamp {
   position: absolute;
-  bottom: -1.4rem; left: -1.4rem;
+  bottom: -1.4rem; right: -1.4rem;
   background: var(--paper);
   margin: 0;
   display: grid;
@@ -154,7 +154,7 @@ a { color: inherit; }
 }
 .btn--solid:hover { background: #c23826; transform: translate(-1px, -1px); box-shadow: 6px 6px 0 var(--ink); }
 .btn--solid:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
-.links { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 3rem; }
+.links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.7rem; margin-top: 3rem; }
 .links--tight { margin-top: 1.8rem; }
 
 /* ---------- 섹션 ---------- */
@@ -343,6 +343,8 @@ a { color: inherit; }
   border-left: 1.5px solid var(--line);
 }
 .feat li {
+  display: flex;
+  flex-direction: column;
   padding: 0.9rem 1.1rem;
   border-right: 1.5px solid var(--line);
   border-bottom: 1.5px solid var(--line);
@@ -361,6 +363,7 @@ a { color: inherit; }
 /* ---------- 기능 상세 버튼 ---------- */
 .feat__more {
   display: inline-block;
+  align-self: flex-end;
   margin-top: 0.6rem;
   padding: 0.3rem 0.8rem;
   font-size: 0.78rem; font-weight: 600;
@@ -695,6 +698,7 @@ body.modal-locked { overflow: hidden; }
   margin: 0 auto;
   padding: 2.5rem var(--pad) 3.5rem;
   border-top: 1.5px solid var(--line);
+  text-align: center;
 }
 .foot p { margin: 0; color: var(--muted); font-size: 0.82rem; }
 
@@ -717,7 +721,7 @@ body.modal-locked { overflow: hidden; }
 }
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; align-items: start; }
-  .hero__side { max-width: 20rem; margin-left: 1.4rem; }
+  .hero__side { max-width: 10rem; margin-left: 0; order: -1; }
   .intro { grid-template-columns: 1fr; }
   .edu { grid-template-columns: 1fr; }
 }
