@@ -337,6 +337,7 @@ urlpatterns = [
 <head>
     <meta charset="UTF-8">
     <title>파이썬 데이터 분석 대시보드</title>
+    <!-- Chart.js   라이브러리 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -346,34 +347,57 @@ urlpatterns = [
     </div>
 
     <!-- 안전한 데이터 전달을 위한 Django json_script 필터 사용 -->
-
-
-
+    <!-- 장고의 내장필터 json_script : python의 list로 
+        <script id="categories-data" type="application/json">[카테고리1, 카테고리2]</script> 변환 
+    -->
+    {{ categories|json_script:"categories-data" }}
+    {{ visitors|json_script:"visitors-data" }}
+    {{ sales|json_script:"sales-data" }}
 
     <script>
         const ctx = document.getElementById('analysisChart').getContext('2d');
-        
         // JSON 파싱을 통해 안전하게 데이터 수신
-
-
-
-
+        const chartCategories = JSON.parse(document.getElementById('categories-data').textContent);
+        const chartVisitors = JSON.parse(document.getElementById('visitors-data').textContent);
+        const chartSales = JSON.parse(document.getElementById('sales-data').textContent);
         // Chart.js 인스턴스 생성
-
-
-
-
+        const analysisChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: chartCategories,  // x축 라벨(카테고리 리스트)
+                datasets: [
+                    {
+                        label: '카테고리별 방문자 수 합계 (명)', 
+                        data: chartVisitors, // Y축 1번 데이터 (방문자수) 
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: '카테고리별 총 매출액 (원)',
+                        data: chartSales, // Y축 2번 데이터 (매출액)
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true } // Y축 0부터 시작
+                }
+            }
+        });
     </script>
 </body>
 </html>
-
 ```
 
 ```javascript
 // ✏️ 연습문제 & 개념 점검 [최종 종합]
 // Q1. Django 템플릿 변수를 JS 객체로 안전하게 전달하기 위해 사용한 필터는?
-// 답: (                                             )
+// 답: ( json_script )
 // Q2. Pandas에서 그룹별 합계를 구하기 위해 사용한 대표 함수 2개는?
-// 답: (                                             ), (                                             )
-
+// 답: ( groupby() ), ( sum() )
 ```

@@ -57,7 +57,7 @@ ROOT_URLCONF = 'analysis_pjt.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'analytics' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
