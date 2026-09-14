@@ -48,6 +48,10 @@ a { color: inherit; }
   background: var(--stamp); color: #fff;
   padding: 0.6rem 1rem; text-decoration: none;
 }
+img {
+  width: 100%;
+  object-fit: cover;
+}
 
 /* ---------- 상단 바 ---------- */
 .topbar {
@@ -185,11 +189,11 @@ a { color: inherit; }
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   gap: 0.3rem;
-  background: #efede6;
+  background: var(--ink-2);
   border: 1.5px dashed #b9b4a6;
   color: var(--muted);
   text-align: center;
-  padding: 1rem;
+  padding: 0.2rem;
 }
 .ph__label { font-size: 0.9rem; font-weight: 500; color: #6f6b60; }
 .ph__spec { font-size: 0.75rem; letter-spacing: 0.04em; color: #a09b8e; }
