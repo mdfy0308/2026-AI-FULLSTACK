@@ -236,14 +236,21 @@ a { color: inherit; }
 .sub-lede { color: var(--muted); font-size: 0.94rem; max-width: 44em; margin-bottom: 2.5rem; }
 
 .versions { display: grid; gap: 1.5rem; }
+
 .ver {
   display: grid;
-  grid-template-columns: 5rem minmax(0, 1fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
   gap: clamp(1.2rem, 3vw, 2.2rem);
   align-items: start;
   background: var(--card);
   border: 1.5px solid var(--line);
   padding: clamp(1.4rem, 3vw, 2rem);
+}
+
+.ver__left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }
 /* 마지막 차수 한 장에만 그림자를 준다 */
 .ver--final { box-shadow: 7px 7px 0 var(--ink); }
@@ -319,7 +326,9 @@ a { color: inherit; }
   padding: 0.3rem 1.2rem;
 }
 .contact__list li {
-  display: flex; justify-content: space-between; align-items: baseline;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: baseline;
   gap: 1.5rem;
   padding: 0.9rem 0;
   border-bottom: 1px solid var(--hair);
@@ -514,6 +523,7 @@ body.modal-locked { overflow: hidden; }
   grid-column: 1 / -1;
   margin-top: 0.4rem;
   border-top: 1.5px solid var(--line);
+
 }
 .fold summary {
   list-style: none;
@@ -527,7 +537,9 @@ body.modal-locked { overflow: hidden; }
   letter-spacing: -0.01em;
   color: var(--ink);
   user-select: none;
+  justify-content: center;
 }
+
 .fold summary::-webkit-details-marker { display: none; }
 
 /* 앞의 사각 표식이 +에서 −로 바뀐다 */
@@ -582,7 +594,7 @@ body.modal-locked { overflow: hidden; }
 /* ---------- 트러블슈팅 ---------- */
 .trouble { margin: 0; }
 .trouble__title {
-  margin: 0 0 0.2rem;
+  margin: 0 0 0.6rem 0.6rem;
   font-size: 1rem; font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -716,8 +728,8 @@ body.modal-locked { overflow: hidden; }
 
 /* ---------- 반응형 ---------- */
 @media (max-width: 980px) {
-  .ver { grid-template-columns: 4rem minmax(0, 1fr); }
-  .ver__body { grid-column: 1 / -1; }
+  .ver { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); }
+  .ver__body { grid-column: auto; }
 }
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; align-items: start; }

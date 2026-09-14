@@ -12,6 +12,7 @@
 <meta property="og:image" content="https://mdfy0308.github.io/저장소이름/img/og.png"> -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="./css/reset.css">
+<style>.modal{visibility:hidden}</style>
 <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -55,11 +56,6 @@
       팀 프로젝트에서 Java와 Spring Boot, React로 사내 ERP의 
       인사·근태·평가 도메인을 설계하고 구현했습니다.
     </p>
-
-    <div class="hero__cta">
-      <a class="btn btn--solid" href="#work">프로젝트 보기</a>
-      <a class="btn" href="https://github.com/mdfy0308" target="_blank" rel="noopener">GitHub</a>
-    </div>
   </div>
 </section>
 
@@ -75,15 +71,14 @@
     <div class="intro__lead">
       <h3>어떤 서비스인가</h3>
       <p>
-        중소기업의 흩어진 업무 데이터를 한 곳에 모으는 사내 ERP입니다.
-        회사·부서·사원 같은 조직 정보를 축으로 
-        인사, 근태, 전자결재, 프로젝트, 자원 예약까지 업무 데이터가 연결됩니다.
+        중소기업의 흩어진 업무 데이터를 한 곳에 모으는 사내 ERP입니다.<br />
+        회사·부서·사원 같은 조직 정보를 축으로 인사, 근태, 전자결재, 프로젝트, 자원 예약까지 데이터가 연결됩니다.
         모든 데이터는 회사 단위로 분리되어, 여러 회사가 같은 시스템을 나눠 쓸 수 있습니다.
       </p>
       <p>
-        저는 <strong>인사·근태·평가·권한</strong> 영역을 맡았습니다. 사원과 직급,
-        권한 체계부터 출퇴근 집계와 연차 정산, 인사평가와 AI 리포트까지가 담당 범위이고, 
-        여기에 인사 규정을 답해주는 챗봇과 관리자 대시보드를 더했습니다.
+        그중에서도 저는 <strong>인사·근태·평가·권한</strong> 영역을 맡았습니다.
+        사원과 직급, 권한 체계부터 출퇴근 집계와 연차 정산, 인사평가와 AI 리포트까지.
+        여기에 추가로 인사 규정을 답해주는 챗봇과 관리자 대시보드를 더했습니다.
       </p>
     </div>
 
@@ -269,8 +264,7 @@
   <!-- ── 2-2. 버전별 고도화 (최신 → 최초) ── -->
   <h3 class="sub-title">버전별 고도화</h3>
   <p class="sub-lede">
-    같은 서비스를 세 번 다시 만들었습니다. 기능을 늘리는 방식이 아니라,
-    앞 버전에서 불편했던 구조를 다음 버전에서 바꾸는 방식으로 진행했습니다.
+    같은 서비스를 세 번에 걸쳐 고도화하고, 기능을 추가했습니다.
     각 단계를 펼치면 주요 기능과 그때 겪은 문제를 볼 수 있습니다.
   </p>
 
@@ -278,28 +272,28 @@
 
     <!-- ═══ 3차 ═══ -->
     <li class="ver ver--final">
-      <p class="ver__mark">3차</p>
-      <!-- ▣ 이미지 자리 : 3차 -->
-      <div class="ph ph--card">
-        <span class="ph__label">3차 화면</span>
-        <span class="ph__spec">16:9</span>
+      <div class="ver__left">
+        <p class="ver__mark">3차</p>
+        <div class="ph ph--card">
+          <span class="ph__label">3차 화면</span>
+          <span class="ph__spec">16:9</span>
+        </div>
       </div>
       <div class="ver__body">
         <h4>서버와 화면의 완전 분리</h4>
         <p class="tags"><span class="tag">Spring Boot 4</span><span class="tag">JPA + MyBatis</span><span class="tag">JWT</span><span class="tag">Redis</span><span class="tag">Next.js</span><span class="tag">Redux-Saga</span><span class="tag">OpenAI</span></p>
         <p>
           <span class="ver__when">2026.08 – 2026.09 · 4인</span>
-          서버는 화면을 그리지 않고 REST API만 제공하고, 화면은 Next.js가 따로
-          맡습니다. 세션이 사라진 자리는 JWT가 채웠고 토큰은 Redis에서 관리합니다.
+          서버는 화면을 만들지 않고 REST API만, 화면은 Next.js가 따로 담당합니다.
+          세션 대신 JWT를 사용하고 토큰은 Redis에서 관리합니다.
           담당 영역에는 근태·연차와 관리자 대시보드, 인사 규정 챗봇이 새로 생겼습니다.
         </p>
-        <p class="ver__take">기능이 도는 것과 운영에서 버티는 것은 다르다는 감각을 얻은 단계.</p>
+        <p class="ver__take">정상 응답 후에도 데이터가 없을 수 있다는 걸 경험하고, 결과를 직접 확인하게 된 단계.</p>
       </div>
 
       <details class="fold">
         <summary>주요 기능과 트러블슈팅</summary>
         <div class="fold__body">
-
           <h5 class="fold__h">주요 기능</h5>
           <ul class="fold__list">
             <li><b>근태·연차</b> 출퇴근 집계와 연차 자동 부여·정산. 휴가 중 퇴근 요청 같은 예외 경로까지 분기 처리.</li>
@@ -310,7 +304,6 @@
           </ul>
 
           <h5 class="fold__h">트러블슈팅</h5>
-          <!-- TODO: 최종 확정한 사례로 교체하세요 -->
           <article class="trouble">
             <p class="trouble__title">연차 일괄 발생 데이터 유실</p>
             <ol class="steps">
@@ -318,31 +311,31 @@
                 <p class="step__label">문제</p>
                 <p>
                   연차 일괄 발생 기능을 실행한 뒤, "2026년 연차 일괄 발생 완료, count: 87"을 반환했습니다. 
-                  예외도 없고 응답도 200이었지만, 실제 테이블에는 단 한 건도 저장되지 않았습니다. 
+                  예외도 없고 응답도 200이었지만, 실제 테이블에는 내용이 단 한 건도 저장되지 않았습니다. 
                 </p>
               </li>
               <li class="step">
                 <p class="step__label">과정</p>
                 <p>
-                  조용히 실패하는 유형이라 로그가 도움이 되지 않았습니다. 세 가지 문제가 있었습니다.
+                  조용히 실패하는 유형이라 로그가 도움이 되지 않았습니다. 원인으로는 세 가지 문제가 있었습니다.
                   배치 메서드가 같은 클래스의 개별 처리 메서드를 직접 호출해 트랜잭션 설정이 적용되지 않았고, 
-                  그 결과 저장 로직 전체가 읽기 전용 트랜잭션 안에서 돌았으며, 
-                  시퀀스 채번 방식이라 저장이 지연되면서 통째로 사라졌습니다. 
-                  반복문의 카운터만 정상적으로 올라가 기능이 성공한 것처럼 보였습니다.
+                  그 결과 저장 로직 전체가 읽기 전용 트랜잭션 안에서 실행되고,
+                  시퀀스 채번 방식이라 저장이 지연되면서 통째로 사라졌습니다.
+                  반복문의 카운터만 정상적으로 올라가 마치 기능이 성공한 것처럼 보였습니다.
                 </p>
               </li>
               <li class="step">
                 <p class="step__label">해결</p>
                 <p>
                   검증이 필요한 공개 메서드와 내부 처리 코어를 분리하고, 
-                  코어를 private으로 내려 "여기는 트랜잭션이 걸리지 않는다"는 것이 드러나게 했습니다. 
+                  코어를 private으로 내려 "여기는 트랜잭션이 적용되지 않는다"는 것이 드러나게 했습니다. 
                   실제 트랜잭션 경계는 배치 메서드로 옮겼습니다.
                 </p>
               </li>
               <li class="step">
                 <p class="step__label">결과</p>
                 <p>
-                  저장 건수를 직접 조회해 확인했습니다. 
+                  저장 건수를 직접 조회해 확인했습니다.
                   이후 배치 루프에서 부르는 메서드는 private으로 두는 습관을 들였습니다.
                 </p>
               </li>
@@ -355,11 +348,12 @@
 
     <!-- ═══ 2차 ═══ -->
     <li class="ver">
-      <p class="ver__mark">2차</p>
-      <!-- ▣ 이미지 자리 : 2차 -->
-      <div class="ph ph--card">
-        <span class="ph__label">2차 화면</span>
-        <span class="ph__spec">16:9</span>
+      <div class="ver__left">
+        <p class="ver__mark">2차</p>
+        <div class="ph ph--card">
+          <span class="ph__label">2차 화면</span>
+          <span class="ph__spec">16:9</span>
+        </div>
       </div>
       <div class="ver__body">
         <h4>프레임워크 전환과 외부 연동</h4>
@@ -372,11 +366,12 @@
           <span class="tag">OpenAI</span></p>
         <p>
           <span class="ver__when">2026.07 · 14일 · 4인</span>
-          1차 전체를 Spring Boot로 옮기고 DB도 Oracle로 바꿨습니다. 인원이 여섯에서
-          넷으로 줄어 한 사람이 맡는 범위가 넓어졌고, 저는 인사에 더해 평가와 권한을
-          함께 맡았습니다. 외부 서비스를 처음 붙인 단계이기도 합니다.
+          1차 전체를 Spring Boot로, DB도 Oracle로 바꿨습니다.
+          팀 인원이 네 명으로 줄어 한 사람이 맡을 범위가 넓어졌고, 
+          저는 인사에 더해 평가와 권한을 함께 맡았습니다.
+          외부 서비스를 처음 이용한 단계이기도 합니다.
         </p>
-        <p class="ver__take">외부에 의존하는 기능은 실패를 전제로 설계해야 한다는 것을 배운 단계.</p>
+        <p class="ver__take">외부 API는 언제든 실패할 수 있으며, 그 실패를 다루는 것도 기능이라는 걸 배운 단계.</p>
       </div>
 
       <details class="fold">
@@ -437,11 +432,12 @@
 
     <!-- ═══ 1차 ═══ -->
     <li class="ver">
-      <p class="ver__mark">1차</p>
-      <!-- ▣ 이미지 자리 : 1차 -->
-      <div class="ph ph--card">
-        <span class="ph__label">1차 화면</span>
-        <span class="ph__spec">16:9</span>
+      <div class="ver__left">
+        <p class="ver__mark">1차</p>
+        <div class="ph ph--card">
+          <span class="ph__label">1차 화면</span>
+          <span class="ph__spec">16:9</span>
+        </div>
       </div>
       <div class="ver__body">
         <h4>기능을 갖춘 사내 시스템 만들기</h4>
@@ -457,7 +453,7 @@
           코드를 쓰기 전에 ERD와 화면 설계를 먼저 끝내는 방식으로 진행했고, 저는 사원 관리를 맡았습니다.
           화면은 JSP가 서버에서 직접 그렸고 인증은 세션으로 처리했습니다.
         </p>
-        <p class="ver__take">설계를 먼저 하는 습관과, 관심사를 왜 나눠야 하는지를 얻은 단계.</p>
+        <p class="ver__take">화면을 만들기 전에 설계를 먼저 끝내야 하는 이유를 알게 된 단계.</p>
       </div>
 
       <details class="fold">
@@ -517,9 +513,9 @@
   </ol>
 
   <div class="links">
-    <!-- TODO: 실제 주소로 교체 -->
-    <a class="btn" href="#" target="_blank" rel="noopener">GitHub 저장소</a>
-    <a class="btn" href="#" target="_blank" rel="noopener">기술 문서</a>
+    <a class="btn" href="https://github.com/yoonguri988/spring-breeze-erp.git" target="_blank" rel="noopener">
+      GitHub 저장소
+    </a>
   </div>
 </section>
 
@@ -535,35 +531,35 @@
       <dt>서버</dt>
       <dd>
         <p class="tags"><span class="tag">Java 17</span><span class="tag">Spring Boot 4</span><span class="tag">Spring Security</span><span class="tag">JWT</span></p>
-        <p>인사·근태 도메인의 API와 권한 체계를 처음부터 설계해 구현.</p>
+        <p>인사·근태 도메인의 API와 권한 체계를 설계해 구현</p>
       </dd>
     </div>
     <div class="stack__row">
       <dt>데이터</dt>
       <dd>
         <p class="tags"><span class="tag">Oracle</span><span class="tag">MyBatis</span><span class="tag">JPA</span><span class="tag">Redis</span></p>
-        <p>기존 테이블은 MyBatis, 신규 영역은 JPA로 나눈 혼합 구조를 운영. 시퀀스 증가폭과 채번 설정 불일치까지 맞춰 본 경험.</p>
+        <p>기존 테이블은 MyBatis, 신규 영역은 JPA로 나눈 혼합 구조를 운영</p>
       </dd>
     </div>
     <div class="stack__row">
       <dt>화면</dt>
       <dd>
         <p class="tags"><span class="tag">React</span><span class="tag">Redux Toolkit</span><span class="tag">Redux-Saga</span><span class="tag">Ant Design</span></p>
-        <p>담당 도메인의 상태 관리와 비동기 흐름, 목록·상세·결재 화면을 직접 작성.</p>
+        <p>담당 도메인의 상태 관리와 비동기 흐름, 목록·상세·수정 화면을 직접 작성</p>
       </dd>
     </div>
     <div class="stack__row">
       <dt>AI</dt>
       <dd>
         <p class="tags"><span class="tag">OpenAI API</span><span class="tag">RAG</span></p>
-        <p>사내 문서를 문단으로 쪼개 질문과 맞춰보고, 근거가 되는 문단만 골라 답변에 넣는 경량 파이프라인.</p>
+        <p>문서를 문단 단위로 나누어 질문과 유사도를 비교하고, 근거가 되는 문단을 답변에 넣는 경량 파이프라인</p>
       </dd>
     </div>
     <div class="stack__row">
       <dt>협업</dt>
       <dd>
         <p class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Notion</span></p>
-        <p>도메인 경계를 나눠 충돌 없이 병행 개발. 학습과 결정 사항은 매일 문서로 남김.</p>
+        <p>도메인 경계를 나눠 충돌 없이 병행 개발. 학습과 결정 사항은 문서로 기록</p>
       </dd>
     </div>
   </dl>
@@ -574,7 +570,7 @@
      ═══════════════════════════════════════════ -->
 <section class="section" id="edu">
   <h2 class="section__title">EDUCATION</h2>
-  <p class="section__sub">교육 과정과, 그 기간에 남긴 학습 기록</p>
+  <p class="section__sub">교육 과정과 팀 프로젝트, 그 기간에 남긴 학습 기록</p>
 
   <div class="edu">
     <!-- 교육 이력 -->
