@@ -1,7 +1,7 @@
-# 🚀 정수정 | 실전형 풀스택 개발자 포트폴리오
+# 🚀 정수정 | 풀스택 개발자 포트폴리오
 
 > 완벽보다 완성을.  
-> *기획부터 배포까지, 사용자 흐름을 설계하고 끝까지 책임지는 개발자입니다.*
+> *기획부터 배포까지, 화면 앞의 사용자를 생각하는 개발자입니다.*
 
 6개월간의 풀스택 부트캠프에서 **ERP 시스템을 3세대에 걸쳐 고도화**하며,
 Spring MVC → Spring Boot → **Spring Boot 4 + React/Next.js 풀스택 전환**까지 직접 경험했습니다.
@@ -107,12 +107,13 @@ Spring MVC → Spring Boot → **Spring Boot 4 + React/Next.js 풀스택 전환*
 
 #### 프로젝트 내용 상세보기
 
-https://mdfy0308.github.io/2026-AI-FULLSTACK/
+> https://mdfy0308.github.io/2026-AI-FULLSTACK/
 ---
 
 ## 4. 학습 여정 (6개월 · 2026.03 ~ 2026.09)
 
-> AI 활용 풀스택 개발자 과정 — 매일 Notion에 학습 기록 (55개+ 일일학습 페이지)
+> AI 활용 풀스택 개발자 과정 — 매일 Notion에 학습 기록
+> https://app.notion.com/p/2026-3d88eca4eb6b81d59cc2d00b0acf53c9?source=copy_link
 
 | 기간 | 내용 |
 |---|---|
