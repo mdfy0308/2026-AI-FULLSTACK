@@ -112,7 +112,7 @@ Spring MVC → Spring Boot → **Spring Boot 4 + React/Next.js 풀스택 전환*
 
 ## 4. 학습 여정 (6개월 · 2026.03 ~ 2026.09)
 
-> AI 활용 풀스택 개발자 과정 — 매일 Notion에 학습 기록
+AI 활용 풀스택 개발자 과정 — 매일 Notion에 학습 기록
 > https://app.notion.com/p/2026-3d88eca4eb6b81d59cc2d00b0acf53c9?source=copy_link
 
 | 기간 | 내용 |
