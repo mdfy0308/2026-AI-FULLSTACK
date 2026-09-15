@@ -197,7 +197,7 @@ img {
 }
 .ph__label { font-size: 0.9rem; font-weight: 500; color: #6f6b60; }
 .ph__spec { font-size: 0.75rem; letter-spacing: 0.04em; color: #a09b8e; }
-.ph--card     { aspect-ratio: 16 / 9; }
+
 .ph--portrait { aspect-ratio: 4 / 5; }
 
 /* ---------- 프로젝트 개요 ---------- */
@@ -502,13 +502,11 @@ img {
   margin: 1rem 0;
 }
 /* 모달 안 이미지 자리표시가 아닌 실제 이미지일 때 */
-.modal__body img,
-.modal__body video {
+.modal__shot img {
   display: block;
   width: 100%;
   height: auto;
-  margin: 1rem 0;
-  border: 1.5px solid var(--hair);
+  margin: 0.1rem 0.2rem;
 }
 
 /* 모달 열린 동안 본문 스크롤 잠금 */
