@@ -593,6 +593,45 @@ body.modal-locked { overflow: hidden; }
   to   { opacity: 1; transform: none; }
 }
 
+/* ---------- 접기 버튼 ---------- */
+.fold__collapse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0.7rem 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  background: var(--paper);
+  border: 1.5px solid var(--hair);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.15s;
+}
+.fold__collapse::before {
+  content: "−";
+  display: grid;
+  place-items: center;
+  width: 1.2rem;
+  height: 1.2rem;
+  flex: 0 0 auto;
+  font-size: 0.85rem;
+  line-height: 1;
+  color: #fff;
+  background: var(--ink);
+  border: 1.5px solid var(--line);
+}
+.fold__collapse:hover {
+  color: var(--stamp);
+  border-color: var(--stamp);
+}
+.fold__collapse:hover::before {
+  background: var(--stamp);
+}
+
 /* ---------- 트러블슈팅 ---------- */
 .trouble { margin: 0; }
 .trouble__title {

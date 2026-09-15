@@ -106,4 +106,21 @@
       if (open) closeModal(open);
     }
   });
+
+  /* ── fold 접기 버튼 ── */
+  document.addEventListener("click", function (e) {
+    var collapseBtn = e.target.closest(".fold__collapse");
+    if (!collapseBtn) return;
+
+    var details = collapseBtn.closest("details.fold");
+    if (!details) return;
+
+    /* 상단 바 높이만큼 오프셋 보정 */
+    var barH = bar ? bar.offsetHeight : 0;
+    var targetY = details.getBoundingClientRect().top + window.scrollY - barH - 16;
+
+    details.removeAttribute("open");
+
+    window.scrollTo({ top: targetY, behavior: "smooth" });
+  });
 })();
