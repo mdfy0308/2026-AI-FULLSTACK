@@ -533,11 +533,10 @@ final authProvider = NotifierProvider<AuthNotifier, AuthState>(() {
 
 > **🧪 중간 테스트:**
 > * 전역 상태 로직(Provider) 작성 단계입니다. 터미널 및 에디터에서 구문 에러가 없는지 체크하고 UI 페이지 작성으로 진행합니다.
+> 
+> 
 
 
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
 
 #### 2. `lib/features/auth/presentation/login_page.dart`
 
@@ -605,12 +604,14 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             const SizedBox(height: 12),
             TextField(controller: _passwordController, obscureText: true, decoration: const InputDecoration(labelText: '비밀번호')),
             const SizedBox(height: 24),
+            // 에러 발생시 조건부 렌더링
             if (authState.error != null)
               Text(authState.error!, style: const TextStyle(color: Colors.red)),
             const SizedBox(height: 12),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
+                // 로딩 중일때 버튼 비활성화 여부 
                 onPressed: authState.loading ? null : _handleLogin,
                 child: authState.loading ? const CircularProgressIndicator(color: Colors.white) : const Text('로그인'),
               ),
@@ -645,10 +646,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 > 
 > 
 > * 앱을 실행하여 이메일/비밀번호 입력 폼과 로그인 버튼이 깔끔하게 그려지는지 확인합니다.
-
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
+> 
+> 
 
 #### 3. `lib/features/auth/presentation/signup_page.dart`
 
@@ -740,9 +739,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
       Navigator.pop(context); 
     }
   }
-
-  ////////////////////////////////////////////////////////////////////////////////////////////
-
+  //////////////////////////////////////////////////////////////////////////////////
   @override
   Widget build(BuildContext context) {
     final authState = ref.watch(authProvider);
@@ -836,7 +833,7 @@ class UsersPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // [핵심] 읽어온 유저 데이터 가져오기
+    // [핵심] 읽어온 유저 데이터 가져오기  ##
     final user = ref.watch(authProvider).user;
 
     return AppLayout(
@@ -848,7 +845,7 @@ class UsersPage extends ConsumerWidget {
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    // 카드 형태의 표
+                    // 카드형태의 표
                     Card(
                       elevation: 2,
                       shape: RoundedRectangleBorder(
@@ -906,7 +903,7 @@ class UsersPage extends ConsumerWidget {
         
         // 로그인 된 상태, 화면 우측 하단 둥근 플로팅 글쓰기 버튼 (FAB)
         floatingActionButton: user != null
-            ? floatingActionButton.extended(
+            ? FloatingActionButton.extended(
                 onPressed: () {
                   Navigator.pushNamed(context, '/post-write');
                 },
@@ -935,7 +932,8 @@ class UsersPage extends ConsumerWidget {
 > 
 > 
 > * 현재는 로그인 전 상태이므로 화면 중앙에 **"로그인이 필요합니다."**가 올바르게 나오는지 확인합니다.
- 
+> 
+> 
 
 #### 5. `lib/shared/components/app_layout.dart` (실제 연동 ver-2 교체)
 
@@ -950,18 +948,18 @@ class AppLayout extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authState = ref.watch(authProvider); // 전역 인증상태 확인 
+    final authState = ref.watch(authProvider); // 전역 인증상태 관찰
     final bool isLogined = authState.accessToken != null && authState.user != null;
     final userNickname = authState.user?['nickname'] ?? '유저';
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('마이페이지'),
-        actions: [ // { isLogined? A : B }
+        actions: [   // {isLogined? <A/> : <B/>}
           if (isLogined) ...[
             Center(
               // [핵심] 일반 Text/Container 영역을 클릭 및 물결 터치(Ripple) 반응형으로 만들어 주는 위젯
-              child: Inkwell(
+              child: InkWell(
                 onTap: () {
                   Navigator.pushNamed(context, '/users');
                 },
@@ -1046,12 +1044,14 @@ class App extends StatelessWidget {
 
 > **🧪 중간 테스트:**
 > * 상단바 인증 정보 반영 레이아웃입니다. Step 5에서 게시판 모듈 완충 후 최종 라우팅을 연결해 로그인 전/후 상단바 변화를 전체적으로 검증합니다.
+> 
+> 
 
 ```dart
 // ✏️ 연습문제 & 개념 점검 [Step 3]
 // Q1. JWT 토큰을 브라우저 LocalStorage보다 안전하게 스마트폰 OS 암호화 영역에 저장해 주는 패키지 클래스는 무엇인가요?
-// 답: (                     )
+// 답: (  FlutterSecureStorage  )
 
 // Q2. 로그인 후 router.replace('/') 처럼 뒤로 가기 스택을 지우고 메인 경로로 이동해 주는 Navigator 메서드는 무엇인가요?
-// 답: Navigator.(                     )
+// 답: Navigator.(   pushNamedAndRemoveUntil )
 ```
