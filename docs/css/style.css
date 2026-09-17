@@ -112,7 +112,7 @@ img {
 .hero__cta { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2rem; }
 .hero__side {
   position: relative;
-  align-self: end;
+  align-self: center;
   max-width: 14rem;
 }
 
@@ -186,15 +186,22 @@ img {
 .section__sub { color: var(--muted); font-size: 0.92rem; margin-bottom: 2.5rem; padding-left: 1.1rem; }
 
 /* ---------- 이미지 자리표시 ---------- */
+
 .ph {
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+  display: flex; 
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
   gap: 0.3rem;
   background: var(--ink-2);
   border: 1.5px dashed #b9b4a6;
   color: var(--muted);
   text-align: center;
   padding: 0.2rem;
+}
+
+.hero__side .ph {
+  
 }
 .ph__label { font-size: 0.9rem; font-weight: 500; color: #6f6b60; }
 .ph__spec { font-size: 0.75rem; letter-spacing: 0.04em; color: #a09b8e; }
